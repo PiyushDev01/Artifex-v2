@@ -1,0 +1,109 @@
+/* #blurnav{
+  border-color: rgb(225, 220, 220);
+  border-radius: 50px;
+  border-width: 1px;
+
+} */
+a {
+  font-family: "karla";
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #675c76;
+}
+
+#mobblurnav {
+  background-color: #0093e9;
+
+  background-image: linear-gradient(160deg, #6721a4 0%, #330099 100%);
+  transition: width 0.3s ease;
+}
+
+li {
+  width: 5rem;
+  font-family: "manrope";
+  font-weight: 400;
+}
+#btn {
+  background-color: #7c4dff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#btn:hover {
+  background-color: #6200ea;
+}
+#fadebg {
+  background-color: #333333e0;
+  font-family: "karla";
+}
+#lgfadebg {
+  background-color: #333333c7;
+  font-family: "karla";
+}
+
+/* css for hamburger */
+
+.hamburger {
+  height: 50px;
+  width: 50px;
+  transform: 0.2s;
+  position: relative;
+}
+.hamburger .checkbox {
+  position: absolute;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+.line {
+  transition: 0.5s;
+  stroke-width: 6px;
+  stroke: rgb(68, 68, 68);
+}
+.lineTop {
+  stroke-dasharray: 40 40;
+  stroke-dashoffset: 25;
+}
+.lineBottom {
+  stroke-dasharray: 40 40;
+  stroke-dashoffset: 60;
+}
+.lineMid {
+  stroke-dasharray: 40 40;
+}
+.hamburger .checkbox:checked + svg .line {
+  stroke: #3b018d;
+}
+.hamburger .checkbox:checked + svg .lineTop {
+  stroke-dashoffset: 0;
+  transform-origin: left;
+  transform: rotateZ(45deg) translate(-7px, -5px);
+}
+.hamburger .checkbox:checked + svg .lineMid {
+  stroke-dashoffset: 40;
+}
+.hamburger .checkbox:checked + svg .lineBottom {
+  stroke-dashoffset: 0;
+  transform-origin: left;
+  transform: rotateZ(-45deg) translate(-5px, 5px);
+}
+
+#divHr {
+  background-color: #69686898;
+  height: 2px;
+
+  width: 80%;
+}
+
+#lgh1 {
+  font-family: "manrope";
+  font-weight: 600;
+}
+#lgbox {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
