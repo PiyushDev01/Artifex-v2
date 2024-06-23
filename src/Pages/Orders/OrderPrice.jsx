@@ -15,7 +15,7 @@ function OrderPrice() {
           className="-z-10 fixed md:absolute top-0 w-full h-1/2 md:h-1/2 rounded-b-[2rem] bg-gradient-to-r from-[#8E2DE2] to-[#6200EA]"
         ></div>
         <h6 className=" text-4xl md:text-6xl font-extrabold m-4 text-center">Choose Your Order</h6>
-        <p id="p" className=" px-6 text-center mb-8 text-white text-lg md:text-xl">Welcome! Thank you for choosing our services. We're glad to have you as a customer.</p>
+        <p id="p" className=" px-6 text-center mb-8 text-white text-sm md:text-xl">Welcome! Thank you for choosing our services. We're glad to have you as a customer.</p>
 
         <div id="cards" className=" flex md:flex-row flex-col" >
         <SidePriceCard

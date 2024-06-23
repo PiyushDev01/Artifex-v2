@@ -7,7 +7,7 @@ import UserContext from "../../../Context/UserContex";
 export default function Leftcontent() {
   const {uDetails} = useContext(UserContext);
   let name= uDetails.name;
-  let word = name;
+  // let word = name.split(' ');
 
    
   return (
