@@ -37,6 +37,10 @@ p {
 h1 {
   font-family: "manrope";
 }
+#leftname{
+  font-family: "manrope";
+  padding: 1rem 0;
+}
 
 #backdesign{
   background: #8E2DE2;  /* fallback for old browsers */
