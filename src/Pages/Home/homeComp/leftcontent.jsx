@@ -7,7 +7,10 @@ import UserContext from "../../../Context/UserContex";
 export default function Leftcontent() {
   const {uDetails} = useContext(UserContext);
   let name= uDetails.name;
-  // let word = name.split(' ');
+  let names=null;
+  if(name!=null){
+    names= name.split(' ');
+  }
 
    
   return (
@@ -27,7 +30,7 @@ export default function Leftcontent() {
           className=" md:text-4xl text-3xl text-zinc-600 "
         >
           {" "}
-         {name? <div><span>Hi!</span> {name}</div>  :<span></span>}
+         {name? <div><span>Hi!</span> {names[0]}</div>  :<span></span>}
           {/* <span>on Paper</span>{" "} */}
         </motion.h2>
         <motion.h1
