@@ -1,5 +1,5 @@
 import React from 'react';
-    // hello just testing
+    
 import "./landing.css"
 import Rightcontent from './homeComp/rightcontent';
 import Leftcontent from "./homeComp/leftcontent";
@@ -18,7 +18,10 @@ export default function Landingpg(){
     <div className=" pt-40 md:pt-0  w-full  px-4 md:px-40 flex md:flex-row flex-col h-[768px]  " id='home'>
     <Leftcontent/>
     <Rightcontent/>
-    </div></div>
+    </div>
+    </div>
+    <center><h1 className=' md:mt-0 mt-[12rem] text-xl p-4 md:text-3xl  text-slate-700'>Hey! We're busy working on the website. Thanks for understanding!</h1></center>
+
     
     </>;
 }
