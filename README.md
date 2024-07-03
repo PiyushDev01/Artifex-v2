@@ -1,8 +1,23 @@
-# React + Vite
+Here's a README template for your GitHub repository:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# Custom Art E-Commerce Platform
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
+
+This project is an innovative e-commerce platform that showcases and sells custom sketches and artworks. Customers can view my portfolio, order custom sketches, and enjoy secure payments and reliable delivery.
+
+## Features
+
+- **Portfolio Display**: Browse through a collection of custom sketches and artworks.
+- **Custom Orders**: Place orders for personalized sketches.
+- **Secure Payments**: Seamless and secure payment integration.
+- **Reliable Delivery**: Track orders and ensure timely delivery.
+
+## Tech Stack
+
+- **Frontend**: React
+- **Styling**: Tailwind CSS
+- **Backend & Database**: Firebase
+
