@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBz5cErPebBeA33noZsbGVD8_CbvsUPWEE",
+  apiKey: "ENTER GOOGLE FIREBASE API",
   authDomain: "artifex-6c972.firebaseapp.com",
   projectId: "artifex-6c972",
   storageBucket: "artifex-6c972.appspot.com",
