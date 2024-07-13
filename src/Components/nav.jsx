@@ -99,7 +99,7 @@ export default function Nav() {
 
           {uDetails.image != null ? (
             <img
-              src={uDetails.image}
+              src={uDetails.image} alt="user"
               className="md:w-16 md:p-2 w-10 h-10 md:h-16 md:block hidden"
               style={{ borderRadius: "100px" }}
             />
