@@ -56,7 +56,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className=" flex fles-row h-fit w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-white/30 backdrop-blur-sm  items-center fixed md:shadow-none shadow-md rounded-b-3xl md:rounded-none z-10">
+      <nav className=" flex fles-row h-fit w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-white/30 backdrop-blur-sm  items-center fixed md:shadow-none shadow-md rounded-b-3xl md:rounded-none z-20">
         <a href="/">
           <img src={logo} className=" md:w-28  w-24" alt="" />
         </a>

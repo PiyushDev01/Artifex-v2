@@ -1,7 +1,26 @@
 import React from 'react'
 import '../order.css'
+import { useNavigate } from "react-router-dom";
+import UserContext from "../../../Context/UserContex";
+import { useContext } from 'react';
+
+
+const price=299;
 
 function PriceCard() {
+
+  const navigate = useNavigate();
+  const {isUserlogged, setprice }= useContext(UserContext);
+
+  const openForm = () => {
+    if(isUserlogged){
+      setprice({...price, person: 'Single Person', price: 299});
+      navigate('/Order-Details');
+    }else{
+      alert('Please Login to continue');
+    }
+  }
+
   return (
     <>
         <div id="outercontainer" className=' z-[10px] w-[300px] h-[435px] bg-[#3C3C3C] rounded-[30px] flex flex-col transition-all m-8 ' >
@@ -17,8 +36,12 @@ function PriceCard() {
                         <h2 className='text-zinc-200 text-xs'>+ Shipping Charge</h2>
 
                     </div>
-                    <div id="orderbutton" className=' bg-zinc-200  py-2 mx-4 my-2 rounded-full flex justify-center cursor-pointer hover:bg-white transition-all '><h2
+                    
+              {" "}
+               <div onClick={openForm} id="orderbutton" className=' bg-zinc-200  py-2 mx-4 my-2 rounded-full flex justify-center cursor-pointer hover:bg-white transition-all '><h2
                     className=' font-bold text-zinc-800'>Order</h2></div>
+           
+                   
             </div>
 
             <div id="bottomContent" className=' p-4 m-2'>

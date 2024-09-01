@@ -13,6 +13,7 @@ let isUserlogged = false;
 const UserContextProvider = (props)=>{
 
     const [user, setuser] = useState(null);
+    const [price, setprice] = useState({price:0, person: null});
     const [uDetails, setuDetails] = useState({ name: null, image: null });
   
     useEffect(() => {
@@ -31,7 +32,7 @@ const UserContextProvider = (props)=>{
 
 
     return(
-        <UserContext.Provider value={{uDetails, isUserlogged}}>
+        <UserContext.Provider value={{uDetails, isUserlogged, price, setprice}}>
             {props.children}
         </UserContext.Provider>
     );

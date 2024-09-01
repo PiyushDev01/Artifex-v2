@@ -30,7 +30,7 @@ export default function Leftcontent() {
           className=" md:text-4xl text-3xl text-zinc-600 "
         >
           {" "}
-         {name? <div><span>Hi!</span> {names[0]}</div>  :<span></span>}
+         {name? <div><span id="span">Hi!</span> {names[0]}</div>  :<span></span>}
           {/* <span>on Paper</span>{" "} */}
         </motion.h2>
         <motion.h1
@@ -42,8 +42,8 @@ export default function Leftcontent() {
           className=" md:text-6xl text-4xl text-zinc-900 "
         >
           {" "}
-          <span>Capture</span> Life's Moments{" "}
-          <span>on Paper</span>{" "}
+          <span id="span">Capture</span> Life's Moments{" "}
+          <span id="span">on Paper</span>{" "}
         </motion.h1>
         <motion.p
           variants={fadeIn("down", 0.3)}

@@ -1,7 +1,34 @@
 import React from 'react'
 import '../order.css'
 
+
+
+
+import { useNavigate } from "react-router-dom";
+import UserContext from "../../../Context/UserContex";
+import { useContext } from 'react';
+
+
+
+
 function SidePriceCard(props) {
+
+  const navigate = useNavigate();
+  const {isUserlogged, setprice }= useContext(UserContext);
+
+  const openForm = () => {
+    if(isUserlogged){
+      setprice({...props.price, person: props.person, price: props.price});
+      navigate('/Order-Details');
+    }else{
+      alert('Please Login to continue');
+    }
+  }
+
+
+
+
+
   return (
     <>
         <div id="outercontainer" className=' z-[10px] w-[300px] h-[435px] bg-[#E6E6E6] rounded-[30px] flex flex-col transition-all m-8 ' >
@@ -16,7 +43,7 @@ function SidePriceCard(props) {
                         <h2 className='text-zinc-900 text-xs'>+ Shipping Charge</h2>
 
                     </div>
-                    <div id="orderbutton" className=' bg-zinc-900  py-2 mx-4 my-2 rounded-full flex justify-center cursor-pointer hover:bg-black transition-all '><h2
+                    <div onClick={openForm} id="orderbutton" className=' bg-zinc-900  py-2 mx-4 my-2 rounded-full flex justify-center cursor-pointer hover:bg-black transition-all '><h2
                     className=' font-bold text-zinc-100'>Order</h2></div>
             </div>
 
