@@ -73,7 +73,7 @@ export default function Nav() {
               {" "}
               <li>Order</li>
             </Link>
-            <a href="">
+            <a href="https://www.piyushdev.me/">
               {" "}
               <li>About</li>
             </a>
@@ -220,7 +220,7 @@ export default function Nav() {
               {" "}
               <li>Order</li>
             </Link>
-            <a href="">
+            <a href="https://www.piyushdev.me/">
               {" "}
               <li>About</li>
             </a>
