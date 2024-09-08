@@ -13,7 +13,7 @@ let isUserlogged = false;
 const UserContextProvider = (props)=>{
 
     const [user, setuser] = useState(null);
-    const [price, setprice] = useState({price:0, person: null});
+    const [price, setprice] = useState({price:"Not Selected", person: null});
     const [uDetails, setuDetails] = useState({ name: null, image: null });
   
     useEffect(() => {

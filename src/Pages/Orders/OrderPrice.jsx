@@ -7,12 +7,12 @@ function OrderPrice() {
   return (
     <>
       <div
-        className="relative md:h-screen flex flex-col items-center justify-center pt-32 "
+        className="relative md:h-full  flex flex-col items-center justify-center pt-32   "
         id="background"
       >
         <div
           id="backBox"
-          className="-z-10 fixed md:absolute top-0 w-full h-1/2 md:h-1/2 rounded-b-[2rem] bg-gradient-to-r from-[#8E2DE2] to-[#6200EA]"
+          className=" -z-10 fixed md:absolute top-0 w-full h-1/2 md:h-1/2 rounded-b-[2rem] bg-gradient-to-r  from-[#6200EA] to-[#8E2DE2]"
         ></div>
         <h6 className=" text-4xl md:text-6xl font-extrabold m-4 text-center">Choose Your Order</h6>
         <p id="p" className=" px-6 text-center mb-8 text-white text-sm md:text-xl">Welcome! Thank you for choosing our services. We're glad to have you as a customer.</p>

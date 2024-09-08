@@ -14,7 +14,7 @@ function PriceCard() {
 
   const openForm = () => {
     if(isUserlogged){
-      setprice({...price, person: 'Single Person', price: 299});
+      setprice({...price, person: 'Single Person', price: price});
       navigate('/Order-Details');
     }else{
       alert('Please Login to continue');
@@ -32,7 +32,7 @@ function PriceCard() {
                     </div>
                     <div id="pricetag" className=' mx-3 items-center gap-1 h-fit flex flex-row  '>
                         <h2 className=' text-3xl text-zinc-100 '>₹</h2>
-                        <h5 className=' text-5xl font-extrabold' >299</h5>
+                        <h5 className=' text-5xl font-extrabold' >{price}</h5>
                         <h2 className='text-zinc-200 text-xs'>+ Shipping Charge</h2>
 
                     </div>
