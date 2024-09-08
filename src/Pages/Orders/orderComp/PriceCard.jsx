@@ -5,7 +5,7 @@ import UserContext from "../../../Context/UserContex";
 import { useContext } from 'react';
 
 
-const price=299;
+const price=349;
 
 function PriceCard() {
 
