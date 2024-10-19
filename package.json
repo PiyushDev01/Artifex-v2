@@ -15,10 +15,12 @@
     "@mui/icons-material": "^6.0.1",
     "@mui/material": "^6.0.1",
     "animate.css": "^4.1.1",
+    "dotenv": "^16.4.5",
     "firebase": "^10.12.2",
     "framer-motion": "^11.1.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-easy-crop": "^5.1.0",
     "react-router": "^6.23.1",
     "react-router-dom": "^6.23.1"
   },

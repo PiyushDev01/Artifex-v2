@@ -63,11 +63,12 @@ function OrderForm() {
           <button
             onClick={() => {
               if (currentStep === 1) {
-                if (details.size === "" || details.orientation === "") {
+                if (details.size == null || details.orientation == null || details.file == null) {
                   setFormOneValid({
-                    ...is_F1_Invalide,
-                    size: details.size === "" ? true : false,
-                    orientation: details.orientation==="" ? true: false,
+                  ...is_F1_Invalide,
+                  size: details.size == null ? true : false,
+                  orientation: details.orientation == null ? true : false,
+                  file: details.file == null ? true : false,
                   });
                   //alert("Please select size and orientation");
                 }
@@ -78,25 +79,25 @@ function OrderForm() {
               } 
               else if (currentStep === 2) {
                 if (
-                  details.name === "" ||
-                  details.phone === "" ||
-                  details.saveas === "" ||
-                  details.flat === "" ||
-                  details.street === "" ||
-                  details.district === "" ||
-                  details.state === "" ||
-                  details.pin === ""
+                  details.name == null ||
+                  details.phone == null ||
+                  details.saveas == null ||
+                  details.flat == null ||
+                  details.street == null ||
+                  details.district == null ||
+                  details.state == null ||
+                  details.pin == null
                 ) {
                   setFormTWOValid({
-                    ...is_F2_Invalide,
-                    name: details.name === "" ? true : false,
-                    phone: details.phone === "" ? true : false,
-                    saveas: details.saveas === "" ? true : false,
-                    flat: details.flat === "" ? true : false,
-                    street: details.street === "" ? true : false,
-                    district: details.district === "" ? true : false,
-                    state: details.state === "" ? true : false,
-                    pin: details.pin === "" ? true : false,
+                  ...is_F2_Invalide,
+                  name: details.name == null ? true : false,
+                  phone: details.phone == null ? true : false,
+                  saveas: details.saveas == null ? true : false,
+                  flat: details.flat == null ? true : false,
+                  street: details.street == null ? true : false,
+                  district: details.district == null ? true : false,
+                  state: details.state == null ? true : false,
+                  pin: details.pin == null ? true : false,
                   });
                   //alert("Please fill all the details");
                 } else {

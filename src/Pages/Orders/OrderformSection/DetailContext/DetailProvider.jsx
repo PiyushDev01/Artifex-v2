@@ -9,20 +9,18 @@ const DetailProvider = ({ children }) => {
     
     
     const [details, setDetails] = useState({
-        
-        size: "",
-        orientation: "",
-        signature: true,
-        file: "",
-        name: "",
-        phone: "",
-        saveas: "",
-        flat: "",
-        street: "",
-        pin: "",
-        district: "",
-        state: "",
-
+        size: null,
+        orientation: null,
+        notes: null,
+        file: null,
+        name: null,
+        phone: null,
+        saveas: null,
+        flat: null,
+        street: null,
+        pin: null,
+        district: null,
+        state: null,
     });
 
     

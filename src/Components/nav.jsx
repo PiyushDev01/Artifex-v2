@@ -11,7 +11,7 @@ import Login from "./Login";
 import LoginGoogle from "../Firebase/googleAuth";
 
 import { signOut, getAuth } from "firebase/auth";
-import { app } from "../Firebase/firbase";
+import app  from "../Firebase/firbase";
 
 import { pending } from "./Login";
 import { Link } from "react-router-dom";

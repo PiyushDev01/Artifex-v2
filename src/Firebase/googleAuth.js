@@ -1,5 +1,5 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import { app } from './firbase'
+import  app  from './firbase'
 
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider();

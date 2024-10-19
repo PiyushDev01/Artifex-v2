@@ -4,7 +4,7 @@ import { onAuthStateChanged, getAuth } from "firebase/auth";
 
 import { useEffect, useState } from "react";
 
-import { app } from "../Firebase/firbase";
+import app  from "../Firebase/firbase";
 
 const auth = getAuth(app);
 let isUserlogged = false;

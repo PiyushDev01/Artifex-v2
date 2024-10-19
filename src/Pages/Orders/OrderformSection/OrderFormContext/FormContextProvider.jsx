@@ -5,7 +5,7 @@ import { useState } from "react";
 const FormContextProvider = ({ children }) => {
     const [step, setStep] = useState("0%");
     const [currentStep, setCurrentStep] = useState(1);
-    const [is_F1_Invalide, setFormOneValid] = useState({ size: false, orientation: false });
+    const [is_F1_Invalide, setFormOneValid] = useState({ size: false, orientation: false, file: false });
     const [is_F2_Invalide, setFormTWOValid] = useState({ name: false, phone: false, saveas: false, flat: false, street: false, district: false, state: false, pin: false });
     
     const steps = [

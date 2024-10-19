@@ -59,7 +59,7 @@ function Orderform3() {
             <span className=' text-mypurple font-semibold' >Orientation : </span>{details.orientation}
           </h1>
           <h1 className=' text-slate-700 font-semibold' >
-            <span className=' text-mypurple font-semibold' >Artist's Signature : </span>{details.signature ? 'Yes': 'No'}
+            <span className=' text-mypurple font-semibold' >Note: </span>{details.notes ? details.notes: 'No'}
           </h1>
           <h1 className=' text-3xl mt-10'>
             Amount to Pay
