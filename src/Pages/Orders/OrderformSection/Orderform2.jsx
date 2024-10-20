@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Detailcontext from "./DetailContext/Detailcontext";
 import Formcontext from "./OrderFormContext/FormContex";
 import "../order.css"
+import axios from "axios";
 
 const saveas = ["Home", "Office", "Others"];
 
@@ -9,6 +10,11 @@ function Orderform2() {
   const { details, setDetails } = useContext(Detailcontext);
   const { is_F2_Invalide, setFormTWOValid } = useContext(Formcontext);
   const [clickedIndex, setClickedIndex] = useState(null);
+
+  const [isServiceable, setIsServiceable] = useState(true); 
+  const [estimate, setEstimate] = useState(null); 
+  const [pinchecking, setchecking] = useState("Check");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setDetails((prevDetails) => ({
@@ -20,6 +26,48 @@ function Orderform2() {
       saveas: false,
     }));
   }, [setDetails, setFormTWOValid]);
+  
+
+  const checkPincode = async () => {
+    setchecking("Checking...");
+    const params = { filter_codes: details.pin };
+    try {
+      const response = await axios.get('https://artifex-backend.vercel.app/api/pin-codes', { params });
+      const data = response.data;
+      if (data.delivery_codes && data.delivery_codes.length > 0) {
+        const postalData = data.delivery_codes[0].postal_code;
+        setEstimate(data);
+        setError(null);
+        setIsServiceable(postalData.pre_paid === 'Y'); // Update serviceability based on the response
+        const { district } = postalData;
+  
+        // Use functional form to ensure we have the latest `details`
+        setDetails((prevDetails) => ({
+          ...prevDetails,
+          district: district,
+        }));
+
+        
+        // Extract state from the 'inc' field
+        const match = postalData.inc.match(/\(([^)]+)\)/);
+        if (match) {
+          setDetails((prevDetails) => ({
+            ...prevDetails,
+            state: match[1],
+          }));
+        }
+      } else {
+        setIsServiceable(false);
+        setError("Service not available for this area.");
+        console.log(error)
+      }
+    } catch (err) {
+      setError("Error fetching estimate. Please try again.");
+      console.error(err);
+    } finally {
+      setchecking("Check");
+    }
+  };
   
 
   // Helper function to handle input change and form validation
@@ -125,13 +173,15 @@ function Orderform2() {
           value={details.pin}
           onChange={(e) => handleInputChange("pin", e.target.value)}
           onInput={(e) => handleMaxLength(e, 6)}
-          className={`md:my-1 border rounded-xl md:text-lg p-2 hover:border-mypurple md:w-[40%] ${
-            is_F2_Invalide.pin ? "bg-red-100 outline-red-600 border-red-600 outline-[1px]" : ""
+          className={` transition-all md:my-1 border rounded-xl md:text-lg p-2 hover:border-mypurple md:w-[40%] ${
+            is_F2_Invalide.pin || !isServiceable ? "bg-red-100 outline-red-600 border-red-600 outline-[1px]" : ""
           }`}
         />
-        <button className=" bg-mypurple my-1 px-4 text-white rounded-2xl"> Check </button>
+        <button onClick={checkPincode} className=" bg-mypurple my-1 px-4 text-white rounded-2xl"> {pinchecking} </button>
         </div>
-       
+       {
+        error &&   <h1 className="text-red-500 text-sm">{error}</h1>
+       }
         
         <div className="flex w-full md:w-[80%] gap-2">
           <input
