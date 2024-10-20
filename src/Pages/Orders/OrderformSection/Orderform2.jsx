@@ -129,7 +129,7 @@ function Orderform2() {
             is_F2_Invalide.pin ? "bg-red-100 outline-red-600 border-red-600 outline-[1px]" : ""
           }`}
         />
-        <button className=" bg-mypurple my-1 px-4 text-white rounded-2xl"> Check PIN </button>
+        <button className=" bg-mypurple my-1 px-4 text-white rounded-2xl"> Check </button>
         </div>
        
         
