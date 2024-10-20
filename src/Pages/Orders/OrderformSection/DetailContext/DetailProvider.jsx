@@ -11,6 +11,7 @@ const DetailProvider = ({ children }) => {
     const [details, setDetails] = useState({
         size: null,
         orientation: null,
+        cropped:null,
         notes: null,
         file: null,
         name: null,

@@ -8,6 +8,7 @@ import Detailcontext from "./DetailContext/Detailcontext";
 import Formcontext from "./OrderFormContext/FormContex";
 import Cropper from 'react-easy-crop';
 import { getCroppedImg } from '../../../utils/cropImageHelper.js';  // this function should return a cropped image blob
+import { Details } from "@mui/icons-material";
 
 
 const sizeOptions = ["A4", "A5", "A3"];
@@ -37,6 +38,7 @@ function Orderform1() {
       const croppedImage = await getCroppedImg(image, croppedAreaPixels);
       const croppedImageURL = URL.createObjectURL(croppedImage);  // Create a blob URL for display
       setUrl(croppedImageURL);
+      setDetails({ ...details, cropped:croppedImageURL });
     } catch (e) {
       console.error(e);
     }
@@ -122,14 +124,15 @@ function Orderform1() {
         />
       </div>
 
-      {url ? (
+      {details.cropped ? (
         <div className="flex items-center md:w-[50%] md:flex-row justify-center flex-col">
-          <img className="rounded-lg shadow-2xl md:w-[40%] my-8 w-[80%]" src={url} alt="" />
+          <img className="rounded-lg shadow-2xl md:w-[40%] my-8 w-[80%]" src={details.cropped} alt="" />
           <button
             onClick={() => {
-              setDetails({ ...details, file: null });
+              
               setUrl("");
               setImage(null);
+              setDetails({ ...details, cropped: null });
             }}
           >
             <RotateLeftRoundedIcon className="scale-125 bg-mypurple rounded-full m-4 md:m-8 shadow-lg text-white" />
@@ -175,6 +178,7 @@ function Orderform1() {
                   >
                     Crop
                   </button>
+                  
                   <br />
                 </>
               ) : (

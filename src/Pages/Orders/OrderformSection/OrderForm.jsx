@@ -63,12 +63,12 @@ function OrderForm() {
           <button
             onClick={() => {
               if (currentStep === 1) {
-                if (details.size == null || details.orientation == null || details.file == null) {
+                if (details.size == null || details.orientation == null || details.cropped == null) {
                   setFormOneValid({
                   ...is_F1_Invalide,
                   size: details.size == null ? true : false,
                   orientation: details.orientation == null ? true : false,
-                  file: details.file == null ? true : false,
+                  file: details.cropped == null ? true : false,
                   });
                   //alert("Please select size and orientation");
                 }

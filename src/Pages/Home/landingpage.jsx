@@ -20,7 +20,7 @@ export default function Landingpg(){
     <Rightcontent/>
     </div>
     </div>
-    <center><h1 className=' md:mt-0 mt-[12rem] text-xl p-4 md:text-3xl  text-slate-700'>Hey! We're busy working on the website. Thanks for understanding!</h1></center>
+    <center><h1 className=' md:mt-0 mt-[12rem] text-xl p-4 md:text-3xl  text-slate-700'>We're currently working on the website. Thank you for your understanding!</h1></center>
 
     
     </>;
