@@ -55,7 +55,7 @@ function OrderForm() {
               }
              
             }}
-            className="bg-slate-50  text-slate-500 border-2 border-slate-500 px-4 py-2 rounded-md"
+            className="bg-slate-50  text-slate-500 border-2 border-slate-500 px-4 py-2 rounded-full"
             // disabled={currentStep === 1}
           >
             Back
@@ -105,7 +105,7 @@ function OrderForm() {
                 }
               }
             }}
-            className="bg-[#6200EA] text-white px-4 py-2 rounded-md"
+            className="bg-[#6200EA] text-white  px-4 py-2 rounded-full"
             disabled={currentStep === steps.length}
           >
             {currentStep === steps.length ? "Pay Now" : "Next"}

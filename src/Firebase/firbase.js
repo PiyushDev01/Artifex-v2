@@ -7,13 +7,13 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBz5cErPebBeA33noZsbGVD8_CbvsUPWEE",
-  authDomain: "artifex-6c972.firebaseapp.com",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: "artifex-6c972",
   storageBucket: "artifex-6c972.appspot.com",
   messagingSenderId: "449704828852",
   appId: "1:449704828852:web:6d0a02163901ab6e6a1ce1",
-  databaseURL: "https://artifex-6c972-default-rtdb.europe-west1.firebasedatabase.app/",
+  databaseURL: import.meta.env.VITE_FIREBASE_DB_URL,
 };
 
 // Initialize Firebase

@@ -62,3 +62,14 @@ background: linear-gradient(to right, #FFFFFF 0%, #c488ff 100%);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+/* For Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
