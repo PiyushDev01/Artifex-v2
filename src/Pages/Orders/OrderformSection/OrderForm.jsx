@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 
 function OrderForm() {
-  const { currentStep, steps, move, setFormOneValid, is_F1_Invalide, is_F2_Invalide, setFormTWOValid } = useContext(Formcontext);
+  const { currentStep, steps, move, setFormOneValid, is_F1_Invalide, is_F2_Invalide, setFormTWOValid, setSubmitted, submitted } = useContext(Formcontext);
 
 
 
@@ -22,15 +22,15 @@ function OrderForm() {
     <>
       <div
         id="Ordercontainer"
-        className=" pt-16 w-full rounded-lg bg-gray-100 transition-all flex flex-col justify-center items-center "
+        className=" pt-16 w-full min-h-[100vh] rounded-lg bg-gray-100 transition-all flex flex-col justify-center items-center "
       >
         {/* stepper */}
-        <Stepper />
-
+        { !submitted && <Stepper />}
+ 
         {/* Form Section */}
         <div
           id="Formcontainer"
-          className=" md:w-[80%] w-[95%] h-fit bg-slate-50 shadow-2xl min-h-[24rem] rounded-lg p-2 md:p-5"
+          className={` transition-all ${submitted && currentStep > 2 ?"md:max-w-[40%]":"md:max-w-[80%]"}  w-[95%] h-fit bg-slate-50 shadow-2xl min-h-[24rem] flex justify-center items-center rounded-2xl p-2 md:p-5`}
         >
           {/* Routing for forms */}
           {currentStep === 1 ? (
@@ -44,7 +44,7 @@ function OrderForm() {
 
         {/* Buttons */}
 
-        <div id="buttondiv" className=" w-[80%] justify-between m-10 flex ">
+        <div id="buttondiv" className={`${submitted && "hidden"} w-[80%] justify-between m-10 flex `}>
           <button
             onClick={() => {
               
@@ -103,12 +103,15 @@ function OrderForm() {
                 } else {
                   move(1);
                 }
+              }else {
+                setSubmitted(true);
+                //alert("Order Submitted");
               }
             }}
             className="bg-[#6200EA] text-white  px-4 py-2 rounded-full"
-            disabled={currentStep === steps.length}
+            // disabled={currentStep === steps.length}
           >
-            {currentStep === steps.length ? "Pay Now" : "Next"}
+            {currentStep === steps.length ? "Submit" : "Next"}
           </button>
         </div>
       </div>
