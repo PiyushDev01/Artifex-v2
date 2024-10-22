@@ -7,7 +7,7 @@ import Orderform1 from "./Orderform1";
 import Orderform3 from "./Orderform3";
 import Detailcontext from "./DetailContext/Detailcontext";
 import { useNavigate } from "react-router-dom";
-import {submitOrder}  from "../../../Firebase/CURDfunc/Create.js";
+import {submitOrder}  from "../../../Firebase/CURDfunc/create.js";
 
 
 function OrderForm() {
