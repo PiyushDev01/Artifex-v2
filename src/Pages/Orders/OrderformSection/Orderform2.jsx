@@ -171,7 +171,9 @@ function Orderform2() {
           type="number"
           placeholder="Pincode"
           value={details.pin}
-          onChange={(e) => handleInputChange("pin", e.target.value)}
+          onChange={(e) => {
+            setDetails({ ...details, pin: e.target.value, district: null, state: null });
+          }}
           onInput={(e) => handleMaxLength(e, 6)}
           className={` transition-all md:my-1 border rounded-xl md:text-lg p-2 hover:border-mypurple md:w-[40%] ${
             is_F2_Invalide.pin || !isServiceable ? "bg-red-100 outline-red-600 border-red-600 outline-[1px]" : ""
@@ -188,7 +190,7 @@ function Orderform2() {
             type="text"
             placeholder="District"
             disabled  
-            value={details.district}
+            value={details.district || ""}
             onChange={(e) => handleInputChange("district", e.target.value)}
             className={`md:my-1 border rounded-xl w-[50%] md:text-lg p-2 hover:border-mypurple ${
               is_F2_Invalide.district ? "bg-red-100 outline-red-600 border-red-600 outline-[1px]" : ""
@@ -198,7 +200,7 @@ function Orderform2() {
             type="text"
             placeholder="State"
             disabled
-            value={details.state}
+            value={details.state || ""}
             onChange={(e) => handleInputChange("state", e.target.value)}
             className={`md:my-1 border rounded-xl w-[50%] md:text-lg p-2 hover:border-mypurple ${
               is_F2_Invalide.state ? "bg-red-100 outline-red-600 border-red-600 outline-[1px]" : ""

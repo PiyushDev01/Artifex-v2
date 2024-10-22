@@ -1,9 +1,10 @@
 import React from 'react'
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import Detailcontext from './DetailContext/Detailcontext'
 import UserContext from "../../../Context/UserContex";
 import Formcontext from './OrderFormContext/FormContex';
-import submitimg from "./orderform-assets/Success.gif"
+import submitting from "./orderform-assets/Success.gif"
+import "../order.css"
 
 import { useNavigate } from 'react-router-dom';
 
@@ -15,8 +16,20 @@ function Orderform3() {
     const {details, setDetails} = useContext(Detailcontext)
     const { price, setprice }= useContext(UserContext);
     const {submitted, setSubmitted, setCurrentStep, setStep}= useContext(Formcontext);
+    const[uploadinganimaiton, setuploadinganimaiton] = useState(false);
 
-    const handlesubmit = () => {
+    useEffect(() => {
+      setuploadinganimaiton(true);
+      setTimeout(() => {
+        setuploadinganimaiton(false);
+      }, 4000)
+    }, [submitted])
+
+    useEffect(() => {
+      setDetails({...details, price: price.price, person: price.person});
+    }, [price])
+
+    const aftersubmit = () => {
       setSubmitted(false);
       setDetails({
         size: null,
@@ -49,16 +62,36 @@ function Orderform3() {
     <>
     {
       submitted ? (
-        <div id="formcontainer" className="flex flex-col items-center justify-center w-1/2 h-full rounded-md">
-          <img src={submitimg} alt="submitted" className="md:w-1/2" />
+        
+        /* From Uiverse.io by kennyotsu */ 
+        uploadinganimaiton ? (
+        <div className="card">
+          <div className="loader">
+            <h4>Uploading</h4>
+            <div className="words">
+        {/* <span className="word">DONE</span> */}
+    <span class="word">Order</span>
+    <span class="word">Details</span>
+    <span class="word">Address</span>
+    <span class="word">Image</span>
+    <span class="word">Done.</span>
+    
+  </div>
+</div>
+</div>) : (
+  <div id="formcontainer" className="flex flex-col items-center justify-center w-1/2 h-full rounded-md">
+          <img src={submitting} alt="submitted" className="md:w-1/2" />
           <h1 className="text-3xl text-center font-semibold  text-mypurple">Order Submitted</h1>
           <h1 className=" md:text-lg text-sm text-center font-semibold text-slate-700 my-2">Feel free to relax while we wait for the artist’s approval!</h1>
           <h1 className="md:text-sm text-xs text-center font-semibold text-slate-400 my-2">*Estimated amount to be paid after approval. </h1>
           <div className='flex'>
           {/* <button className=' py-2 px-4 text-slate-500 border-slate-500 border-2 rounded-full m-4 shadow-slate-400 shadow-lg'>Back</button> */}
-          <button onClick={handlesubmit} className=' bg-mypurple py-2 px-4 text-white rounded-full m-4 shadow-slate-400 shadow-lg'>Orders</button>
+          <button onClick={aftersubmit} className=' bg-mypurple py-2 px-4 text-white rounded-full m-4 shadow-slate-400 shadow-lg'>Orders</button>
           </div>
-        </div>
+        </div>)
+
+
+
       ) : (
         <div id="formcontainer" className="   flex-col md:flex-row w-full h-full rounded-md flex">
         <div id="leftform" className="flex flex-col p-2 md:w-1/2 w-full h-full gap-2 text-left ">

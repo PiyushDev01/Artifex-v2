@@ -18,7 +18,7 @@ const handleUpload = async () => {
         "state_changed",
         (snapshot) => {
           const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setProgress(progress);
+          // setProgress(progress);
           console.log("Upload is " + progress + "% done");
         },
         (error) => {

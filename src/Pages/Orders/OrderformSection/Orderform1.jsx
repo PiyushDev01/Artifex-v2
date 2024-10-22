@@ -80,7 +80,7 @@ export default function Orderform1() {
       const croppedImage = await getCroppedImg(image, croppedAreaPixels);
       const croppedImageURL = URL.createObjectURL(croppedImage);
       setUrl(croppedImageURL);
-      setDetails((prevDetails) => ({ ...prevDetails, cropped: croppedImageURL }));
+      setDetails((prevDetails) => ({ ...prevDetails, cropped: croppedImageURL, croppedImage: croppedImage }));
     } catch (e) {
       console.error(e);
     }
@@ -156,7 +156,7 @@ export default function Orderform1() {
           />
           <div
             id="upload"
-            className={`cursor-pointer flex flex-col items-center justify-center h-fit w-full pt-4 my-4 md:w-[80%] border-[2px] ${
+            className={`cursor-pointer flex flex-col items-center justify-center min-h-44 h-fit w-full pt-4 my-4 md:w-[80%] border-[2px] ${
               is_F1_Invalide.file ? "border-[#ff5050]" : "border-gray-400"
             } border-dashed bg-slate-50 rounded-lg`}
           >

@@ -3,6 +3,7 @@ import '../order.css'
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../../Context/UserContex";
 import { useContext } from 'react';
+import DetailProvider from '../OrderformSection/DetailContext/DetailProvider';
 
 
 const price=349;
@@ -11,10 +12,12 @@ function PriceCard() {
 
   const navigate = useNavigate();
   const {isUserlogged, setprice }= useContext(UserContext);
+  // const {details, setDetails} = useContext(DetailProvider);
 
   const openForm = () => {
     if(isUserlogged){
       setprice({...price, person: 'Single Person', price: price});
+      // setDetails({...details, person: 'Single Person', price: price});
       navigate('/Order-Details');
     }else{
       alert('Please Login to continue');

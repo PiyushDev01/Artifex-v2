@@ -8,6 +8,7 @@ const FormContextProvider = ({ children }) => {
     const [is_F1_Invalide, setFormOneValid] = useState({ size: false, orientation: false, file: false });
     const [is_F2_Invalide, setFormTWOValid] = useState({ name: false, phone: false, saveas: false, flat: false, street: false, district: false, state: false, pin: false });
     const [submitted, setSubmitted] = useState(false);
+    const [Uploading, setUploading] = useState(false);
     const steps = [
         { label: "Order" },
         { label: "Address" },
@@ -46,7 +47,9 @@ const FormContextProvider = ({ children }) => {
             submitted,
             setSubmitted,
             setCurrentStep,
-            setStep
+            setStep,
+            Uploading,
+            setUploading
            
 
         }}>

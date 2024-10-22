@@ -7,16 +7,32 @@ import Orderform1 from "./Orderform1";
 import Orderform3 from "./Orderform3";
 import Detailcontext from "./DetailContext/Detailcontext";
 import { useNavigate } from "react-router-dom";
+import {submitOrder}  from "../../../Firebase/CURDfunc/Create.js";
 
 
 function OrderForm() {
-  const { currentStep, steps, move, setFormOneValid, is_F1_Invalide, is_F2_Invalide, setFormTWOValid, setSubmitted, submitted } = useContext(Formcontext);
+  const { currentStep, steps, move, setFormOneValid, is_F1_Invalide, is_F2_Invalide, setFormTWOValid, setSubmitted, submitted ,setUploading} = useContext(Formcontext);
 
 
 
   const {details} = useContext(Detailcontext)
 
   const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    setUploading(true);
+    try {
+      // console.log(details);
+      setSubmitted(true);
+      await submitOrder(details, details.croppedImage);
+      console.log("Order Submitted");
+    } catch (e) {
+      console.error(e);
+    } finally {
+      
+      setUploading(false);
+    }
+  }
 
   return (
     <>
@@ -104,7 +120,9 @@ function OrderForm() {
                   move(1);
                 }
               }else {
-                setSubmitted(true);
+                handleSubmit();
+                // setSubmitted(true);
+
                 //alert("Order Submitted");
               }
             }}
