@@ -3,6 +3,8 @@ import Detailcontext from "./DetailContext/Detailcontext";
 import Formcontext from "./OrderFormContext/FormContex";
 import "../order.css"
 import axios from "axios";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../../Framer/fadein.js";
 
 const saveas = ["Home", "Office", "Others"];
 
@@ -85,7 +87,12 @@ function Orderform2() {
   return (
     <div id="formcontainer" className="flex-col md:flex-row w-full h-full rounded-md flex">
       {/* Left Form */}
-      <div id="leftform" className="flex flex-col p-2 md:w-1/2 w-full h-full gap-2">
+      <motion.div
+      variants={fadeIn("", 0.1)}
+      initial="hidden"
+      whileInView={"show"}
+      viewport={{ once: false, amount: 0.2 }}
+      id="leftform" className="flex flex-col p-2 md:w-1/2 w-full h-full gap-2">
         {/* Contact Details */}
         <h1 className="text-zinc-700 text-left text-xl font-semibold py-2">Contact Details</h1>
         
@@ -94,6 +101,7 @@ function Orderform2() {
           type="text"
           placeholder="Full Name"
           required
+
           value={details.name}
           onChange={(e) => handleInputChange("name", e.target.value)}
           className={`md:my-1 border rounded-xl md:text-lg p-2 hover:border-mypurple md:w-[80%] ${
@@ -104,7 +112,8 @@ function Orderform2() {
         <input
           id="Phone"
           type="number"
-          
+
+
           placeholder="Phone Number"
           value={details.phone}
           onChange={(e) => handleInputChange("phone", e.target.value)}
@@ -115,13 +124,17 @@ function Orderform2() {
           }`}
         />
         
-        <h1 className="mx-2 text-xs md:text-sm text-slate-400 text-left">
+        <h1 
+        
+        className="mx-2 text-xs md:text-sm text-slate-400 text-left">
           We’ll call this number to coordinate delivery
         </h1>
         
         <h1 className="text-zinc-700 text-left text-xl font-semibold py-2">Save as</h1>
         
-        <div className="flex gap-2">
+        <div 
+      
+        className="flex gap-2">
           {saveas.map((item, index) => (
             <h1
               key={index}
@@ -140,10 +153,16 @@ function Orderform2() {
             </h1>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Right Form */}
-      <div id="rightform" className="flex flex-col p-2 md:w-1/2 w-full h-full gap-2">
+      <motion.div 
+      variants={fadeIn("", 0.1)}
+      initial="hidden"
+      whileInView={"show"}
+      viewport={{ once: false, amount: 0.2 }} 
+
+      id="rightform" className="flex flex-col p-2 md:w-1/2 w-full h-full gap-2">
         <h1 className="text-zinc-700 text-left text-xl font-semibold py-2">Address</h1>
         
         <input
@@ -207,7 +226,7 @@ function Orderform2() {
             }`}
           />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

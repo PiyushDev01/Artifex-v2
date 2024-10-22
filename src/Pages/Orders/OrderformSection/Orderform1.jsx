@@ -7,6 +7,8 @@ import Detailcontext from "./DetailContext/Detailcontext";
 import Formcontext from "./OrderFormContext/FormContex";
 import Cropper from 'react-easy-crop';
 import { getCroppedImg } from '../../../utils/cropImageHelper.js';
+import { motion } from "framer-motion";
+import { fadeIn } from "../../../Framer/fadein.js";
 
 const sizeOptions = ["A4", "A5", "A3"];
 const orientationOptions = ["Portrait", "Landscape"];
@@ -97,7 +99,14 @@ export default function Orderform1() {
   };
 
   return (
-    <div id="formcontainer" className="flex flex-col md:flex-row w-full h-full rounded-md">
+    <motion.div 
+    
+    variants={fadeIn("", 0.1)}
+    initial="hidden"
+    whileInView={"show"}
+    viewport={{ once: false, amount: 0.2 }}
+    
+    id="formcontainer" className="flex flex-col md:flex-row w-full h-full rounded-md">
       <div id="leftform" className="flex flex-col p-2 md:w-1/2 w-full h-full gap-2">
         <div className="flex items-center">
           <img src={pagesize} className="w-6 h-6 mr-2" alt="Page Size" />
@@ -119,12 +128,12 @@ export default function Orderform1() {
           handleClick={handleOrientationClick} 
         />
 
-        <label htmlFor="additionalNotes" className="text-zinc-700 text-left text-xl font-semibold pt-4 py-1">
+        <label htmlFor="additionalNotes" className="text-zinc-700 text-left md:block hidden text-xl font-semibold pt-4 py-1">
           Additional Notes
         </label>
         <textarea
           id="additionalNotes"
-          className="border border-gray-400 hover:border-mypurple p-2 w-full md:w-[80%] h-22 rounded-xl resize-none"
+          className="border border-gray-400 md:block hidden hover:border-mypurple p-2 w-full md:w-[80%] h-22 rounded-xl resize-none"
           value={details.notes || ""}
           onChange={(e) => setDetails({ ...details, notes: e.target.value })}
           placeholder="Enter any additional notes here..."
@@ -200,8 +209,19 @@ export default function Orderform1() {
               <li className="w-full">Max file size 50 MB.</li>
             </ul>
           </div>
+          
         </div>
       )}
-    </div>
+      <label htmlFor="additionalNotes" className="text-zinc-700 text-left md:hidden text-xl font-semibold pt-4 py-1">
+          Additional Notes
+        </label>
+        <textarea
+          id="additionalNotes"
+          className="border border-gray-400 md:hidden hover:border-mypurple p-2 w-full md:w-[80%] h-22 rounded-xl resize-none"
+          value={details.notes || ""}
+          onChange={(e) => setDetails({ ...details, notes: e.target.value })}
+          placeholder="Enter any additional notes here..."
+        />
+    </motion.div>
   );
 }

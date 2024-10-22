@@ -26,6 +26,8 @@ export default function Leftcontent() {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: false, amount: 0.2 }}
+
+          
           id="leftname"
           className=" md:text-4xl text-3xl text-zinc-600 "
         >
