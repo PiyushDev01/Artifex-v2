@@ -2,7 +2,8 @@ import UserContext from "./UserContex";
 
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import Detailcontext from "../Pages/Orders/OrderformSection/DetailContext/Detailcontext";
 
 import app  from "../Firebase/firbase";
 
@@ -11,6 +12,8 @@ let isUserlogged = false;
 
 
 const UserContextProvider = (props)=>{
+
+  const {Details, setDetails} = useContext(Detailcontext);
 
     const [user, setuser] = useState(null);
     const [price, setprice] = useState({price:"Not Selected", person: null});
@@ -21,6 +24,8 @@ const UserContextProvider = (props)=>{
         if (user) {
           isUserlogged = true;
           setuser(user);
+          setDetails({...Details, userID: user.uid});
+          console.log('user:', user.uid);
           setuDetails({
             ...uDetails,
             name: user.displayName,
@@ -32,7 +37,7 @@ const UserContextProvider = (props)=>{
 
 
     return(
-        <UserContext.Provider value={{uDetails, isUserlogged, price, setprice}}>
+        <UserContext.Provider value={{uDetails, isUserlogged, price, setprice , user }}>
             {props.children}
         </UserContext.Provider>
     );

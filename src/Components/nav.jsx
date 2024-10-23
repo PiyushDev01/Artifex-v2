@@ -44,7 +44,7 @@ export default function Nav() {
 
   const togglelgn = () => {
     sethide(!hide);
-    console.log(hide);
+    // console.log(hide);
   };
 
   const SignOut = () => {

@@ -1,11 +1,12 @@
 import Detailcontext from "./Detailcontext";
-import { useState } from "react";
+import { useState , useContext } from "react";
+
+
 
 
 
 
 const DetailProvider = ({ children }) => {
-
     
     
     const [details, setDetails] = useState({
@@ -22,6 +23,7 @@ const DetailProvider = ({ children }) => {
         pin: null,
         district: null,
         state: null,
+        userID: null,
     });
 
     
