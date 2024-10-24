@@ -2,6 +2,8 @@ import app from '../firbase.js';
 import {db} from '../firbase.js';
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, getStorage } from "firebase/storage";
+import { arrayUnion } from "firebase/firestore";
+
 
  // List of admin emails is hardcoded for simplicity
 
@@ -44,7 +46,7 @@ const submitOrder = async (details, image) => {
       size: details.size,
       orientation: details.orientation,
       person: details.person,
-      notes: details.notes || "",
+      notes: details.notes || "", // Make sure notes aren't undefined
       price: details.price,
       shipping: null,
       status: "pending",
@@ -65,8 +67,9 @@ const submitOrder = async (details, image) => {
 
     // Optionally link this order to the user in the 'users' collection
     await setDoc(doc(db, "users", details.userID), {
-      orders: [orderRef.id]  // This will overwrite the field with a single value
+      orders: arrayUnion(orderRef.id) // Use arrayUnion to add the new order ID
     }, { merge: true });
+    
 
     return true;
   } catch (e) {

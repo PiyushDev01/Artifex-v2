@@ -57,6 +57,7 @@ function Orderform3() {
       setCurrentStep(1);
       setStep('0%');
       navigate('/')
+      window.location.reload();
      
     }
 
