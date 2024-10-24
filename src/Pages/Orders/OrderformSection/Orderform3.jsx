@@ -91,7 +91,7 @@ function Orderform3() {
           <h1 className="md:text-sm text-xs text-center font-semibold text-slate-400 my-2">*Estimated amount to be paid after approval. </h1>
           <div className='flex'>
           {/* <button className=' py-2 px-4 text-slate-500 border-slate-500 border-2 rounded-full m-4 shadow-slate-400 shadow-lg'>Back</button> */}
-          <button onClick={aftersubmit} className=' bg-mypurple py-2 px-4 text-white rounded-full m-6 shadow-slate-400 shadow-lg'>Orders</button>
+          <button onClick={aftersubmit} className=' bg-mypurple py-2 px-4 text-white rounded-full m-6 shadow-slate-400 shadow-lg'>OK</button>
           </div>
         </div>)
 

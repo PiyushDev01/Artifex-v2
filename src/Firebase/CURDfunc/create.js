@@ -30,10 +30,11 @@ const adminlist = ["piyushvishwakarma6706@gmail.com", "piyushvishwakarma6707@gma
 
 const submitOrder = async (details, image) => {
   try {
+    // Add order document
     const orderRef = await addDoc(collection(db, "orders"), {
       name: details.name,
       phone: details.phone,
-      // userID: details.userID,
+      userID: details.userID, // Ensure the user ID is provided
       saveas: details.saveas,
       flat: details.flat,
       street: details.street,
@@ -43,7 +44,7 @@ const submitOrder = async (details, image) => {
       size: details.size,
       orientation: details.orientation,
       person: details.person,
-      notes: details.notes,
+      notes: details.notes || "",
       price: details.price,
       shipping: null,
       status: "pending",
@@ -52,19 +53,27 @@ const submitOrder = async (details, image) => {
       paymentId: null,
       statusMessage: "Order Placed",
     });
+
+    // Upload the image to Firebase Storage and get the download URL
     const storage = getStorage(app);
     const storageRef = ref(storage, `orders/${orderRef.id}`);
     await uploadBytesResumable(storageRef, image);
     const downloadURL = await getDownloadURL(storageRef);
+
+    // Merge the download URL back into the order document
     await setDoc(doc(db, "orders", orderRef.id), { downloadURL }, { merge: true });
-    
+
+    // Optionally link this order to the user in the 'users' collection
+    await setDoc(doc(db, "users", details.userID), {
+      orders: [orderRef.id]  // This will overwrite the field with a single value
+    }, { merge: true });
+
     return true;
   } catch (e) {
-    console.error(e);
+    console.error("Error submitting order: ", e);
     return false;
   }
-
-  
 };
+
 
 export {submitOrder, addUserWithId};
