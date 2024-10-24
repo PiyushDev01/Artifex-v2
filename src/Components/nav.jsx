@@ -98,7 +98,7 @@ const handleTog = () => {
         >
           {isUserlogged && (
             <h1
-              className=" cursor-pointer hover:text-slate-400 text-md hidden md:block"
+              className=" cursor-pointer hover:text-purple-500 transition-all text-md hidden md:block"
               id="lgh1"
               onClick={SignOut}
             >
