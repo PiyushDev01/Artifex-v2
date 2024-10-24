@@ -223,7 +223,7 @@ const handleTog = () => {
                   initial="hidden"
                   whileInView={"show"}
                   viewport={{ once: false, amount: 0.3 }}
-                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-2 border-slate-500 "
+                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-[1px] border-slate-500 "
                 >
                   <img src={googleIcon} alt="" />
                 </motion.div>
@@ -235,7 +235,7 @@ const handleTog = () => {
                   initial="hidden"
                   whileInView={"show"}
                   viewport={{ once: false, amount: 0.3 }}
-                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-2 border-slate-500 "
+                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-[1px] border-slate-500 "
                 >
                   <img src={facebookIcon} alt="" />
                 </motion.div>
