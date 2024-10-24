@@ -57,7 +57,7 @@ function Orderform3() {
       setCurrentStep(1);
       setStep('0%');
       navigate('/')
-      window.location.reload();
+      // window.location.reload();
      
     }
 
@@ -86,14 +86,18 @@ function Orderform3() {
 <img className=' w-32' src={uploading} alt="" />
 </div>) : (
   <div id="formcontainer" className="flex flex-col items-center justify-center w-1/2 h-full rounded-md">
-          <img src={submitting} alt="submitted" className="md:w-1/2" />
+          <img src={submitting} alt="submitted" className="md:w-1/2 filter " />
           <h1 className="text-3xl text-center font-semibold  text-mypurple">Order Submitted</h1>
-          <h1 className=" md:text-lg text-sm md:w-[18rem] w-[14rem] text-center font-semibold text-slate-700 my-2">Feel free to relax and wait for the artist’s approval!</h1>
+          <h1 className=" md:text-lg text-sm md:w-[18rem] w-[14rem] text-center font-semibold text-slate-700 my-2">Relax and wait for the artist’s approval!</h1>
           <h1 className="md:text-sm text-xs text-center font-semibold text-slate-400 my-2">*Estimated amount to be paid after approval. </h1>
           <div className='flex'>
           {/* <button className=' py-2 px-4 text-slate-500 border-slate-500 border-2 rounded-full m-4 shadow-slate-400 shadow-lg'>Back</button> */}
-          <button onClick={aftersubmit} className=' bg-mypurple py-2 px-4 text-white rounded-full m-6 shadow-slate-400 shadow-lg'>OK</button>
+          <button onClick={()=>{
+            alert("Tracking feature is not available yet.")
+          }} className=' border-[2px] border-mypurple  min-w-20 py-2 px-4 text-mypurple rounded-2xl m-6 '>Track</button>
+          <button onClick={aftersubmit} className=' bg-mypurple  min-w-20 py-2 px-4 text-white rounded-2xl m-6 shadow-lg'>OK</button>
           </div>
+          <h1 className="md:text-sm text-xs text-center font-semibold text-slate-400 my-2">Feel free to reach out to us on WhatsApp for more information!</h1>
         </div>)
 
 

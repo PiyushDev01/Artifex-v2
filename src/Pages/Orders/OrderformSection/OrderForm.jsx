@@ -8,10 +8,12 @@ import Orderform3 from "./Orderform3";
 import Detailcontext from "./DetailContext/Detailcontext";
 import { useNavigate } from "react-router-dom";
 import {submitOrder}  from "../../../Firebase/CURDfunc/create.js";
+import  UserContext  from "../../../Context/UserContex.js";
 
 
 function OrderForm() {
   const { currentStep, steps, move, setFormOneValid, is_F1_Invalide, is_F2_Invalide, setFormTWOValid, setSubmitted, submitted ,setUploading} = useContext(Formcontext);
+  const {user} = useContext(UserContext);
 
 
 
@@ -22,9 +24,9 @@ function OrderForm() {
   const handleSubmit = async () => {
     setUploading(true);
     try {
-      // console.log(details);
+      console.log(user.uid);
       setSubmitted(true);
-      await submitOrder(details, details.croppedImage);
+      await submitOrder(user.uid, details, details.croppedImage);
       console.log("Order Submitted");
     } catch (e) {
       console.error(e);

@@ -13,7 +13,7 @@ let isUserlogged = false;
 
 const UserContextProvider = (props)=>{
 
-  const {Details, setDetails} = useContext(Detailcontext);
+  
 
     const [user, setuser] = useState(null);
     const [price, setprice] = useState({price:"Not Selected", person: null});
@@ -24,7 +24,7 @@ const UserContextProvider = (props)=>{
         if (user) {
           isUserlogged = true;
           setuser(user);
-          setDetails({...Details, userID: user.uid});
+          // setDetails({...Details, userID: user.uid});
           console.log('user:', user.uid);
           setuDetails({
             ...uDetails,

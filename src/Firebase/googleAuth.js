@@ -7,7 +7,7 @@ const provider = new GoogleAuthProvider();
 
 
 
-async function LoginGoogle() {
+async function LoginGoogle(handletoggle) {
   try {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
@@ -18,6 +18,9 @@ async function LoginGoogle() {
    
   } catch (error) {
     console.error("Error during sign-in:", error);
+  } finally {
+    // console.log("Sign-in completed.");
+    handletoggle();
   }
  
 };

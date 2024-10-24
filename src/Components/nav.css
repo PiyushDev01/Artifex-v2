@@ -27,6 +27,11 @@ li {
   font-family: "manrope";
   font-weight: 400;
 }
+#mobLi {
+  border-bottom: 1px solid #929191;
+  text-align: center;
+}
+
 #btn {
   background-color: #7c4dff;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;

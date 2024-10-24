@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "./button";
 import "./nav.css";
 import logo from "../assets/logo.webp";
@@ -26,10 +26,19 @@ export default function Nav() {
   const [fadebg, setfadebg] = useState({ display: "none" });
   const [hide, sethide] = useState(false);
 
-  let handleTog = () => {
+  const {user}= useContext(UserContext);
+
+  useEffect(() => {
+    if (user) {
+      hide && sethide(false);
+    }
+  }
+  , [user]);
+
+const handleTog = () => {
     if (!toggle) {
       settoggle(true);
-      setbox({ width: "50%" });
+      setbox({ width: "60%" });
       settextbox({ display: "flex" });
       setfadebg({ display: "flex" });
       document.getElementById("checkbox").checked = true;
@@ -113,55 +122,7 @@ export default function Nav() {
           className=" gap-5 pb-28 flex flex-col justify-end items-center w-full h-screen  absolute top-0 left-0 md:none "
           id="fadebg"
         >
-          <motion.h1
-            variants={fadeIn("no", 0.05)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.7 }}
-            className=" text-zinc-50 text-center"
-          >
-            {isUserlogged ? "Sign Out" : "Login or Sign Up"} <br />{" "}
-            {isUserlogged ? "" : "with"}
-          </motion.h1>
-
-          {isUserlogged ? (
-            <motion.div
-              onClick={SignOut}
-              variants={fadeIn("no", 0.05)}
-              initial="hidden"
-              whileInView={"show"}
-              viewport={{ once: false, amount: 0.7 }}
-            >
-              <img src={signout} className=" w-8" />
-            </motion.div>
-          ) : (
-            <div className=" flex flex-row gap-8">
-              <a onClick={LoginGoogle}>
-                {" "}
-                <motion.div
-                  variants={fadeIn("up", 0.07)}
-                  initial="hidden"
-                  whileInView={"show"}
-                  viewport={{ once: false, amount: 0.3 }}
-                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-2 border-slate-500 "
-                >
-                  <img src={googleIcon} alt="" />
-                </motion.div>
-              </a>
-
-              <a onClick={pending}>
-                <motion.div
-                  variants={fadeIn("up", 0.2)}
-                  initial="hidden"
-                  whileInView={"show"}
-                  viewport={{ once: false, amount: 0.3 }}
-                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-2 border-slate-500 "
-                >
-                  <img src={facebookIcon} alt="" />
-                </motion.div>
-              </a>
-            </div>
-          )}
+          
         </div>
 
         <div className="block md:hidden" onClick={handleTog}>
@@ -200,9 +161,10 @@ export default function Nav() {
           )}
         </div>
 
+
         <div
           style={box}
-          className=" w-1/2 h-fit absolute right-0 top-20 md:hidden justify-center py-8 rounded-l-xl flex flex-col items-center gap-3 overflow-hidden z-20"
+          className=" h-fit absolute right-0 top-20 md:hidden justify-center py-8 rounded-l-xl flex flex-col items-center gap-3 overflow-hidden z-20"
           id="mobblurnav"
         >
           <ul
@@ -214,21 +176,72 @@ export default function Nav() {
           >
             <Link to="/">
               {" "}
-              <li>Home</li>
+              <li id="mobLi">Home</li>
             </Link>
             <Link to="/order">
               {" "}
-              <li>Order</li>
+              <li id="mobLi">Order</li>
             </Link>
             <a href="https://www.piyushdev.me/">
               {" "}
-              <li>About</li>
+              <li id="mobLi">About</li>
             </a>
             <a href="">
               {" "}
-              <li>Contact</li>
+              <li id="mobLi">Contact</li>
             </a>
           </ul>
+          <motion.h1
+            variants={fadeIn("no", 0.05)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.7 }}
+            className=" text-zinc-300 text-center mt-16 "
+          >
+            {isUserlogged ? "Sign Out" : "Login or Sign Up"} <br />{" "}
+            {isUserlogged ? "" : "with"}
+          </motion.h1>
+
+          {isUserlogged ? (
+            <motion.div
+              onClick={SignOut}
+              variants={fadeIn("no", 0.05)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: false, amount: 0.7 }}
+            >
+              <img src={signout} className=" w-8" />
+            </motion.div>
+          ) : (
+            <div className=" flex flex-row gap-8">
+              <a onClick={()=>{
+                LoginGoogle(handleTog);
+              }}>
+                {" "}
+                <motion.div
+                  variants={fadeIn("up", 0.07)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-2 border-slate-500 "
+                >
+                  <img src={googleIcon} alt="" />
+                </motion.div>
+              </a>
+
+              <a onClick={pending}>
+                <motion.div
+                  variants={fadeIn("up", 0.2)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: false, amount: 0.3 }}
+                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-2 border-slate-500 "
+                >
+                  <img src={facebookIcon} alt="" />
+                </motion.div>
+              </a>
+            </div>
+          )}
         </div>
 
         {hide && <Login handlelgn={togglelgn} />}

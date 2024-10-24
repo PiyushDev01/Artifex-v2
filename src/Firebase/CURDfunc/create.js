@@ -30,13 +30,14 @@ const adminlist = ["piyushvishwakarma6706@gmail.com", "piyushvishwakarma6707@gma
 };
 
 
-const submitOrder = async (details, image) => {
+const submitOrder = async (userid, details, image) => {
+
   try {
     // Add order document
     const orderRef = await addDoc(collection(db, "orders"), {
       name: details.name,
       phone: details.phone,
-      userID: details.userID, // Ensure the user ID is provided
+      userID: userid, // Ensure the user ID is provided
       saveas: details.saveas,
       flat: details.flat,
       street: details.street,
@@ -66,7 +67,7 @@ const submitOrder = async (details, image) => {
     await setDoc(doc(db, "orders", orderRef.id), { downloadURL }, { merge: true });
 
     // Optionally link this order to the user in the 'users' collection
-    await setDoc(doc(db, "users", details.userID), {
+    await setDoc(doc(db, "users", userid), {
       orders: arrayUnion(orderRef.id) // Use arrayUnion to add the new order ID
     }, { merge: true });
     
