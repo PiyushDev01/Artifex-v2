@@ -23,6 +23,8 @@ const DetailProvider = ({ children }) => {
         pin: null,
         district: null,
         state: null,
+        price: null,
+        person: null
         // userID: null,
     });
 

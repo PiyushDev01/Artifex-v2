@@ -16,6 +16,7 @@ import app  from "../Firebase/firbase";
 import { pending } from "./Login";
 import { Link } from "react-router-dom";
 import UserContext from "../Context/UserContex";
+import { useNavigate } from "react-router-dom";
 
 const auth = getAuth(app);
 
@@ -27,6 +28,8 @@ export default function Nav() {
   const [hide, sethide] = useState(false);
 
   const {user}= useContext(UserContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
@@ -58,6 +61,7 @@ const handleTog = () => {
 
   const SignOut = () => {
     signOut(auth);
+    navigate("/");
     window.location.reload();
   };
 

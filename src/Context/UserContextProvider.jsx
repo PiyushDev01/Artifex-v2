@@ -25,7 +25,7 @@ const UserContextProvider = (props)=>{
           isUserlogged = true;
           setuser(user);
           // setDetails({...Details, userID: user.uid});
-          console.log('user:', user.uid);
+          // console.log('user:', user.uid);
           setuDetails({
             ...uDetails,
             name: user.displayName,

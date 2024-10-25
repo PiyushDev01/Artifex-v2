@@ -21,7 +21,8 @@ const adminlist = ["piyushvishwakarma6706@gmail.com", "piyushvishwakarma6707@gma
       email: user.email || "No email provided", // Handle if email is missing
       photoURL: user.photoURL || "",
       admin: isadmin, // Optional, empty string if missing
-    });
+      orders: arrayUnion() || [], // Use arrayUnion to ensure existing orders are not removed
+    }, { merge: true });
 
     console.log("User document successfully written!");
   } catch (e) {
@@ -30,49 +31,68 @@ const adminlist = ["piyushvishwakarma6706@gmail.com", "piyushvishwakarma6707@gma
 };
 
 
+
+
 const submitOrder = async (userid, details, image) => {
+  
+  // Order ID generation logic
+  const generateOrderId = () => {
+    const timestamp = Date.now().toString().slice(-4); // Current timestamp in milliseconds
+    const randomPart = Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
+    return `ORD${timestamp}${randomPart}`; // Combine for a unique order ID
+  };
+
+  const { size, orientation, cropped, notes, name, phone, saveas, flat, street, pin, district, state , price, person } = details;
+
+  const orderId = generateOrderId(); // Generate the order ID
+
+  const Orderdetails = {
+    size,
+    orientation,
+    cropped,
+    notes,
+    name,
+    phone,
+    saveas,
+    flat,
+    street,
+    pin,
+    district,
+    state,
+    price,
+    person,
+    date: new Date().toISOString(),
+    status: "Submitted",
+    payment: "pending",
+    paymentId: null,
+    paymentDate: null,
+    total: null,
+    statusMessage: "Order Placed",
+  };
 
   try {
-    // Add order document
-    const orderRef = await addDoc(collection(db, "orders"), {
-      name: details.name,
-      phone: details.phone,
-      userID: userid, // Ensure the user ID is provided
-      saveas: details.saveas,
-      flat: details.flat,
-      street: details.street,
-      district: details.district,
-      state: details.state,
-      pin: details.pin,
-      size: details.size,
-      orientation: details.orientation,
-      person: details.person,
-      notes: details.notes || "", // Make sure notes aren't undefined
-      price: details.price,
-      shipping: null,
-      status: "pending",
-      date: new Date(),
-      payment: "pending",
-      paymentId: null,
-      statusMessage: "Order Placed",
+    // Add order document to Firestore under user's "orders" subcollection
+    const orderRef = doc(db, "users", userid, "orders", orderId);
+    await setDoc(orderRef, {
+      ...Orderdetails,
+      downloadURL: "" // Placeholder for the image download URL
     });
 
     // Upload the image to Firebase Storage and get the download URL
-    const storage = getStorage(app);
-    const storageRef = ref(storage, `orders/${orderRef.id}`);
-    await uploadBytesResumable(storageRef, image);
-    const downloadURL = await getDownloadURL(storageRef);
+    const storage = getStorage();
+    const storageRef = ref(storage, `orders/${orderId}`); // Use the generated orderId for the storage reference
+    await uploadBytesResumable(storageRef, image); // Upload the image
+    const downloadURL = await getDownloadURL(storageRef); // Get the download URL
 
-    // Merge the download URL back into the order document
-    await setDoc(doc(db, "orders", orderRef.id), { downloadURL }, { merge: true });
+    // Merge the download URL into the order document in Firestore
+    await setDoc(orderRef, { downloadURL }, { merge: true });
 
-    // Optionally link this order to the user in the 'users' collection
+    // Optionally link this order to the user's document in the 'users' collection
     await setDoc(doc(db, "users", userid), {
-      orders: arrayUnion(orderRef.id) // Use arrayUnion to add the new order ID
+      orders: arrayUnion(orderId) // Use arrayUnion to add the new order ID to the user's "orders" array
     }, { merge: true });
-    
 
-    return true;
+    return true; // Return true on successful submission
   } catch (e) {
     console.error("Error submitting order: ", e);
     return false;
