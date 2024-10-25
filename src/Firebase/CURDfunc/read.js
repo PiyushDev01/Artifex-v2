@@ -18,7 +18,8 @@ const getOrders = async (uid) => {
         querySnapshot.forEach((doc) => {
           ordersArray.push({ id: doc.id, ...doc.data() }); // Push the order data and ID into the array
         });
-    
+        
+
         return ordersArray; // Return the array of orders
       } catch (error) {
         console.error("Error fetching orders: ", error);

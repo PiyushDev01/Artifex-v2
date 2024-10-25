@@ -56,7 +56,7 @@ function Orderform3() {
       })
       setCurrentStep(1);
       setStep('0%');
-      navigate('/')
+      // navigate('/')
       // window.location.reload();
      
     }
@@ -94,8 +94,12 @@ function Orderform3() {
           {/* <button className=' py-2 px-4 text-slate-500 border-slate-500 border-2 rounded-full m-4 shadow-slate-400 shadow-lg'>Back</button> */}
           <button onClick={()=>{
             navigate('/Your-Orders')
+            aftersubmit()
           }} className=' border-[2px] border-mypurple  min-w-20 py-2 px-4 text-mypurple rounded-2xl m-6 '>Track</button>
-          <button onClick={aftersubmit} className=' bg-mypurple  min-w-20 py-2 px-4 text-white rounded-2xl m-6 shadow-lg'>OK</button>
+          <button onClick={()=>{
+            aftersubmit()
+            navigate('/')
+          }} className=' bg-mypurple  min-w-20 py-2 px-4 text-white rounded-2xl m-6 shadow-lg'>OK</button>
           </div>
           <h1 className="md:text-sm text-xs text-center font-semibold text-slate-400 my-2">Feel free to reach out to us on WhatsApp for more information!</h1>
         </div>)

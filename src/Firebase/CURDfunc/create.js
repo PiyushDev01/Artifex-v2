@@ -37,9 +37,9 @@ const submitOrder = async (userid, details, image) => {
   
   // Order ID generation logic
   const generateOrderId = () => {
-    const timestamp = Date.now().toString().slice(-4); // Current timestamp in milliseconds
-    const randomPart = Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
-    return `ORD${timestamp}${randomPart}`; // Combine for a unique order ID
+    const timestamp = Math.floor(Date.now() / 10000); //take only starting 9 digits Current timestamp in milliseconds
+    // const randomPart = Math.floor(1000 + Math.random() * 9000); // Random 4-digit number
+    return `ORD${timestamp}`; // Combine for a unique order ID
   };
 
   const { size, orientation, cropped, notes, name, phone, saveas, flat, street, pin, district, state , price, person } = details;
