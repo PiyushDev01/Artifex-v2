@@ -15,7 +15,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-p {
+#leftp {
   font-family: "karla";
   letter-spacing: 6px;
   font-size: x-large;

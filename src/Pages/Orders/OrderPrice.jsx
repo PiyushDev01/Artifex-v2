@@ -4,24 +4,32 @@ import PriceCard from "./orderComp/PriceCard";
 import SidePriceCard from "./orderComp/SidePriceCard";
 import backimg from "../Orders/OrderformSection/orderform-assets/Ellipse 8.png";
 import carticon from "../Orders/OrderformSection/orderform-assets/icons8-cart-30.png";
+import { useNavigate } from "react-router";
+import { useContext } from "react";
+import UserContext from "../../Context/UserContex";
+
 
 
 function OrderPrice() {
+
+  const navigate = useNavigate();
+  const {isUserlogged }= useContext(UserContext);
+
   return (
     <>
       <div
-        className="relative md:h-full bg-zinc-950  flex flex-col items-center justify-center pt-32   "
+        className="relative md:h-full bg-zinc-950 w-fit md:w-full  flex flex-col items-center justify-center pt-32   "
         id="background"
       >
         <nav className=" top-0 md:h-[5.5rem] h-[4.6rem] w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-slate-50  items-center fixed md:shadow-none shadow-md rounded-b-3xl md:rounded-none " > </nav>
 
-        <div id="backimg" className=" md:absolute fixed top-[20vh]  md:scale-100  md:-top-[10rem] scale-125 overflow-hidden h-[100vh] " >
-        <img src={backimg} alt="" className=" brightness-150 saturate-150 " />
+        <div id="backimg" className=" md:absolute fixed top-[20vh]  md:scale-100 w-[95%]  md:-top-[10rem]  overflow-hidden h-[100vh] " >
+        <img src={backimg} alt="" className=" brightness-150 saturate-150 scale-125  " />
 
         </div>
         <div
           id="backBox"
-          className="  fixed md:absolute bottom-0 w-[100%] h-1/2 md:h-1/3 rounded-t-[3rem] z-[1rem]  bg-gradient-to-r from-[#6200EA] to-[#8E2DE2]"
+          className="  fixed md:absolute bottom-0 w-full h-1/2 md:h-1/3 rounded-t-[3rem] z-[1rem]  bg-gradient-to-r from-[#6200EA] to-[#8E2DE2]"
         ></div>
         {/* <div
           id="backBox"
@@ -35,7 +43,9 @@ function OrderPrice() {
 <button class="button">
   <div class="dots_border"></div>
   <img src={carticon} className=" z-20 w-6" alt="" />
-  <span class="text_button">Your Orders</span>
+  <span onClick={()=>{
+    isUserlogged ? navigate("/Your-Orders"): alert('Please Login to continue');
+  }} class="text_button">Your Orders</span>
 </button>
 
 

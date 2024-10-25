@@ -48,11 +48,12 @@ export default function Leftcontent() {
           <span id="span">on Paper</span>{" "}
         </motion.h1>
         <motion.p
+        id="leftp"
           variants={fadeIn("down", 0.3)}
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: false, amount: 0.7 }}
-          className=" md:w-4/5 py-5 px-6 md:px-0 text-sm md:text-lg"
+          className=" md:w-4/5 py-5 px-6 md:px-0  text-slate-500 text-sm md:text-lg"
         >
           Preserve Your Memories in Sketches
         </motion.p>
