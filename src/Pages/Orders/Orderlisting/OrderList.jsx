@@ -96,19 +96,24 @@ function OrderPrice() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-
-   try {
-      
-         getOrders(user.uid).then((data) => {
-      setOrders(data);
-      setLoading(false);
-      });
-    
-   }
-    catch(e){
-      console.log("this error while fetching order details"+e);
-    }
-  }, []);
+    const fetchOrders = async () => {
+      try {
+        const data = await getOrders(user.uid);
+        
+        // Sort orders by date in descending order
+        const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        setOrders(sortedData);
+        setLoading(false);
+      } catch (e) {
+        console.log("This error occurred while fetching order details: " + e);
+        setLoading(false);
+      }
+    };
+  
+    fetchOrders();
+  }, [user.uid]);
+  
 
   return (
     <>
@@ -148,7 +153,7 @@ function OrderPrice() {
  
 
           className="flex flex-col overflow-y-auto">
-            { 
+         { 
             loading ? (
               <h1 className="text-center text-xl text-slate-500 font-semibold py-4">Loading...</h1>
             ) : (
