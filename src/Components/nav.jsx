@@ -17,6 +17,7 @@ import { pending } from "./Login";
 import { Link } from "react-router-dom";
 import UserContext from "../Context/UserContex";
 import { useNavigate } from "react-router-dom";
+import { checkAdmin } from "../Firebase/CURDfunc/read";
 
 const auth = getAuth(app);
 
@@ -71,7 +72,12 @@ const handleTog = () => {
     <>
       <nav className=" flex fles-row h-fit w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-white/30 backdrop-blur-sm  items-center fixed md:shadow-none shadow-md rounded-b-3xl md:rounded-none z-20">
         <a href="/">
+          <div className=" flex items-center gap-2">
           <img src={logo} className=" md:w-28  w-24" alt="" />
+          {
+            isUserlogged && <p className=" border-l-[1px] px-2 border-slate-500 ">Admin</p>
+          }
+          </div>
         </a>
         <div
           className=" p-3 px-10 rounded-full hidden md:block bg-white/30 backdrop-blur-lg"

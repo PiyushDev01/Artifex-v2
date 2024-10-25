@@ -93,7 +93,7 @@ function Orderform3() {
           <div className='flex'>
           {/* <button className=' py-2 px-4 text-slate-500 border-slate-500 border-2 rounded-full m-4 shadow-slate-400 shadow-lg'>Back</button> */}
           <button onClick={()=>{
-            alert("Tracking feature is not available yet.")
+            navigate('/Your-Orders')
           }} className=' border-[2px] border-mypurple  min-w-20 py-2 px-4 text-mypurple rounded-2xl m-6 '>Track</button>
           <button onClick={aftersubmit} className=' bg-mypurple  min-w-20 py-2 px-4 text-white rounded-2xl m-6 shadow-lg'>OK</button>
           </div>
