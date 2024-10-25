@@ -91,14 +91,17 @@ const formatDate = (isoString) => {
 function OrderPrice() {
  
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const {user} = useContext(UserContext);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
+
    try {
+      
          getOrders(user.uid).then((data) => {
       setOrders(data);
-
+      setLoading(false);
       });
     
    }
@@ -146,6 +149,9 @@ function OrderPrice() {
 
           className="flex flex-col overflow-y-auto">
             { 
+            loading ? (
+              <h1 className="text-center text-xl text-slate-500 font-semibold py-4">Loading...</h1>
+            ) : (
               orders.length > 0 ? orders.map((order) => (
                 <OrderList
                   key={order.id}
@@ -154,7 +160,7 @@ function OrderPrice() {
                   price={"₹"+order.price}
                   status={order.status}
                 />
-              )) : <p className="text-center text-xl text-slate-400">No Orders Found</p>
+              )) : <p className="text-center text-xl text-slate-400">No Orders Found</p>)
             }
           </motion.div>
         </div>

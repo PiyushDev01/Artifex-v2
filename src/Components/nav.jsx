@@ -36,6 +36,14 @@ export default function Nav() {
     if (user) {
       hide && sethide(false);
     }
+    // console.log(user);
+    async function check() {
+      if (user) {
+        const check = await checkAdmin(user.uid);
+        setcheckadmin(check);
+      }
+    }
+    check();
   }
   , [user]);
 
@@ -67,6 +75,7 @@ const handleTog = () => {
   };
 
   const {isUserlogged, uDetails}= useContext(UserContext);
+  const [checkadmin , setcheckadmin] = useState(false);
 
   return (
     <>
@@ -75,7 +84,7 @@ const handleTog = () => {
           <div className=" flex items-center gap-2">
           <img src={logo} className=" md:w-28  w-24" alt="" />
           {
-            isUserlogged && <p className=" border-l-[1px] px-2 border-slate-500 ">Admin</p>
+            checkadmin && <p className=" border-l-[1px] px-2 border-slate-500 ">Admin</p>
           }
           </div>
         </a>
