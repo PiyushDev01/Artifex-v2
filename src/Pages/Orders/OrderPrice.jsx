@@ -13,10 +13,15 @@ function OrderPrice() {
         className="relative md:h-full bg-zinc-950  flex flex-col items-center justify-center pt-32   "
         id="background"
       >
-        <img src={backimg} alt="" className=" md:absolute fixed top-[20vh]  md:scale-100  md:-top-[10rem] scale-125   brightness-150 saturate-150 " />
+        <nav className=" top-0 md:h-[5.5rem] h-[4.6rem] w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-slate-50  items-center fixed md:shadow-none shadow-md rounded-b-3xl md:rounded-none " > </nav>
+
+        <div id="backimg" className=" md:absolute fixed top-[20vh]  md:scale-100  md:-top-[10rem] scale-125 overflow-hidden h-[100vh] " >
+        <img src={backimg} alt="" className=" brightness-150 saturate-150 " />
+
+        </div>
         <div
           id="backBox"
-          className="  fixed md:absolute bottom-0 w-full h-1/2 md:h-1/3 rounded-t-[3rem] z-[1rem]  bg-gradient-to-r from-[#6200EA] to-[#8E2DE2]"
+          className="  fixed md:absolute bottom-0 w-[100%] h-1/2 md:h-1/3 rounded-t-[3rem] z-[1rem]  bg-gradient-to-r from-[#6200EA] to-[#8E2DE2]"
         ></div>
         {/* <div
           id="backBox"
@@ -36,7 +41,7 @@ function OrderPrice() {
 
 
 
-        <div id="cards" className=" z-[2rem] flex  rounded-[3rem]   bg-white/30 backdrop-blur-sm md:flex-row flex-col" >
+        <div id="cards" className=" z-[2rem] flex  rounded-[3rem] w-fit max-w-[95%] items-center  bg-white/30 backdrop-blur-sm md:flex-row flex-col" >
 
         <div className=" md:hidden"> 
         <PriceCard />
