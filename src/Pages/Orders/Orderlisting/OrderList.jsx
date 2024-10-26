@@ -134,21 +134,7 @@ function OrderPrice() {
   
 
   return (
-    // currentOrder ? <OrderTrack 
-    // name={currentOrder.name}
-    // mob={currentOrder.phone}
-    // id={currentOrder.id}
-    // date={formatDate(currentOrder.date)}
-    // price={currentOrder.price}
-    // status={currentOrder.status}
-    // address={currentOrder.flat + ", " + currentOrder.street + ", " + currentOrder.district + ", " + currentOrder.state}
-    // imgurl={currentOrder.downloadURL}
-    // statusdesc={currentOrder.statusMessage}
-    // setcurOrd= {setCurrentOrder}
-
-
     
-    // /> :
     <>
     <div
       className="relative h-[100vh]  flex flex-col items-center bg-[#2f2f2f]  pt-32   "

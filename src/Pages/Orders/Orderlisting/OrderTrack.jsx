@@ -56,7 +56,7 @@ function OrderTrack(props) {
 
         <div
           id="container"
-          className=" z-20 w-[90%]  md:max-w-[80rem] md:w-[80%]  h-[90%] mt-2  bg-slate-50 rounded-2xl md:rounded-[2rem] flex overflow-hidden flex-col"
+          className="  z-10 w-[90%]  md:max-w-[80rem] md:w-[80%]  h-[90%] mt-2  bg-slate-50 rounded-2xl md:rounded-[2rem] flex overflow-hidden flex-col"
         >
           <div className="flex justify-between items-center border-b-[1px] border-slate-400 h-10 py-1 md:px-6 text-slate-500 m-4 text-xl font-semibold ">
             <p className="hidden md:block">Order Details</p>
