@@ -28,6 +28,8 @@ const DetailProvider = ({ children }) => {
         // userID: null,
     });
 
+    const [currentOrder, setCurrentOrder] = useState(null);
+
     
     
 
@@ -37,6 +39,8 @@ const DetailProvider = ({ children }) => {
             // Add your context values here
             details,
             setDetails,
+            currentOrder,
+            setCurrentOrder
         }}>
             {children}
         </Detailcontext.Provider>

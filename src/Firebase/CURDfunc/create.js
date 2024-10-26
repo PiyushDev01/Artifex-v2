@@ -63,11 +63,12 @@ const submitOrder = async (userid, details, image) => {
     person,
     date: new Date().toISOString(),
     status: "Submitted",
-    payment: "pending",
+    payment: null,
     paymentId: null,
     paymentDate: null,
     total: null,
-    statusMessage: "Order Placed",
+    shipping: null,
+    statusMessage: "Your order has been successfully submitted. Thank you for your interest!",
   };
 
   try {
