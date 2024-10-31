@@ -2717,7 +2717,7 @@ export const sendconfiramtionEmailtoadmin = async (user,details, orderId, curtim
 
     const emailData = {
        
-        to: 'piyushvishwakarma6706@gmail.com',
+      to: ['piyushvishwakarma6706@gmail.com', 'piyushvishwakarma6707@gmail.com'], ,
         subject: 'Order Confirmation',
         htmlContent: orderComfirmation
         };
