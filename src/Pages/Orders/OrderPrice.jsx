@@ -59,7 +59,7 @@ function OrderPrice() {
         <PriceCard />
         </div>
         <SidePriceCard
-          price=599
+          price={599}
           person="Double Person"
           d1="Regular progress updates on your sketch"  
           d2="Track delivery status of your artwork"
@@ -70,7 +70,7 @@ function OrderPrice() {
         <PriceCard />
         </div>
         <SidePriceCard
-          price=799
+          price={799}
           person="More than Two"
           d1="Secure packaging for safe delivery"
           d2="Digital proofs or previews of the sketch before final delivery"
