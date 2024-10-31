@@ -73,13 +73,13 @@ function OrderTrack(props) {
                 </h1>
               
                 
-                <div className=" relative w-full flex justify-center" >
+                <div className=" relative w-full flex justify-center  aspect-[1 / 1.414] "  >
                 <img
                   className=" w-[60%] shadow-lg rounded-xl"
                   src={currentOrder.downloadURL}
                   alt="refimg"
                 /> 
-                <h1 className=" font-bold text-3xl absolute bottom-0 right-[5rem] md:right-[6rem] text-purple-300  bg-slate-600 p-1 rounded-t-lg " >
+                <h1 className=" font-bold text-2xl absolute bottom-0 right-[5rem] md:right-[6rem] text-purple-300  bg-slate-600 p-1 rounded-t-lg " >
 
                   {currentOrder.size}
                 </h1>
@@ -123,7 +123,7 @@ function OrderTrack(props) {
               </h1>
               
 
-<div className="payment w-full h-fit min-h-[15rem] mb-1 bg-zinc-200 rounded-2xl shadow-sm shadow-slate-600 ">
+<div className="payment w-full h-fit min-h-[8rem] mb-1 bg-zinc-200 rounded-2xl shadow-sm shadow-slate-600 ">
         <div className="pricing  h-fit  ">
         <div className="price flex  p-2 mx-2 pb-0 justify-between  ">
             <h1 className=" text-lg font-semibold text-slate-800" >Total Amount</h1>
@@ -183,7 +183,7 @@ function OrderTrack(props) {
 </>
     
     :
-    <h1 className=" text-slate-500 text-center" >*We kindly estimate the total amount to be paid once we receive your approval.</h1>
+    <h1 className=" text-slate-400 text-center" >*We estimate the total payment amount upon receiving the Artist's approval.</h1>
     
     }
         

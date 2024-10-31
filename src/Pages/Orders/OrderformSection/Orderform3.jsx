@@ -87,7 +87,7 @@ function Orderform3() {
 </div>) : (
   <div id="formcontainer" className="flex flex-col items-center justify-center w-1/2 h-full rounded-md">
           <img src={submitting} alt="submitted" className="md:w-1/2 filter " />
-          <h1 className="text-3xl text-center font-semibold  text-mypurple">Order Submitted</h1>
+          <h1 className="text-3xl text-center font-bold  text-mypurple">Thank you!</h1>
           <h1 className=" md:text-lg text-sm md:w-[18rem] w-[14rem] text-center font-semibold text-slate-700 my-2">Relax and wait for the artist’s approval!</h1>
           <h1 className="md:text-sm text-xs text-center font-semibold text-slate-400 my-2">*Estimated amount to be paid after approval. </h1>
           <div className='flex'>

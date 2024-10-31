@@ -3,6 +3,7 @@ import {db} from '../firbase.js';
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, getStorage } from "firebase/storage";
 import { arrayUnion } from "firebase/firestore";
+import {sendconfiramtionEmail, sendconfiramtionEmailtoadmin} from '../../mailer/EmailSender.js';
 
 
  // List of admin emails is hardcoded for simplicity
@@ -33,7 +34,7 @@ const adminlist = ["piyushvishwakarma6706@gmail.com", "piyushvishwakarma6707@gma
 
 
 
-const submitOrder = async (userid, details, image) => {
+const submitOrder = async (userid, details, setDetails , image, user) => {
   
   // Order ID generation logic
   const generateOrderId = () => {
@@ -42,10 +43,11 @@ const submitOrder = async (userid, details, image) => {
     return `ORD${timestamp}`; // Combine for a unique order ID
   };
 
-  const { size, orientation, cropped, notes, name, phone, saveas, flat, street, pin, district, state , price, person } = details;
+  const { size, orientation, cropped, notes, name, phone, saveas, flat, street, pin, district, state , price, person, orderID } = details;
 
   const orderId = generateOrderId(); // Generate the order ID
-
+ 
+ const curtime = new Date().toISOString();
   const Orderdetails = {
     size,
     orientation,
@@ -61,14 +63,14 @@ const submitOrder = async (userid, details, image) => {
     state,
     price,
     person,
-    date: new Date().toISOString(),
+    date: curtime,
     status: "Submitted",
     payment: null,
     paymentId: null,
     paymentDate: null,
     total: null,
     shipping: null,
-    statusMessage: "Your order has been successfully submitted. Thank you for your interest!",
+    statusMessage: "Your order has been successfully submitted. Thank you for your interest!. you'll receive a confirmation email shortly with the details of your order.",
   };
 
   try {
@@ -92,6 +94,15 @@ const submitOrder = async (userid, details, image) => {
     await setDoc(doc(db, "users", userid), {
       orders: arrayUnion(orderId) // Use arrayUnion to add the new order ID to the user's "orders" array
     }, { merge: true });
+ 
+    try {
+      
+      sendconfiramtionEmail(user, details, orderId , curtime);
+      sendconfiramtionEmailtoadmin(user, details, orderId , curtime);
+    } catch (e) {
+      console.error("Error sending confirmation email: ", e);
+    }
+
 
     return true; // Return true on successful submission
   } catch (e) {

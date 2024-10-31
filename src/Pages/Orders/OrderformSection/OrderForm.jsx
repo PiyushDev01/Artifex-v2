@@ -17,7 +17,7 @@ function OrderForm() {
 
 
 
-  const {details} = useContext(Detailcontext)
+  const {details, setDetails} = useContext(Detailcontext)
 
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ function OrderForm() {
     try {
       console.log(user.uid);
       setSubmitted(true);
-      await submitOrder(user.uid, details, details.croppedImage);
+      await submitOrder(user.uid, details, setDetails , details.croppedImage, user);
       console.log("Order Submitted");
     } catch (e) {
       console.error(e);
