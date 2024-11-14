@@ -1,4 +1,3 @@
-import React from 'react'
 import { useContext, useState, useEffect } from 'react'
 import Detailcontext from './DetailContext/Detailcontext'
 import UserContext from "../../../Context/UserContex";
@@ -74,11 +73,11 @@ function Orderform3() {
             <h4>Uploading</h4>
             <div className="words">
         {/* <span className="word">DONE</span> */}
-    <span class="word">Order</span>
-    <span class="word">Details</span>
-    <span class="word">Address</span>
-    <span class="word">Image</span>
-    <span class="word">Done.</span>
+    <span className="word">Order</span>
+    <span className="word">Details</span>
+    <span className="word">Address</span>
+    <span className="word">Image</span>
+    <span className="word">Done.</span>
     
   </div>
   
