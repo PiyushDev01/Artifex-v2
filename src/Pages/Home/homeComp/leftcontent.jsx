@@ -32,7 +32,7 @@ export default function Leftcontent() {
           className=" md:text-4xl text-3xl text-zinc-600 "
         >
           {" "}
-         {name? <div><span id="span">Hi!</span> {names[0]}</div>  :<span></span>}
+         {name? <div><span id="span">Hi!</span> {names[0]},</div>  :<span></span>}
           {/* <span>on Paper</span>{" "} */}
         </motion.h2>
         <motion.h1
@@ -53,7 +53,7 @@ export default function Leftcontent() {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: false, amount: 0.7 }}
-          className=" md:w-4/5 py-5 px-6 md:px-0  text-slate-500 text-sm md:text-lg"
+          className=" md:w-4/5 py-4 px-6 md:px-0  text-slate-500 text-sm md:text-xl"
         >
           Preserve Your Memories in Sketches
         </motion.p>

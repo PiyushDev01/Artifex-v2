@@ -1,5 +1,4 @@
 import "./order.css";
-import React from "react";
 import PriceCard from "./orderComp/PriceCard";
 import SidePriceCard from "./orderComp/SidePriceCard";
 import backimg from "../Orders/OrderformSection/orderform-assets/Ellipse 8.png";
@@ -37,17 +36,17 @@ function OrderPrice() {
           id="backBox"
           className=" -z-10 fixed md:absolute top-0 w-full h-1/2 md:h-1/2 rounded-b-[2rem]  bg-gradient-to-b   from-violet-500 to-transparent]"
         ></div> */}
-        <h6 className=" text-4xl md:text-6xl  text-slate-100 font-bold m-4 text-center">Personalize Your Artwork Now!</h6>
-        <p id="p" className=" px-6 text-center text-white text-sm md:text-xl">Welcome! Thank you for choosing our services. We're glad to have you as a customer.</p>
+        <h6 style={{fontFamily:"manrope"}} className=" text-4xl md:text-6xl bg-gradient-to-t from-slate-950 via-slate-100 to-white  text-slate-100 font-bold m-4 text-center">Personalize Your Artwork Now!</h6>
+        <p id="p" className=" px-6 text-center text-white text-sm md:text-xl">Welcome! Thank you for choosing our services. We&apos;re glad to have you as a customer.</p>
 
 
   
 <button onClick={()=>{
     isUserlogged ? navigate("/Your-Orders"): alert('Please Login to continue');
-  }}  class="button">
-  <div class="dots_border"></div>
+  }}  className="button">
+  <div className="dots_border"></div>
   <img src={carticon} className=" z-20 w-6" alt="" />
-  <span class="text_button">Your Orders</span>
+  <span className="text_button">Your Orders</span>
 </button>
 
 

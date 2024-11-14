@@ -1,4 +1,3 @@
-import React from "react";
 import Stepper from "./Stepper";
 import { useContext } from "react";
 import Formcontext from "./OrderFormContext/FormContex";
