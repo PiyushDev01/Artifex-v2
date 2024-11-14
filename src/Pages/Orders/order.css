@@ -8,6 +8,20 @@
     font-family: "karla";
 }
 
+
+
+#span {
+  color: #6200ea;
+  background: -webkit-linear-gradient(
+    43deg,
+    #ff6568 0%,
+      #c850c0 46%,
+      #4158d0 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 #innercontainer{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

@@ -44,12 +44,12 @@ export default function Leftcontent() {
           className=" md:text-6xl text-4xl text-zinc-900 "
         >
           {" "}
-          <span id="span">Capture</span> Life's Moments{" "}
+          <span id="span">Capture</span> Life&apos;s Moments{" "}
           <span id="span">on Paper</span>{" "}
         </motion.h1>
         <motion.p
         id="leftp"
-          variants={fadeIn("down", 0.3)}
+          variants={fadeIn("", 0.3)}
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: false, amount: 0.7 }}

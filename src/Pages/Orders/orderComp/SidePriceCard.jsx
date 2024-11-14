@@ -1,4 +1,3 @@
-import React from 'react'
 import '../order.css'
 
 
@@ -49,21 +48,19 @@ function SidePriceCard(props) {
 
             <div id="bottomContent" className=' w-auto h-[270px] p-4 m-2'>
                 <div className=' flex gap-2'>
-                <h2 className=' text-black'>&#10509; </h2>
+                <h2 className=' text-black'>&#9737;</h2>
                 <h2  id='cardDetail' > {props.d1} </h2></div>
 
                 <div className=' flex gap-2'>
-                <h2 className=' text-black'>&#10509; </h2>  
+                <h2 className=' text-black'>&#9737; </h2>  
                 <h2 id='cardDetail' > {props.d2} </h2></div>
 
-                <div  id='cardDetail' className=' flex gap-2'><h2 className=' text-black'>&#10509; </h2>
+                <div  id='cardDetail' className=' flex gap-2'><h2 className=' text-black'>&#9737; </h2>
 
                 <h2 > {props.d3} </h2></div>
 
 
-                <div  id='cardDetail' className=' flex gap-2'><h2 className=' text-black'>&#10509; </h2>
-
-                <h2 > {props.d4} </h2></div>
+                
             
 
             </div>

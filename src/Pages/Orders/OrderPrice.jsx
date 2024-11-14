@@ -1,4 +1,6 @@
 import "./order.css";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../Framer/fadein.js";
 import PriceCard from "./orderComp/PriceCard";
 import SidePriceCard from "./orderComp/SidePriceCard";
 import backimg from "../Orders/OrderformSection/orderform-assets/Ellipse 8.png";
@@ -36,17 +38,22 @@ function OrderPrice() {
           id="backBox"
           className=" -z-10 fixed md:absolute top-0 w-full h-1/2 md:h-1/2 rounded-b-[2rem]  bg-gradient-to-b   from-violet-500 to-transparent]"
         ></div> */}
-        <h6 style={{fontFamily:"manrope"}} className=" text-4xl md:text-6xl bg-gradient-to-t from-slate-950 via-slate-100 to-white  text-slate-100 font-bold m-4 text-center">Personalize Your Artwork Now!</h6>
-        <p id="p" className=" px-6 text-center text-white text-sm md:text-xl">Welcome! Thank you for choosing our services. We&apos;re glad to have you as a customer.</p>
+        <motion.h6 
+        variants={fadeIn("up", 0.1)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.2 }}
+        style={{fontFamily:"manrope"}} className=" text-4xl md:text-6xl bg-gradient-to-t from-slate-700 via-slate-100 to-white  text-slate-100 font-bold m-4 text-center">Personalize Your <span id="span"> Artwork</span>  Now!</motion.h6>
+        <p id="p" className={` px-6 text-center ${isUserlogged ? "": "mb-8"}  text-white text-sm md:text-xl`}>Welcome! Thank you for choosing our services. We&apos;re glad to have you as a customer.</p>
 
 
-  
+
 <button onClick={()=>{
-    isUserlogged ? navigate("/Your-Orders"): alert('Please Login to continue');
-  }}  className="button">
+   navigate("/Your-Orders")
+  }}  className={`button ${isUserlogged ? "": "hidden"} ` }>
   <div className="dots_border"></div>
   <img src={carticon} className=" z-20 w-6" alt="" />
-  <span className="text_button">Your Orders</span>
+  <span className="text_button ">Your Orders</span>
 </button>
 
 
@@ -60,10 +67,10 @@ function OrderPrice() {
         <SidePriceCard
           price={599}
           person="Double Person"
-          d1="Regular progress updates on your sketch"  
-          d2="Track delivery status of your artwork"
-          d3="Digital proofs or previews of the sketch before final delivery"
-          d4="Regular progress updates on your sketch"
+          d1="Receive progress updates to stay informed on your artwork."  
+          d2="Track the delivery status of your sketch easily."
+          d3="Get a digital preview for feedback before final delivery."
+
         />
        <div className=" hidden md:block"> 
         <PriceCard />
@@ -71,10 +78,10 @@ function OrderPrice() {
         <SidePriceCard
           price={799}
           person="More than Two"
-          d1="Secure packaging for safe delivery"
-          d2="Digital proofs or previews of the sketch before final delivery"
-          d3="Personalized thank you notes or messages with the delivered artwork"
-          d4="Personalized gift options"
+          d1="Enjoy secure packaging for the safe delivery of your artwork."
+          d2="Receive a digital preview for review before delivery."
+          d3="Personalized thank-you notes and custom gift options included."
+          
         /></div>
       </div>
     </>
