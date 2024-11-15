@@ -1,11 +1,10 @@
-import React from "react";
 import "./orderlist.css";
 import { Status, formatDate } from "./OrderList";
 import { useContext } from "react";
 import Detailcontext from "../OrderformSection/DetailContext/Detailcontext";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router";
-import { fadeIn } from './../../../Framer/fadein';
+import paymenthandler from "../../../RazorpayPG/paymenthandler";
 
 const StAtus = [ "Payment", "Sketching", "Finished", "Delivered"];
 
@@ -21,9 +20,9 @@ function OrderStatus(props){
 }
 
 
-function OrderTrack(props) {
+function OrderTrack() {
 
-  const { currentOrder,setCurrentOrder } = useContext(Detailcontext); ;
+  const { currentOrder,setCurrentOrder } = useContext(Detailcontext); 
   const shipping = currentOrder.shipping;                                                                               
   const navigate = useNavigate();
   
@@ -157,7 +156,9 @@ function OrderTrack(props) {
     Cancel
   </button>
 
-    <button className="bg-blue-700 text-white py-2 px-4 rounded-lg shadow-blue-400 shadow-lg border-blue-700 border-[1px] hover:bg-blue-500 transition-all text-sm">
+    <button
+    onClick={(e) => paymenthandler(e,currentOrder,currentOrder.price+currentOrder.shipping)}
+    className="bg-blue-700 text-white py-2 px-4 rounded-lg shadow-blue-400 shadow-lg border-blue-700 border-[1px] hover:bg-blue-500 transition-all text-sm">
         Pay Now
     </button>
   </div>
