@@ -168,7 +168,7 @@ function OrderTrack() {
     <>
     <div className="price flex w-full justify-between  ">
         <h1 className=" text-lg font-semibold text-slate-800" >Payment Method</h1>
-        <h1 className=" text-lg font-semibold text-slate-800" >{ currentOrder.paymethod || UPI}</h1>
+        <h1 className=" text-lg font-semibold text-slate-800" >{ currentOrder.paymethod || "UPI"}</h1>
         
     </div>
     <div className="price flex w-full justify-between  ">
@@ -184,7 +184,7 @@ function OrderTrack() {
 </>
     
     :
-    <h1 className=" text-slate-400 text-center" >*We estimate the total payment amount upon receiving the Artist's approval.</h1>
+    <h1 className=" text-slate-400 text-center" >*We estimate the total payment amount upon receiving the Artist&apos;s approval.</h1>
     
     }
         

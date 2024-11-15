@@ -29,7 +29,7 @@ function Orderform3() {
 
     useEffect(() => {
       setDetails({...details, price: price.price, person: price.person});
-    }, [details, price, setDetails])
+    }, [price])
 
     const aftersubmit = () => {
       setSubmitted(false);
