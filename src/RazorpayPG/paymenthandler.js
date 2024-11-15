@@ -34,7 +34,7 @@ const paymenthandler = async (e, currentOrder, totalAmt) => {
         currency: "INR",
         name: "Artifex",
         description: "Test Transaction",
-        image: "https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?semt=ais_hybrid",
+        image: "https://artifex2.vercel.app/assets/titlelogo2-BXg4v1iZ.webp",
         order_id: orderData.id,
         handler: async (razorpayResponse) => {
           try {
