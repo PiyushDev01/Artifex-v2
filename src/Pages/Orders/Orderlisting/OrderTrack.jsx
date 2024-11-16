@@ -2,9 +2,11 @@ import "./orderlist.css";
 import { Status, formatDate } from "./OrderList";
 import { useContext } from "react";
 import Detailcontext from "../OrderformSection/DetailContext/Detailcontext";
+import UserContext from "../../../Context/UserContex";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router";
 import paymenthandler from "../../../RazorpayPG/paymenthandler";
+import {paymentUpdate} from "../../../Firebase/CURDfunc/create.js";
 
 const StAtus = [ "Payment", "Sketching", "Finished", "Delivered"];
 
@@ -23,6 +25,7 @@ function OrderStatus(props){
 function OrderTrack() {
 
   const { currentOrder,setCurrentOrder } = useContext(Detailcontext); 
+  const { user } = useContext(UserContext);
   const shipping = currentOrder.shipping;                                                                               
   const navigate = useNavigate();
   
@@ -157,7 +160,7 @@ function OrderTrack() {
   </button>
 
     <button
-    onClick={(e) => paymenthandler(e,currentOrder,currentOrder.price+currentOrder.shipping)}
+    onClick={(e) => paymenthandler(e,currentOrder,currentOrder.price+currentOrder.shipping, paymentUpdate, user.uid, setCurrentOrder)}
     className="bg-blue-700 text-white py-2 px-4 rounded-lg shadow-blue-400 shadow-lg border-blue-700 border-[1px] hover:bg-blue-500 transition-all text-sm">
         Pay Now
     </button>
@@ -166,19 +169,24 @@ function OrderTrack() {
     </> : curstatus === "PAID" ? 
 
     <>
-    <div className="price flex w-full justify-between  ">
+    {/* <div className="price flex w-full justify-between  ">
         <h1 className=" text-lg font-semibold text-slate-800" >Payment Method</h1>
         <h1 className=" text-lg font-semibold text-slate-800" >{ currentOrder.paymethod || "UPI"}</h1>
         
-    </div>
+    </div> */}
+
+      TODO: Add payment success popup
+     
+      
+
     <div className="price flex w-full justify-between  ">
         <h1 className=" text-lg font-semibold text-slate-800" >Payment ID</h1>
-        <h1 className=" text-lg font-semibold text-slate-800" >{currentOrder.paymentId}</h1>
+        <h1 className=" text-lg font-semibold text-slate-500" >{currentOrder.paymentId}</h1>
         
     </div>
     <div className="price flex w-full justify-between  ">
         <h1 className=" text-lg font-semibold text-slate-800" >Paid On</h1>
-        <h1 className=" text-lg font-semibold text-slate-800" >{currentOrder.paymentDate}</h1>
+        <h1 className=" text-lg font-semibold text-slate-500" >{currentOrder.paymentDate}</h1>
         
     </div>
 </>

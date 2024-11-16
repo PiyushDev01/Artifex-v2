@@ -1,4 +1,7 @@
-const paymenthandler = async (e, currentOrder, totalAmt) => {
+import {formatDate} from "../Pages/Orders/Orderlisting/OrderList";
+
+
+const paymenthandler = async (e, currentOrder, totalAmt, paymentUpdate, userID, setCurrentOrder) => {
     e.preventDefault();
   
     // Ensure Razorpay is loaded
@@ -47,6 +50,23 @@ const paymenthandler = async (e, currentOrder, totalAmt) => {
             });
             const jsonResponse = await captureResponse.json();
             console.log("Payment verification response:", jsonResponse);
+            if (jsonResponse.msg === "success") {
+              console.log("Payment captured successfully!");
+              // alert("Payment successful!");
+              // Update the current order
+              setCurrentOrder({ ...currentOrder, payment: "PAID", paymentId: jsonResponse.paymentId, paymentDate: formatDate(new Date().toISOString()), total: totalAmt });
+              // Update payment status in Firestore
+              // TODO: Send email of payment confirmation to both admin and user 
+                 
+              try {
+                const curtime = new Date().toISOString();
+                await paymentUpdate(userID, currentOrder.id, "PAID", jsonResponse.paymentId, formatDate(curtime), totalAmt);
+              } catch (error) {
+                console.error("Error updating payment status:", error);
+              }      
+            } else {
+              console.error("Payment not captured:", jsonResponse.error);
+            }
           } catch (error) {
             console.error("Error in payment capture:", error);
           }

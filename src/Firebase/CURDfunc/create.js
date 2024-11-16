@@ -111,5 +111,21 @@ const submitOrder = async (userid, details, setDetails , image, user) => {
   }
 };
 
+const paymentUpdate = async (userid, orderID, payment, paymentId, paymentDate, total) => {
+  try {
+    // Update the payment details in the order document
+    await setDoc(doc(db, "users", userid, "orders", orderID), {
+      payment: payment,
+      paymentId : paymentId,
+      paymentDate : paymentDate,
+      total : total,
+    }, { merge: true });
 
-export {submitOrder, addUserWithId};
+    return true; // Return true on successful update
+  } catch (e) {
+    console.error("Error updating payment details: ", e);
+    return false;
+  }
+}
+
+export {submitOrder, addUserWithId , paymentUpdate};
