@@ -21,11 +21,12 @@ const OrderList = (props) => {
     <div 
     onClick={() => {
       props.handlefunc(); 
-  }} className="flex justify-between items-center border-b-[1px] hover:bg-slate-200 border-slate-400 h-15 py-4 mx-4 md:pl-6 px-2 text-slate-500  text-xl font-semibold ">
+  }} className="flex cursor-pointer justify-between items-center border-b-[1px] hover:bg-slate-200 border-slate-400 h-15 py-4 mx-4 md:pl-6 px-2 text-slate-500  text-xl font-semibold ">
       <p className="hidden md:block w-16">{props.id}</p>
-      <p className=" text-sm md:text-lg md:font-bold" > {props.date} </p>
+      <p className=" text-sm md:text-lg md:font-bold " > {props.date} </p>
       <p className="hidden md:block">{props.price} </p>
-      <Status status={props.status} />
+      <p className="flex w-32 justify-center"><Status status={props.status} /> </p>
+      
       {/* <button 
       
       className=" bg-indigo-400 text-white py-2 px-4 rounded-lg shadow-lg hover:bg-indigo-600 transition-all text-sm">
@@ -72,7 +73,7 @@ const statusClass =
 
   return (
     <button
-      className={`${statusClass} py-2 mr-4 px-4 cursor-default  w-[6rem]  md:w-fit  md:max-w-[8rem] rounded-full text-sm flex items-center`}
+      className={`${statusClass} py-2 mr-4 px-4 cursor-default    md:w-fit  md:max-w-[8rem] rounded-full text-sm flex items-center`}
     >
       <div className={`w-2 h-2 ${dotClass} rounded-full hidden md:block mr-2`}></div>
       {props.status}

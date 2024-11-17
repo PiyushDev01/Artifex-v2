@@ -13,7 +13,7 @@ const StAtus = [ "Payment", "Sketching", "Finished", "Delivered"];
 function OrderStatus(props){
   return (
     <div className=" relative p-2 px-4" >
-                        <div className=" w-2 h-2 rounded-full -left-[0.25rem] top-5 bg-green-500 z-10 absolute ball"></div>
+                        <div className=" w-2 h-2 rounded-full -left-[0.30rem] top-5 bg-green-500 z-10 absolute ball"></div>
                         {/* <div className=" w-4 h-4 rounded-full -left-[0.5rem] top-4 animate-pulse bg-green-200 absolute ball"></div> */}
                         <h1 className=" text-xl font-semibold text-slate-700">{props.status}</h1>
                         {/* <p className=" text-sm font-semibold text-slate-500" >Fri Oct 18, 03:02am</p> */}
@@ -149,7 +149,7 @@ function OrderTrack() {
         </div>
         </div>
 
-        <div className="paymentstatus flex flex-col justify-between items-center p-4 mx-2  ">
+        <div className="paymentstatus flex flex-col justify-between items-center p-2 mx-2  ">
     { curstatus === "Approved" ? <>
     <div className=" flex w-full gap-2 items-center justify-center ">
     <p className=" text-slate-500" >Secure payment with</p><img  className=" w-[6rem] " src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Razorpay_logo.svg/120px-Razorpay_logo.svg.png?20171127075036" alt="" />
@@ -179,14 +179,14 @@ function OrderTrack() {
      
       
 
-    <div className="price flex w-full justify-between  ">
+    <div className="price flex w-full justify-between items-center ">
         <h1 className=" text-lg font-semibold text-slate-800" >Payment ID</h1>
-        <h1 className=" text-lg font-semibold text-slate-500" >{currentOrder.paymentId}</h1>
+        <h1 className=" text-sm md:text-lg  font-semibold text-slate-500" >{currentOrder.paymentId}</h1>
         
     </div>
-    <div className="price flex w-full justify-between  ">
+    <div className="price flex w-full justify-between items-center  ">
         <h1 className=" text-lg font-semibold text-slate-800" >Paid On</h1>
-        <h1 className=" text-lg font-semibold text-slate-500" >{currentOrder.paymentDate}</h1>
+        <h1 className=" text-sm md:text-lg font-semibold text-slate-500" >{currentOrder.paymentDate}</h1>
         
     </div>
 </>
