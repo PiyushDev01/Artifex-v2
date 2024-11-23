@@ -1,5 +1,5 @@
 import Stepper from "./Stepper";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Formcontext from "./OrderFormContext/FormContex";
 import Orderform2 from "./Orderform2";
 import Orderform1 from "./Orderform1";
@@ -13,6 +13,7 @@ import  UserContext  from "../../../Context/UserContex.js";
 function OrderForm() {
   const { currentStep, steps, move, setFormOneValid, is_F1_Invalide, is_F2_Invalide, setFormTWOValid, setSubmitted, submitted ,setUploading} = useContext(Formcontext);
   const {user} = useContext(UserContext);
+  const [checked, setChecked] = useState(false);
 
 
 
@@ -63,7 +64,7 @@ function OrderForm() {
 
         {/* Buttons */}
 
-        <div id="buttondiv" className={`${submitted && "hidden"} w-[80%] justify-between m-10 flex `}>
+        <div id="buttondiv" className={`${submitted && "hidden"} md:w-[80%] w-[90%] justify-between m-10 flex-col-reverse md:flex-row gap-4 flex `}>
           <button
             onClick={() => {
               
@@ -74,11 +75,25 @@ function OrderForm() {
               }
              
             }}
-            className="bg-slate-50  text-slate-500 border-2 border-slate-500 px-4 py-2 rounded-full"
+            className="bg-zinc-300  text-slate-800 border-2  px-4 py-2 text-lg  md:rounded-full  rounded-lg"
             // disabled={currentStep === 1}
           >
             Back
           </button>
+
+          <div className="flex gap-4 md:flex-row flex-col items-center ">
+           {
+              currentStep === 3 && (
+                <div className=" flex gap-2 items-center m-2 ">
+           <input type="checkbox" 
+            onChange={()=>setChecked(!checked)}
+            className=" w-4 h-4 "
+           />
+           <h1 className="text-slate-700 text-lg">All Details are correct</h1>
+           </div>)
+
+           }
+
           <button
             onClick={() => {
               if (currentStep === 1) {
@@ -123,18 +138,23 @@ function OrderForm() {
                   move(1);
                 }
               }else {
-                handleSubmit();
-                // setSubmitted(true);
-
-                //alert("Order Submitted");
+                if (checked) {
+                  handleSubmit();
+                } else {
+                  alert("Please confirm the details");
+                
+                }
               }
             }}
-            className="bg-[#6200EA] text-white  px-4 py-2 rounded-full"
+            className="bg-[#6200EA] text-white px-4 py-2 text-lg md:rounded-full w-full md:w-fit  rounded-lg"
             // disabled={currentStep === steps.length}
           >
             {currentStep === steps.length ? "Submit" : "Next"}
           </button>
+
         </div>
+        </div>
+          
       </div>
     </>
   );

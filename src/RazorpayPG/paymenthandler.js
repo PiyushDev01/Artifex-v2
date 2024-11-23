@@ -1,7 +1,7 @@
 import {formatDate} from "../Pages/Orders/Orderlisting/OrderList";
 
 
-const paymenthandler = async (e, currentOrder, totalAmt, paymentUpdate, userID, setCurrentOrder) => {
+const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, paymentUpdate, userID, setCurrentOrder) => {
     e.preventDefault();
   
     // Ensure Razorpay is loaded
@@ -55,7 +55,7 @@ const paymenthandler = async (e, currentOrder, totalAmt, paymentUpdate, userID, 
               // alert("Payment successful!");
               // Update the current order
               setCurrentOrder({ ...currentOrder, payment: "PAID", paymentId: jsonResponse.paymentId, paymentDate: formatDate(new Date().toISOString()), total: totalAmt });
-              // Update payment status in Firestore
+              setPaymentpopup(true);
               // TODO: Send email of payment confirmation to both admin and user 
                  
               try {

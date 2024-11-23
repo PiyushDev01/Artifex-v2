@@ -5,6 +5,8 @@ import "../order.css"
 import axios from "axios";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../Framer/fadein.js";
+import loader from '../../../assets/loader.json'
+import Lottie  from 'lottie-react';
 
 const saveas = ["Home", "Office", "Others"];
 
@@ -198,7 +200,13 @@ function Orderform2() {
             is_F2_Invalide.pin || !isServiceable ? "bg-red-100 outline-red-600 border-red-600 outline-[1px]" : ""
           }`}
         />
-        <button onClick={checkPincode} className=" bg-mypurple my-1 px-4 text-white rounded-2xl"> {pinchecking} </button>
+        <button onClick={checkPincode} className=" transition-all bg-mypurple my-1 px-4 text-white rounded-2xl"> 
+          {pinchecking === "Checking..." ? (
+            <Lottie animationData={loader} style={{width: '45px', height: '30px'}} className=" scale-[200%] brightness-200 " />
+          ) : (
+            pinchecking
+          )}
+           </button>
         </div>
        {
         error &&   <h1 className="text-red-500 text-sm">{error}</h1>

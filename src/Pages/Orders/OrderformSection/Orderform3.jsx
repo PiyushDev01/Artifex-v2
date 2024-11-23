@@ -3,7 +3,8 @@ import Detailcontext from './DetailContext/Detailcontext'
 import UserContext from "../../../Context/UserContex";
 import Formcontext from './OrderFormContext/FormContex';
 import uploading from "./orderform-assets/Up Arrow.gif"
-import submitting from "./orderform-assets/Success.gif"
+import successanimation from '../../../assets/success.json'
+import Lottie  from 'lottie-react';
 import "../order.css"
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../Framer/fadein.js";
@@ -84,23 +85,34 @@ function Orderform3() {
 </div>
 <img className=' w-32' src={uploading} alt="" />
 </div>) : (
-  <div id="formcontainer" className="flex flex-col items-center justify-center w-1/2 h-full rounded-md">
-          <img src={submitting} alt="submitted" className="md:w-1/2 filter " />
-          <h1 className="text-3xl text-center font-bold  text-mypurple">Thank you!</h1>
-          <h1 className=" md:text-lg text-sm md:w-[18rem] w-[14rem] text-center font-semibold text-slate-700 my-2">Relax and wait for the artist’s approval!</h1>
-          <h1 className="md:text-sm text-xs text-center font-semibold text-slate-400 my-2">*Estimated amount to be paid after approval. </h1>
-          <div className='flex'>
+  <div id="formcontainer" className="flex flex-col py-4 items-center justify-center w-full h-full rounded-md">
+          <Lottie 
+        animationData={successanimation} 
+        loop={false} 
+        style={{ width: 280, height: 280 }} // Customize size
+      />
+          <h1 className="text-2xl text-center font-bold  text-[#454545] ">Your Order is on its way of approval!
+          </h1>
+          <h1 className=" md:text-sm text-sm md:w-[50%] w-[80%] text-center font-semibold text-[#828282] my-2">We’ve sent it to Artist and are just waiting on their approval to get you paid</h1>
+          
+          <motion.div 
+           variants={fadeIn("", 0.1)}
+           initial="hidden"
+           whileInView={"show"}
+           viewport={{ once: false, amount: 0.2 }}
+
+          className='flex my-2 flex-col-reverse w-[60%] '>
           {/* <button className=' py-2 px-4 text-slate-500 border-slate-500 border-2 rounded-full m-4 shadow-slate-400 shadow-lg'>Back</button> */}
           <button onClick={()=>{
             navigate('/Your-Orders')
             aftersubmit()
-          }} className=' border-[2px] border-mypurple  min-w-20 py-2 px-4 text-mypurple rounded-2xl m-6 '>Track</button>
+          }} className=' bg-zinc-300  text-slate-800 min-w-20 py-2 px-4 rounded-lg m-2 '>Track Your Order</button>
           <button onClick={()=>{
             aftersubmit()
             navigate('/')
-          }} className=' bg-mypurple  min-w-20 py-2 px-4 text-white rounded-2xl m-6 shadow-lg'>OK</button>
-          </div>
-          <h1 className="md:text-sm text-xs text-center font-semibold text-slate-400 my-2">Feel free to reach out to us on WhatsApp for more information!</h1>
+          }} className=' bg-mypurple  min-w-20 py-2 px-4 text-white rounded-lg m-2 shadow-lg'>Got it</button>
+          </motion.div>
+          
         </div>)
 
 

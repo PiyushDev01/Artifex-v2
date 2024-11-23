@@ -1,12 +1,14 @@
 import "./orderlist.css";
 import { Status, formatDate } from "./OrderList";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Detailcontext from "../OrderformSection/DetailContext/Detailcontext";
 import UserContext from "../../../Context/UserContex";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useNavigate } from "react-router";
 import paymenthandler from "../../../RazorpayPG/paymenthandler";
 import {paymentUpdate} from "../../../Firebase/CURDfunc/create.js";
+import paymentanimation from '../../../assets/paymentgreen.json'
+import Lottie  from 'lottie-react';
 
 const StAtus = [ "Payment", "Sketching", "Finished", "Delivered"];
 
@@ -22,22 +24,67 @@ function OrderStatus(props){
 }
 
 
+
 function OrderTrack() {
 
   const { currentOrder,setCurrentOrder } = useContext(Detailcontext); 
   const { user } = useContext(UserContext);
+  const [paymentpopup, setPaymentpopup] = useState(false);
   const shipping = currentOrder.shipping;                                                                               
   const navigate = useNavigate();
+  const curstatus = currentOrder.payment || currentOrder.status ;
   
-    
+ 
+
+
     const handleback = () => {  
       navigate("/Your-Orders")
       setCurrentOrder(null);
     }
-    const curstatus = currentOrder.payment || currentOrder.status ;
 
   return (
     <>
+
+      <div className={` ${paymentpopup ? "flex" : "hidden"} popupcontainer fixed top-0 left-0 w-full items-center justify-center h-full bg-black bg-opacity-50 z-20`} >
+
+        <div className="popup max-w-[30rem] w-[80%] p-4 md:h-[80%] bg-slate-50 flex items-center justify-center flex-col rounded-2xl ">
+        <Lottie 
+        animationData={paymentanimation}
+        className=" scale-150"
+        loop={true} 
+        style={{ width: 200, height: 200 }} // Customize size
+      />
+          <h1 className="text-2xl text-center font-bold  text-[#454545] ">Payment Successful
+          </h1>
+          <h1 className="text-2xl text-center font-bold  text-[#454545] ">₹ {currentOrder.price+currentOrder.shipping}
+          </h1>
+          <div className="paymentdtl text-sm md:text-lg">
+            <h1 className=" text-center font-semibold  text-[#454545] ">Payment ID: {currentOrder.paymentId}
+          </h1>
+          <h1 className="text-center font-semibold  text-[#454545] ">Paid on: {currentOrder.paymentDate}
+          </h1>
+
+          </div>
+        
+        <div
+        className='flex my-2 flex-col-reverse w-[60%]'
+        >
+
+        
+          <button onClick={()=>{
+            
+            navigate('/')
+          
+          }} className=' bg-zinc-300  text-slate-800 min-w-20 py-2 px-4 rounded-lg m-2 '>Back to Home</button>
+          <button onClick={()=>{
+            setPaymentpopup(false)
+            
+          }} className=' bg-green-500  min-w-20 py-2 px-4 text-white rounded-lg m-2 shadow-lg'>Got it</button>
+          </div>
+        
+        </div>
+
+      </div>
     
       <div
         className="relative h-[100vh] md:h-fit   flex flex-col items-center bg-[#2f2f2f]  pt-32   "
@@ -160,7 +207,7 @@ function OrderTrack() {
   </button>
 
     <button
-    onClick={(e) => paymenthandler(e,currentOrder,currentOrder.price+currentOrder.shipping, paymentUpdate, user.uid, setCurrentOrder)}
+    onClick={(e) => paymenthandler(e,setPaymentpopup ,currentOrder,currentOrder.price+currentOrder.shipping, paymentUpdate, user.uid, setCurrentOrder)}
     className="bg-blue-700 text-white py-2 px-4 rounded-lg shadow-blue-400 shadow-lg border-blue-700 border-[1px] hover:bg-blue-500 transition-all text-sm">
         Pay Now
     </button>
