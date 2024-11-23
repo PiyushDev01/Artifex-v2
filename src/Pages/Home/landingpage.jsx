@@ -13,7 +13,7 @@ export default function Landingpg(){
     {/* <div className=' w-[85%] absolute -z-10 top-[80%] md:top-[75%] rounded-3xl h-80 md:h-60' id='backdesign' style={{left:"50%", transform:"translate(-50%)"}} > */}
 {/*         
     </div> */}
-    <div  style={{height:"768px"}}><img className=' w-full absolute -z-20 top-0' src={blur1} alt="" />
+    <div  style={{height:"768px"}}><img className=' w-full absolute overflow-hidden -z-20 top-0' src={blur1} alt="" />
     <img className=' w-full absolute -z-20 md:top-0 top-40' src={blur2} alt="" />
     <div className=" pt-40 md:pt-0  w-full  px-4 md:px-40 flex md:flex-row flex-col h-[768px]  " id='home'>
     <Leftcontent/>

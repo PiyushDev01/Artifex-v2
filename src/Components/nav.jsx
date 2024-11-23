@@ -79,7 +79,7 @@ const handleTog = () => {
 
   return (
     <>
-      <nav className=" flex fles-row h-fit w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-white/30 backdrop-blur-sm  items-center fixed md:shadow-none shadow-md rounded-b-3xl md:rounded-none z-20">
+      <nav className=" flex fles-row h-fit w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-white/25 backdrop-blur-sm  items-center fixed md:shadow-lg shadow-md rounded-b-3xl md:rounded-none z-20">
         <a href="/">
           <div className=" flex items-center gap-2">
           <img src={logo} className=" md:w-28  w-24" alt="" />

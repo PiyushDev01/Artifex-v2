@@ -11,7 +11,7 @@ function Stepper() {
       {/* <h1 className=" text-2xl font-bold font-sans">Place Order</h1> */}
       <div
         id="steppercontainer"
-        className="flex md:w-[90%] min-w-[18rem]  md:max-w-[28rem] md:min-w-[20rem]   relative justify-between"
+        className="flex md:w-[90%] min-w-[18rem]  md:max-w-[28rem] md:min-w-[20rem] mt-6  relative justify-between"
       >
         <div
           id="processline"

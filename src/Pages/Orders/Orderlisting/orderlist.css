@@ -1,6 +1,6 @@
 /* Track */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
   }
   
   /* Handle */
@@ -22,4 +22,8 @@
   /* Handle on drag */
   ::-webkit-scrollbar-thumb:active {
     background: #333;
+  }
+
+  #container{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   }

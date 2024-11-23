@@ -59,7 +59,7 @@ function OrderPrice() {
 
 
 
-        <div id="cards" className=" z-[2rem] flex  rounded-[3rem] w-fit max-w-[95%] items-center  bg-white/30 backdrop-blur-sm md:flex-row flex-col" >
+        <div id="cards" className=" z-[2rem] flex  rounded-[3rem] w-fit max-w-[95%] items-center mb-8  bg-white/30 backdrop-blur-sm md:flex-row flex-col" >
 
         <div className=" md:hidden"> 
         <PriceCard />
