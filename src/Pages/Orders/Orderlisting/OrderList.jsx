@@ -38,21 +38,21 @@ const OrderList = (props) => {
 
 export const Status = (props) => {
 const statusClass =
-    props.status === "Delivered" || props.status === "Finished"|| props.status === "PAID"
-        ? "bg-[#B6FFB4] text-[#04BE00]"
-        : props.status === "Submitted"
-        ? "bg-[#FFE6B8] text-[#BF7C00]"
-        : props.status === "Rejected"
-        ? "bg-[#FFBFB4] text-[#BE5200]"
-        : props.status === "Sketching"
-        ? "bg-[#DFBAFF] text-[#8E2DE2] animate-pulse"
-        : props.status === "Approved"
-        ? "bg-[#CBEAFF] text-[#2283C6]"
-        : props.status === "Shipped"
-        ? "bg-[#B4D6FF] text-[#0052BE]"
-        : props.status === "Pending"
-        ? "bg-[#FFD6B4] text-[#BF5B00]"
-        : "bg-slate-300 text-slack-400";
+  props.status === "Delivered" || props.status === "Finished" || props.status === "PAID"
+    ? "bg-[#B6FFB4] text-[#04BE00]"
+    : props.status === "Submitted"
+    ? "bg-[#FFE6B8] text-[#BF7C00]"
+    : props.status === "Rejected"
+    ? "bg-[#FFBFB4] text-[#BE5200]"
+    : props.status === "Sketching"
+    ? "bg-[#DFBAFF] text-[#8E2DE2] animate-pulse"
+    : props.status === "Approved"
+    ? "bg-[#CBEAFF] text-[#2283C6]"
+    : props.status === "Shipped"
+    ? "bg-[#B4D6FF] text-[#0052BE]"
+    : props.status === "Pending"
+    ? "bg-[#FFD6B4] text-[#BF5B00]"
+    : "bg-slate-300 text-slack-400";
 
   const dotClass =
     props.status === "Delivered" || props.status === "Finished"|| props.status === "PAID"
@@ -73,9 +73,9 @@ const statusClass =
 
   return (
     <button
-      className={`${statusClass} py-2 mr-4 px-4 cursor-default shadow-md md:w-fit  md:max-w-[8rem] rounded-full text-sm flex items-center`}
+      className={`${statusClass} py-1 mr-2 px-4 h-fit cursor-default md:w-fit  md:max-w-[9rem] rounded-full  text-base flex items-center`}
     >
-      <div className={`w-2 h-2 ${dotClass} rounded-full hidden md:block mr-2`}></div>
+      {/* <div className={`w-2 h-2 ${dotClass} rounded-full hidden md:block mr-2`}></div> */}
       {props.status}
     </button>
   );
