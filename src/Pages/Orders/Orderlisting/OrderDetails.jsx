@@ -39,7 +39,7 @@ function OrderDetails() {
                   alt="refimg"
                 />
                 <div className="skeleton absolute flex items-center justify-center bg-slate-200 animate-pulse w-full h-full   shadow-lg min-w-[12rem] rounded-xl">
-                        <img className=" animate-pulse" src="https://www.iconpacks.net/icons/4/free-icon-no-image-14600.png" alt="" />
+                        <img className=" animate-pulse w-16" src="https://www.iconpacks.net/icons/4/free-icon-no-image-14600.png" alt="" />
                 </div>
 
                 </div> 

@@ -97,7 +97,7 @@ function Payment(props) {
                 <h1 className=" md:text-lg text-sm font-semibold text-slate-600">
                   Payment ID
                 </h1>
-                <h1 className=" text-xs md:text-lg  font-normal text-slate-800">
+                <h1 className=" text-sm md:text-lg  font-semibold text-slate-800">
                   {currentOrder.paymentId}
                 </h1>
               </div>
@@ -105,7 +105,7 @@ function Payment(props) {
                 <h1 className=" md:text-lg text-sm font-semibold text-slate-600">
                   Paid On
                 </h1>
-                <h1 className=" text-sm md:text-lg font-normal text-slate-800">
+                <h1 className=" text-sm md:text-lg font-semibold text-slate-800">
                   {currentOrder.paymentDate}
                 </h1>
               </div>

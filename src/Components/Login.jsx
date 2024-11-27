@@ -1,20 +1,24 @@
-import React, { useState } from "react";
 import "./nav.css";
 import { motion } from "framer-motion"
-//import { fadeIn } from "./fadein";
 import googleIcon from "../assets/google.svg";
 import facebookIcon from "../assets/facebook.svg";
 import logo from "../assets/titlelogo2.webp";
 import mail from "../assets/mail.png"
 import LoginGoogle from "../Firebase/googleAuth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-export const pending=()=>{ alert("We are working on it")}
+export const pending=()=>{
+  toast.warning('This feature is under development please try another option',{
+    position: "top-center",
+    draggable: true,
+    theme: "dark",
+  });
+}
 
 function Login({handlelgn}) {
-    
-   
-   
+
 
   return (
     <>
@@ -24,6 +28,7 @@ function Login({handlelgn}) {
     onClick={handlelgn}
       
     ></div>
+    
     <div className={`hidden md:flex flex-col justify-center items-center w-screen h-screen absolute top-0 left-0  `} >
       <motion.div
        
@@ -58,6 +63,7 @@ function Login({handlelgn}) {
           <h2 className="text-lg md:text-2xl text-gray-800 ">sign in with Email</h2>
         </div>
       </motion.div>
+      <ToastContainer />
       </div>
       </>
   );

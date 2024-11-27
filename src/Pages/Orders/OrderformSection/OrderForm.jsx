@@ -8,6 +8,12 @@ import Detailcontext from "./DetailContext/Detailcontext";
 import { useNavigate } from "react-router-dom";
 import {submitOrder}  from "../../../Firebase/CURDfunc/create.js";
 import  UserContext  from "../../../Context/UserContex.js";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../order.css';
+
+// TODO: add toastifies for success and error messages
+
 
 
 function OrderForm() {
@@ -45,12 +51,14 @@ function OrderForm() {
         className=" pt-16 w-full min-h-[100vh] rounded-lg bg-gray-100 transition-all flex flex-col justify-center items-center "
       >
         {/* stepper */}
-        { !submitted && <Stepper />}
- 
+        {!submitted && <Stepper />}
+
         {/* Form Section */}
         <div
           id="Formcontainer"
-          className={` transition-all ${submitted && currentStep > 2 ?"md:max-w-[40%]":"md:max-w-[80%]"}  w-[95%] h-fit bg-slate-50 shadow-2xl min-h-[24rem] flex justify-center items-center rounded-2xl p-2 md:p-5`}
+          className={` transition-all ${
+            submitted && currentStep > 2 ? "md:max-w-[40%]" : "md:max-w-[80%]"
+          }  w-[95%] h-fit bg-slate-50 shadow-2xl min-h-[24rem] flex justify-center items-center rounded-2xl p-2 md:p-5`}
         >
           {/* Routing for forms */}
           {currentStep === 1 ? (
@@ -64,16 +72,19 @@ function OrderForm() {
 
         {/* Buttons */}
 
-        <div id="buttondiv" className={`${submitted && "hidden"} md:w-[80%] w-[90%] justify-between m-10 flex-col-reverse md:flex-row gap-4 flex `}>
+        <div
+          id="buttondiv"
+          className={`${
+            submitted && "hidden"
+          } md:w-[80%] w-[90%] justify-between m-10 flex-col-reverse md:flex-row md:gap-4 flex `}
+        >
           <button
             onClick={() => {
-              
               if (currentStep === 1) {
                 navigate("/order"); // Make sure you have a forward slash for the route
               } else {
                 move(-1);
               }
-             
             }}
             className="bg-zinc-300  text-slate-800 border-2  px-4 py-2 text-lg  md:rounded-full  rounded-lg"
             // disabled={currentStep === 1}
@@ -82,79 +93,84 @@ function OrderForm() {
           </button>
 
           <div className="flex gap-4 md:flex-row flex-col items-center ">
-           {
-              currentStep === 3 && (
-                <div className=" flex gap-2 items-center m-2 ">
-           <input type="checkbox" 
-            onChange={()=>setChecked(!checked)}
-            className=" w-4 h-4 "
-           />
-           <h1 className="text-slate-700 text-lg">All Details are correct</h1>
-           </div>)
-
-           }
-
-          <button
-            onClick={() => {
-              if (currentStep === 1) {
-                if (details.size == null || details.orientation == null || details.cropped == null) {
-                  setFormOneValid({
-                  ...is_F1_Invalide,
-                  size: details.size == null ? true : false,
-                  orientation: details.orientation == null ? true : false,
-                  file: details.cropped == null ? true : false,
-                  });
-                  //alert("Please select size and orientation");
-                }
+            {currentStep === 3 && (
+              <div className=" flex gap-2 items-center m-2 ">
                 
-                  else {
-                  move(1);
-                }
-              } 
-              else if (currentStep === 2) {
-                if (
-                  details.name == null ||
-                  details.phone == null ||
-                  details.saveas == null ||
-                  details.flat == null ||
-                  details.street == null ||
-                  details.district == null ||
-                  details.state == null ||
-                  details.pin == null
-                ) {
-                  setFormTWOValid({
-                  ...is_F2_Invalide,
-                  name: details.name == null ? true : false,
-                  phone: details.phone == null ? true : false,
-                  saveas: details.saveas == null ? true : false,
-                  flat: details.flat == null ? true : false,
-                  street: details.street == null ? true : false,
-                  district: details.district == null ? true : false,
-                  state: details.state == null ? true : false,
-                  pin: details.pin == null ? true : false,
-                  });
-                  //alert("Please fill all the details");
-                } else {
-                  move(1);
-                }
-              }else {
-                if (checked) {
-                  handleSubmit();
-                } else {
-                  alert("Please confirm the details");
-                
-                }
-              }
-            }}
-            className="bg-[#6200EA] text-white px-4 py-2 text-lg md:rounded-full w-full md:w-fit  rounded-lg"
-            // disabled={currentStep === steps.length}
-          >
-            {currentStep === steps.length ? "Submit" : "Next"}
-          </button>
+  <label class="container w-fit mx-2">
+  <input type="checkbox"  onChange={() => setChecked(!checked)} />
+  <div className="checkmark"></div>
+</label>
 
+                <h1 className="text-slate-700 font-semibold text-lg">
+                  All Details are correct
+                </h1>
+              </div>
+            )}
+
+            <button
+              onClick={() => {
+                if (currentStep === 1) {
+                  if (
+                    details.size == null ||
+                    details.orientation == null ||
+                    details.cropped == null
+                  ) {
+                    setFormOneValid({
+                      ...is_F1_Invalide,
+                      size: details.size == null ? true : false,
+                      orientation: details.orientation == null ? true : false,
+                      file: details.cropped == null ? true : false,
+                    });
+                    //alert("Please select size and orientation");
+                  } else {
+                    move(1);
+                  }
+                } else if (currentStep === 2) {
+                  if (
+                    details.name == null ||
+                    details.phone == null ||
+                    details.saveas == null ||
+                    details.flat == null ||
+                    details.street == null ||
+                    details.district == null ||
+                    details.state == null ||
+                    details.pin == null
+                  ) {
+                    setFormTWOValid({
+                      ...is_F2_Invalide,
+                      name: details.name == null ? true : false,
+                      phone: details.phone == null ? true : false,
+                      saveas: details.saveas == null ? true : false,
+                      flat: details.flat == null ? true : false,
+                      street: details.street == null ? true : false,
+                      district: details.district == null ? true : false,
+                      state: details.state == null ? true : false,
+                      pin: details.pin == null ? true : false,
+                    });
+                    
+                  } else {
+                    move(1);
+                  }
+                } else {
+                  if (checked) {
+                    handleSubmit();
+                  } else {
+                    toast.error("Please verify all the details", {
+                      position: "bottom-center",
+                      theme: "colored",
+                      draggable: true,
+                    });
+                  }
+                }
+              }}
+              className="bg-[#6200EA] text-white px-4 py-2 text-lg md:rounded-full w-full md:w-fit  rounded-lg"
+              // disabled={currentStep === steps.length}
+            >
+              {currentStep === steps.length ? "Submit" : "Next"}
+            </button>
+            <ToastContainer />
+          </div>
         </div>
-        </div>
-          
       </div>
     </>
   );

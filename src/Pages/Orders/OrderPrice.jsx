@@ -11,10 +11,18 @@ import UserContext from "../../Context/UserContex";
 
 
 
+
 function OrderPrice() {
 
   const navigate = useNavigate();
   const {isUserlogged }= useContext(UserContext);
+
+  const toastifyerror = () => { 
+    toast.error('Please Login to continue',{
+      position: "top-center",
+      draggable: true,
+    });
+  }
 
 
 

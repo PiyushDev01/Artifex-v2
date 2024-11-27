@@ -89,10 +89,10 @@ function OrderTrack() {
       </div>
 
       <div
-        className=" md:h-[100vh] pb-10   flex flex-col items-center  bg-gradient-to-t from-[#9647ff] to-[#694dff] pt-24   "
+        className=" md:min-h-[100vh] h-fit pb-10   flex flex-col items-center  bg-gradient-to-t from-[#9647ff] to-[#694dff] pt-24   "
         id="background"
       >
-        <div className=" md:flex flex-row-reverse justify-between  w-[90%] items-center gap-6 hidden  md:max-w-[70rem] md:w-[75%]   h-fit z-10">
+        <div className=" md:flex flex-row-reverse justify-between  w-[90%] items-center gap-6 hidden  md:max-w-[90rem] md:w-[80%]   h-fit z-10">
           <button
             onClick={handleback}
             className=" hover:bg-slate-300 transition-all bg-[#c5b7ff] text-slate-600 py-2 px-4 rounded-full my-4"
@@ -103,7 +103,7 @@ function OrderTrack() {
         </div>
 
         {/* // Compare this snippet from src/Pages/Orders/Orderlisting/OrderTrack.jsx: */}
-        <div className="container z-10 p-4 rounded-2xl gap-3 flex flex-col md:max-w-[80%] max-w-[90%] md:flex-row backdrop:blur-lg bg-slate-200/50 justify-center w-fit">
+        <div className="container1 z-10 p-4 rounded-2xl gap-3 flex flex-col md:max-w-[80%] max-w-[90%] md:flex-row backdrop:blur-lg bg-slate-200/50 justify-center w-fit">
           <OrderDetails />
           <Status status="Finished" />
           <div className="flex flex-col gap-3 md:w-1/3">

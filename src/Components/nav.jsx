@@ -117,22 +117,27 @@ const handleTog = () => {
         >
           {isUserlogged && (
             <h1
-              className=" cursor-pointer hover:text-purple-500 transition-all text-md hidden md:block"
+              className=" cursor-pointer hover:text-indigo-700 transition-all text-md hidden md:block"
               id="lgh1"
               onClick={SignOut}
             >
-              Sign Out
+              Logout
             </h1>
           )}
 
           {uDetails.image != null ? (
-            <img
+            <div className="profile relative ">
+              <img
               src={uDetails.image} alt="user"
               className="md:w-16 md:p-2 w-10 h-10 md:h-16 md:block hidden"
               style={{ borderRadius: "100px" }}
             />
+            
+
+
+            </div>
           ) : (
-            <Button name="Sign In" display="none"></Button>
+            <Button name="Login" display="none"></Button>
           )}
         </div>
         <div
@@ -217,7 +222,7 @@ const handleTog = () => {
             viewport={{ once: false, amount: 0.7 }}
             className=" text-zinc-300 text-center mt-16 "
           >
-            {isUserlogged ? "Sign Out" : "Login or Sign Up"} <br />{" "}
+            {isUserlogged ? "Sign out" : "Login or Sign Up"} <br />{" "}
             {isUserlogged ? "" : "with"}
           </motion.h1>
 

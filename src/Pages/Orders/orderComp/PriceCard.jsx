@@ -3,16 +3,15 @@ import '../order.css'
 import { useNavigate } from "react-router-dom";
 import UserContext from "../../../Context/UserContex";
 import { useContext } from 'react';
-// import DetailProvider from '../OrderformSection/DetailContext/DetailProvider';
+
 
 
 const price=349;
 
-function PriceCard() {
+function PriceCard(props) {
 
   const navigate = useNavigate();
   const {isUserlogged, setprice }= useContext(UserContext);
-  // const {details, setDetails} = useContext(DetailProvider);
 
   const openForm = () => {
     if(isUserlogged){
@@ -58,6 +57,7 @@ function PriceCard() {
                 
         </div>
         </div>
+        
     </>
   )
 }

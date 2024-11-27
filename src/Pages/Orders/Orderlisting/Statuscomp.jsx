@@ -60,7 +60,7 @@ function Statuscomp(props) {
           <h1 className=" text-xl font-semibold text-slate-700 ">
             Status Description
           </h1>
-          <p className=" text-sm md:text-base font-normal w-fit bg-gradient-to-tl from-indigo-200 to-purple-200 p-4 rounded-lg md:rounded-xl mt-2 text-slate-700">
+          <p className=" text-sm md:text-base font-semibold w-fit bg-gradient-to-tl from-indigo-200 to-purple-200 p-4 rounded-lg md:rounded-xl mt-2 text-slate-700">
           {currentOrder.statusMessage}
           </p>
         </div>
