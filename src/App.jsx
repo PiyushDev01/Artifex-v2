@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import OrderForm from "./Pages/Orders/OrderformSection/OrderForm";
 import OrderList from "./Pages/Orders/Orderlisting/OrderList";
 import OrderTrack from "./Pages/Orders/Orderlisting/OrderTrack";
-import Footer from './Components/Footer';
+import Footer from './Components/Footer.jsx';
 import PoliciesPage from "./Components/PoliciesPage";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
             <Route path="Your-Orders/Details" element={<OrderTrack />} />
             <Route path="policies" element={<PoliciesPage />} />
           </Routes>
-          <Footer />
+          <Footer/>
         </div>
       </Router>
     </>
