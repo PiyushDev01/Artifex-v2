@@ -23,7 +23,7 @@ a:hover {
 }
 
 li {
-  width: 5rem;
+  /* width: 5rem; */
   font-family: "manrope";
   font-weight: 400;
 }

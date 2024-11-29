@@ -12,7 +12,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../order.css';
 
-// TODO: add toastifies for success and error messages
 
 
 
@@ -95,14 +94,16 @@ function OrderForm() {
           <div className="flex gap-4 md:flex-row flex-col items-center ">
             {currentStep === 3 && (
               <div className=" flex gap-2 items-center m-2 ">
-                
-  <label class="container w-fit mx-2">
-  <input type="checkbox"  onChange={() => setChecked(!checked)} />
-  <div className="checkmark"></div>
-</label>
+                <label class="container w-fit mx-2">
+                  <input
+                    type="checkbox"
+                    onChange={() => setChecked(!checked)}
+                  />
+                  <div className="checkmark"></div>
+                </label>
 
                 <h1 className="text-slate-700 font-semibold text-lg">
-                  All Details are correct
+                  Accept all <span onClick={()=> navigate('/policies')} className=" text-indigo-700 cursor-pointer">terms and conditions</span> 
                 </h1>
               </div>
             )}
@@ -147,7 +148,6 @@ function OrderForm() {
                       state: details.state == null ? true : false,
                       pin: details.pin == null ? true : false,
                     });
-                    
                   } else {
                     move(1);
                   }
@@ -155,7 +155,7 @@ function OrderForm() {
                   if (checked) {
                     handleSubmit();
                   } else {
-                    toast.error("Please verify all the details", {
+                    toast.error("Please accept Terms and Conditions", {
                       position: "bottom-center",
                       theme: "colored",
                       draggable: true,
