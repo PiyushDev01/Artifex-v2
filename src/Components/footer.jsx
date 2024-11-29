@@ -1,6 +1,9 @@
 import logo from "../assets/logo.webp";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+    const navigate = useNavigate();
+
   return (
     <footer className="bg-gradient-to-tl   from-zinc-950 via-zinc-900 to-[#390749] text-white py-8">
       <div className="max-w-7xl mx-auto px-4">
@@ -17,16 +20,16 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <div className="flex flex-col md:flex-row gap-4 text-gray-400">
-            <a href="/policies" className="hover:text-white">
+            <a id="tnc" onClick={()=>navigate('/policies')} className="hover:text-white">
               Terms and Conditions
             </a>
-            <a href="/policies" className="hover:text-white">
+            <a onClick={()=>navigate('/policies')} className="hover:text-white">
               Privacy Policy
             </a>
-            <a href="/policies" className="hover:text-white">
+            <a onClick={()=>navigate('/policies')} className="hover:text-white">
               Refund & Cancellation
             </a>
-            <a href="/policies" className="hover:text-white">
+            <a onClick={()=>navigate('/policies')} className="hover:text-white">
               Contact Us
             </a>
           </div>
