@@ -40,7 +40,7 @@ function OrderPrice() {
         </div>
         <div
           id="backBox"
-          className="  fixed md:absolute bottom-0 w-[100%] h-1/2 md:h-1/3 rounded-t-[3rem] z-[1rem]  bg-gradient-to-r from-[#6200EA] to-[#8E2DE2]"
+          className=" md:absolute bottom-0 w-[100%] h-1/2 md:h-1/3 rounded-t-[3rem] z-[1rem]  bg-gradient-to-r from-[#6200EA] to-[#8E2DE2]"
         ></div>
         {/* <div
           id="backBox"
@@ -67,7 +67,7 @@ function OrderPrice() {
 
 
 
-        <div id="cards" className=" z-[2rem] flex  rounded-[3rem] w-fit max-w-[95%] items-center mb-8  bg-white/30 backdrop-blur-sm md:flex-row flex-col" >
+        <div id="cards" className=" z-[2rem] flex  rounded-[3rem] w-fit max-w-[95%] items-center mb-8  bg-slate-400/25 backdrop-blur-sm md:flex-row flex-col" >
 
         <div className=" md:hidden"> 
         <PriceCard />

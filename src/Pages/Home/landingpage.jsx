@@ -13,7 +13,7 @@ export default function Landingpg() {
       {/* <div className=' w-[85%] absolute -z-10 top-[80%] md:top-[75%] rounded-3xl h-80 md:h-60' id='backdesign' style={{left:"50%", transform:"translate(-50%)"}} > */}
       {/*         
     </div> */}
-      <div className=" overflow-hidden h-[100vh] ">
+      <div className="  ">
         <img
           className=" w-full absolute overflow-hidden -z-20 top-0"
           src={blur1}
@@ -33,7 +33,7 @@ export default function Landingpg() {
         </div>
       </div>
       <center>
-        <h1 className=" md:mt-0 mt-[12rem] text-xl p-4 md:text-3xl  text-slate-700">
+        <h1 className=" md:mt-0 mt-[12rem] text-xl py-8 md:text-3xl  text-slate-700">
           We're currently working on the website. Thank you for your
           understanding!
         </h1>
