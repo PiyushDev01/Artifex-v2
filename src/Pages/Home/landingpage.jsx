@@ -8,23 +8,20 @@ import blur2 from "../../assets/Ellipse 6.webp";
 export default function Landingpg() {
   return (
     <>
-      {/* <img className=' w-full absolute -z-10 top-3/4 md:top-[55%] h-96 md:h-3/4' src={vectorbg} alt="" /> */}
-      {/* <div className=' w-[85%] absolute -z-10 top-[80%] md:top-[75%] rounded-3xl h-80 md:h-60' id='backdesign' style={{left:"50%", transform:"translate(-50%)"}} > */}
-      {/*         
-    </div> */}
-      <div className="  ">
+      
+      <div className=" h-[120vh] md:h-[100vh] w-full ">
         <img
-          className=" w-full absolute overflow-hidden -z-20 top-0"
+          className=" w-[100%] md:h-full absolute overflow-hidden -z-20 top-0"
           src={blur1}
           alt=""
         />
         <img
-          className=" w-full absolute hidden -z-20 md:top-0 top-40"
+          className=" w-full absolute md:h-full -z-20 md:top-0 top-40"
           src={blur2}
           alt=""
         />
         <div
-          className=" pt-40 md:pt-0  w-full  px-4 md:px-40 flex md:flex-row flex-col h-[768px]  "
+          className=" pt-24 md:pt-0 h-[100vh] w-full px-4 md:px-40 flex md:flex-row flex-col md:h-[768px]   "
           id="home"
         >
           <Leftcontent />
