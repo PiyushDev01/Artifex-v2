@@ -29,12 +29,12 @@ function OrderPrice() {
   return (
     <>
       <div
-        className="relative md:h-full bg-zinc-950 w-fit md:w-full  flex flex-col items-center justify-center pt-32   "
+        className="relative md:h-full bg-zinc-950 w-fit md:w-full flex flex-col items-center justify-center pt-32   "
         id="background"
       >
         <nav className=" top-0 md:h-[5.5rem] h-[4.6rem] w-screen  left-0 md:bg-none bg-slate-50  fixed md:shadow-none shadow-md rounded-b-3xl md:rounded-none " > </nav>
 
-        <div id="backimg" className=" md:absolute fixed top-[20vh]  md:scale-100 w-[95%]  md:-top-[10rem]  overflow-hidden h-[100vh] " >
+        <div id="backimg" className=" md:absolute fixed top-[20vh] -z-20  md:scale-100 w-[95%]  md:-top-[10rem]  overflow-hidden h-[100vh] " >
         <img src={backimg} alt="" className=" brightness-150 saturate-150 scale-125  " />
 
         </div>

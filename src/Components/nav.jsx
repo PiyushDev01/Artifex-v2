@@ -11,7 +11,7 @@ import Login from "./Login";
 import LoginGoogle from "../Firebase/googleAuth";
 
 import { signOut, getAuth } from "firebase/auth";
-import app  from "../Firebase/firbase";
+import app from "../Firebase/firbase";
 
 import { pending } from "./Login";
 import { Link } from "react-router-dom";
@@ -28,7 +28,7 @@ export default function Nav() {
   const [fadebg, setfadebg] = useState({ display: "none" });
   const [hide, sethide] = useState(false);
 
-  const {user}= useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -44,10 +44,9 @@ export default function Nav() {
       }
     }
     check();
-  }
-  , [user]);
+  }, [user]);
 
-const handleTog = () => {
+  const handleTog = () => {
     if (!toggle) {
       settoggle(true);
       setbox({ width: "60%" });
@@ -74,18 +73,18 @@ const handleTog = () => {
     window.location.reload();
   };
 
-  const {isUserlogged, uDetails}= useContext(UserContext);
-  const [checkadmin , setcheckadmin] = useState(false);
+  const { isUserlogged, uDetails } = useContext(UserContext);
+  const [checkadmin, setcheckadmin] = useState(false);
 
   return (
     <>
       <nav className=" flex fles-row h-fit w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-white/25 backdrop-blur-sm  items-center fixed md:shadow-lg shadow-md rounded-b-3xl md:rounded-none z-20">
         <a href="/">
           <div className=" flex items-center gap-2">
-          <img src={logo} className=" md:w-28  w-24" alt="" />
-          {
-            checkadmin && <p className=" border-l-[1px] px-2 border-slate-500 ">Admin</p>
-          }
+            <img src={logo} className=" md:w-28  w-24" alt="" />
+            {checkadmin && (
+              <p className=" border-l-[1px] px-2 border-slate-500 ">Admin</p>
+            )}
           </div>
         </a>
         <div
@@ -95,19 +94,19 @@ const handleTog = () => {
           <ul className="flex flex-row gap-10 font-sans transition-all text-xl">
             <Link to="/">
               {" "}
-              <li>Home</li>
+              <li id="li">Home</li>
             </Link>
             <Link to="/order">
               {" "}
-              <li>Order</li>
+              <li id="li">Order</li>
             </Link>
-            <a href="https://www.piyushdev.me/">
+            <Link to="/aboutus">
               {" "}
-              <li>About</li>
-            </a>
-            <a href="">
+              <li id="li">About</li>
+            </Link>
+            <a href="https://wa.me/+916392802689">
               {" "}
-              <li>Contact</li>
+              <li id="li">Contact</li>
             </a>
           </ul>
         </div>
@@ -128,13 +127,11 @@ const handleTog = () => {
           {uDetails.image != null ? (
             <div className="profile relative ">
               <img
-              src={uDetails.image} alt="user"
-              className="md:w-16 md:p-2 w-10 h-10 md:h-16 md:block hidden"
-              style={{ borderRadius: "100px" }}
-            />
-            
-
-
+                src={uDetails.image}
+                alt="user"
+                className="md:w-16 md:p-2 w-10 h-10 md:h-16 md:block hidden"
+                style={{ borderRadius: "100px" }}
+              />
             </div>
           ) : (
             <Button name="Login" display="none"></Button>
@@ -145,9 +142,7 @@ const handleTog = () => {
           onClick={handleTog}
           className=" gap-5 pb-28 flex flex-col justify-end items-center w-full h-screen  absolute top-0 left-0 md:none "
           id="fadebg"
-        >
-          
-        </div>
+        ></div>
 
         <div className="block md:hidden" onClick={handleTog}>
           {isUserlogged ? (
@@ -185,7 +180,6 @@ const handleTog = () => {
           )}
         </div>
 
-
         <div
           style={box}
           className=" h-fit absolute right-0 top-20 md:hidden justify-center py-8 rounded-l-xl flex flex-col items-center gap-3 overflow-hidden z-20"
@@ -194,25 +188,23 @@ const handleTog = () => {
           <ul
             style={{ textbox }}
             className="flex flex-col gap-6  transition-all text-slate-200 text-lg overflow-hidden"
-            onClick={
-              handleTog
-            }
+            onClick={handleTog}
           >
             <Link to="/">
               {" "}
-              <li id="mobLi">Home</li>
+              <li id="li">Home</li>
             </Link>
             <Link to="/order">
               {" "}
-              <li id="mobLi">Order</li>
+              <li id="li">Order</li>
             </Link>
-            <a href="https://www.piyushdev.me/">
+            <Link to="/aboutus">
               {" "}
-              <li id="mobLi">About</li>
-            </a>
-            <a href="">
+              <li id="li">About</li>
+            </Link>
+            <a href="https://wa.me/+916392802689">
               {" "}
-              <li id="mobLi">Contact</li>
+              <li id="li">Contact</li>
             </a>
           </ul>
           <motion.h1
@@ -238,16 +230,18 @@ const handleTog = () => {
             </motion.div>
           ) : (
             <div className=" flex flex-row gap-8">
-              <a onClick={()=>{
-                LoginGoogle(handleTog);
-              }}>
+              <a
+                onClick={() => {
+                  LoginGoogle(handleTog);
+                }}
+              >
                 {" "}
                 <motion.div
                   variants={fadeIn("up", 0.07)}
                   initial="hidden"
                   whileInView={"show"}
                   viewport={{ once: false, amount: 0.3 }}
-                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-[1px] border-slate-500 "
+                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg"
                 >
                   <img src={googleIcon} alt="" />
                 </motion.div>
@@ -259,7 +253,7 @@ const handleTog = () => {
                   initial="hidden"
                   whileInView={"show"}
                   viewport={{ once: false, amount: 0.3 }}
-                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg border-[1px] border-slate-500 "
+                  className=" p-2 w-14 h-14 backdrop-blur-sm bg-white/20 rounded-lg shadow-lg "
                 >
                   <img src={facebookIcon} alt="" />
                 </motion.div>

@@ -7,6 +7,7 @@ import OrderList from "./Pages/Orders/Orderlisting/OrderList";
 import OrderTrack from "./Pages/Orders/Orderlisting/OrderTrack";
 import Footer from './Components/footer.jsx';
 import PoliciesPage from "./Components/PoliciesPage";
+import AboutUs from './Pages/AboutUs/AboutUs';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="Your-Orders" element={<OrderList />} />
             <Route path="Your-Orders/Details" element={<OrderTrack />} />
             <Route path="policies" element={<PoliciesPage />} />
+            <Route path="aboutus" element={<AboutUs/>} />
           </Routes>
           <Footer/>
         </div>

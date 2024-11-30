@@ -4,7 +4,6 @@ import Leftcontent from "./homeComp/leftcontent";
 import vectorbg from "../../assets/Vector1.webp";
 import blur1 from "../../assets/Ellipse 5.webp";
 import blur2 from "../../assets/Ellipse 6.webp";
-import PoliciesPage from "./../../Components/PoliciesPage";
 
 export default function Landingpg() {
   return (
@@ -38,7 +37,7 @@ export default function Landingpg() {
           understanding!
         </h1>
       </center>
-      {/* <PoliciesPage /> */}
+      
     </>
   );
 }
