@@ -103,7 +103,7 @@ function OrderForm() {
                 </label>
 
                 <h1 className="text-slate-700 font-semibold text-lg">
-                  Accept all <span onClick={()=> navigate('/policies')} className=" text-indigo-700 cursor-pointer">terms and conditions</span> 
+                 I accept the <span onClick={()=> navigate('/policies')} className=" text-indigo-700 cursor-pointer">terms and conditions</span> 
                 </h1>
               </div>
             )}
