@@ -17,9 +17,8 @@ function OrderTrack() {
   const { currentOrder, setCurrentOrder } = useContext(Detailcontext);
   const { user } = useContext(UserContext);
   const [paymentpopup, setPaymentpopup] = useState(false);
-  // const shipping = currentOrder.shipping;
+
   const navigate = useNavigate();
-  // const curstatus = currentOrder.payment || currentOrder.status;
 
   const handleback = () => {
     navigate("/Your-Orders");
@@ -27,6 +26,7 @@ function OrderTrack() {
   };
 
   const handlePayment = (e) => {
+   
     paymenthandler(
       e,
       setPaymentpopup,
@@ -36,6 +36,8 @@ function OrderTrack() {
       user.uid,
       setCurrentOrder
     );
+    
+
   };
 
   return (
@@ -108,7 +110,7 @@ function OrderTrack() {
           <Status status="Finished" />
           <div className="flex flex-col gap-3 md:w-1/3">
             <PersonalDetail />
-            <Payment handlePayment={handlePayment} />
+            <Payment handlePayment={handlePayment}  />
           </div>
         </div>
         <button

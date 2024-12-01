@@ -94,6 +94,9 @@ const PoliciesPage = () => {
         <p className="text-gray-700">
           Each portrait is crafted with care to meet your requirements. Please review the product details before placing your order.
         </p>
+        <p>
+        Note: The sketch will take approximately 4-5 days to complete.
+        </p>
       </section>
     </div>
   );

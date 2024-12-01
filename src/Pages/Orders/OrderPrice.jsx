@@ -95,6 +95,9 @@ function OrderPrice() {
           d3="Skillfully designed to capture every unique detail."
           
         /></div>
+        <p className=" z-30 mb-6 mx-4 text-slate-300 ">
+        Note: Your shipping charge will be determined by your pincode, ensuring you get the most accurate rate for your delivery!
+        </p>
       </div>
     </>
   );

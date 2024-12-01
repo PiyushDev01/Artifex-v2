@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Detailcontext from "../OrderformSection/DetailContext/Detailcontext";
 import { Status } from './OrderList';
 import { motion } from "framer-motion";
@@ -9,6 +9,13 @@ function Payment(props) {
   const { currentOrder } = useContext(Detailcontext);
   const shipping = currentOrder.shipping;
   const curstatus = currentOrder.payment || currentOrder.status;
+  const [paymentprocessing, setPaymentprocessing] = useState("Pay Now");  
+
+  const handlePayment = (e) => {
+    e.preventDefault();
+    setPaymentprocessing("Processing...");
+    props.handlePayment();
+  }
 
 
   return (
@@ -84,10 +91,13 @@ function Payment(props) {
                 </button>
 
                 <button
-                  onClick={props.handlePayment}
+                  onClick={
+                    handlePayment
+                  }
+                  
                   className="bg-blue-700 text-white w-full  py-2 px-4 rounded-full shadow-blue-400 shadow-lg border-blue-700 border-[1px] hover:bg-blue-500 transition-all font-semibold text-sm"
                 >
-                  Pay Now
+                  {paymentprocessing}
                 </button>
               </div>
             </>

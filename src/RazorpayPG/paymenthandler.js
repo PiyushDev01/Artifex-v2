@@ -2,7 +2,6 @@ import {formatDate} from "../Pages/Orders/Orderlisting/OrderList";
 
 
 const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, paymentUpdate, userID, setCurrentOrder) => {
-    e.preventDefault();
   
     // Ensure Razorpay is loaded
     if (!window.Razorpay) {
