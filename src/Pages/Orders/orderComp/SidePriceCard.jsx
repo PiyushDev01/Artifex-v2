@@ -45,8 +45,10 @@ function SidePriceCard(props) {
                     <div onClick={openForm} id="orderbutton" className=' bg-zinc-900  py-2 mx-4 my-2 rounded-full flex justify-center cursor-pointer hover:bg-black transition-all '><h2
                     className=' font-bold text-zinc-100'>Order</h2></div>
             </div>
+            <h1 className=' px-6 pt-2 font-bold '>{props.title}</h1>
+            <p className=' text-sm px-6 text-slate-700' >{props.desc} </p>
 
-            <div id="bottomContent" className=' w-auto h-[270px] p-4 m-2'>
+            <div id="bottomContent" className=' w-auto h-[270px] p-4'>
                 <div className=' flex gap-2'>
                 <h2 className=' text-black'>&#9737;</h2>
                 <h2  id='cardDetail' > {props.d1} </h2></div>

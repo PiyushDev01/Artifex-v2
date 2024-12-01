@@ -75,9 +75,11 @@ function OrderPrice() {
         <SidePriceCard
           price={599}
           person="Double Person"
-          d1="Receive progress updates to stay informed on your artwork."  
-          d2="Track the delivery status of your sketch easily."
-          d3="Get a digital preview for feedback before final delivery."
+          title="Double Person Pencil Sketch"
+          desc="Celebrate togetherness with a beautifully crafted pencil sketch featuring two people in the frame."
+          d1="Available Sizes: A4, A5, and A3."  
+          d2="Ideal for couples, siblings, or best friends."
+          d3="Hand-drawn with exceptional detail and artistry."
 
         />
        <div className=" hidden md:block"> 
@@ -86,9 +88,11 @@ function OrderPrice() {
         <SidePriceCard
           price={799}
           person="More than Two"
-          d1="Enjoy secure packaging for the safe delivery of your artwork."
-          d2="Receive a digital preview for review before delivery."
-          d3="Personalized thank-you notes and custom gift options included."
+          title="Multiple People Pencil Sketch"
+          desc='Celebrate togetherness with a stunning pencil sketch featuring multiple individuals in the frame.'
+          d1="Available Sizes: A4, A5, and A3."
+          d2="Perfect for family portraits, group memories, or special occasions."
+          d3="Skillfully designed to capture every unique detail."
           
         /></div>
       </div>

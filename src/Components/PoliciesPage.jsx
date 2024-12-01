@@ -55,6 +55,8 @@ const PoliciesPage = () => {
         <ul className="list-disc list-inside text-gray-700">
           <li>Shipping timelines range from <strong>3 to 7 business days</strong> depending on the location.</li>
           <li>Tracking information will be shared upon dispatch.</li>
+          <li>We deliver our products through our trusted logistics partner, <strong>DELHIVERY</strong> .</li>
+
           <li>We are not responsible for delays caused by courier services or unforeseen events.</li>
         </ul>
       </section>
