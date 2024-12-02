@@ -8,6 +8,7 @@ import OrderTrack from "./Pages/Orders/Orderlisting/OrderTrack";
 import Footer from './Components/footer.jsx';
 import PoliciesPage from "./Components/PoliciesPage";
 import AboutUs from './Pages/AboutUs/AboutUs';
+import AdminDash from './Adminlayouts/AdminDash';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
             <Route path="Your-Orders/Details" element={<OrderTrack />} />
             <Route path="policies" element={<PoliciesPage />} />
             <Route path="aboutus" element={<AboutUs/>} />
-          </Routes>
+            <Route path="/admin" element={<AdminDash/>} />
+           </Routes>
           <Footer/>
         </div>
       </Router>

@@ -1,8 +1,7 @@
-import app from '../firbase.js';
+
 import {db} from '../firbase.js';
-import { collection, addDoc, setDoc, doc, query, getDocs, getDoc } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL, getStorage } from "firebase/storage";
-import { arrayUnion } from "firebase/firestore";
+import { collection, doc, getDocs, getDoc } from "firebase/firestore";
+
 
 const getOrders = async (uid) => {
     try {

@@ -1,6 +1,6 @@
-import app from '../firbase.js';
+// Code to create a new user document in Firestore and submit a new order with an image upload
 import {db} from '../firbase.js';
-import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import {  setDoc, doc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, getStorage } from "firebase/storage";
 import { arrayUnion } from "firebase/firestore";
 import {sendconfiramtionEmail, sendconfiramtionEmailtoadmin} from '../../mailer/EmailSender.js';
@@ -22,6 +22,7 @@ const adminlist = ["piyushvishwakarma6706@gmail.com", "piyushvishwakarma6707@gma
       email: user.email || "No email provided", // Handle if email is missing
       photoURL: user.photoURL || "",
       admin: isadmin, // Optional, empty string if missing
+      createdOn: new Date().toISOString(), // Timestamp of user creation
       orders: arrayUnion() || [], // Use arrayUnion to ensure existing orders are not removed
     }, { merge: true });
 

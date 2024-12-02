@@ -79,14 +79,16 @@ export default function Nav() {
   return (
     <>
       <nav className=" flex fles-row h-fit w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-white/25 backdrop-blur-sm  items-center fixed md:shadow-lg shadow-md rounded-b-3xl md:rounded-none z-20">
-        <a href="/">
           <div className=" flex items-center gap-2">
+        <a href="/">
             <img src={logo} className=" md:w-28  w-24" alt="" />
+            </a>
             {checkadmin && (
-              <p className=" border-l-[1px] px-2 border-slate-500 ">Admin</p>
+              <p 
+              onClick={() => navigate("/admin")}
+              className=" cursor-pointer hover:text-indigo-500 border-l-[1px] px-2 border-slate-500 ">Admin</p>
             )}
           </div>
-        </a>
         <div
           className=" p-3 px-10 rounded-full hidden md:block bg-white/30 backdrop-blur-lg"
           id="blurnav"

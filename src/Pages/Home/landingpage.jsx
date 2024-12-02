@@ -1,7 +1,6 @@
 import "./landing.css";
 import Rightcontent from "./homeComp/rightcontent";
 import Leftcontent from "./homeComp/leftcontent";
-import vectorbg from "../../assets/Vector1.webp";
 import blur1 from "../../assets/Ellipse 5.webp";
 import blur2 from "../../assets/Ellipse 6.webp";
 
