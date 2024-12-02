@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { Dashcontext } from './contex/DashContext.jsx'
+import  UserContext  from '../Context/UserContex.js'
 import { MdDashboard } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa";
@@ -32,13 +33,16 @@ function MenuOpt(icon, title) {
 }
 
 function Leftcontent() {
+
+    const {uDetails} = useContext(UserContext);
+
   return (
     <>
     <div className="main">
-        <div className="profilemy-4 flex items-center mt-4 gap-4">
-            <img className=" rounded-full w-14 h-14"  src="https://www.piyushdev.me/assets/profile1-BI3Qqfr8.png" alt="" />
+        <div className="profile mx-4 flex items-center mt-8 gap-4">
+            <img className=" rounded-full w-12 h-12"  src={uDetails.image} alt="" />
             <div className="name">
-            <h3 className=" text-xl font-semibold " > Piyush Vishwakarma</h3>
+            <h3 className=" text-lg leading-5 font-semibold " >{uDetails.name} </h3>
             <h4>Founder</h4>
             </div>
         </div>

@@ -158,7 +158,7 @@ function OrderPrice() {
         id="container"
         className=" z-10 w-[90%]  md:max-w-[70rem] md:w-[75%]  h-[80%] bg-slate-50 to-zinc-800 rounded-2xl md:rounded-[2rem] flex overflow-hidden flex-col"
       >
-        <div className="flex justify-between items-center border-b-[1px] border-slate-400 h-10 py-1 px-6 text-slate-500 m-4 text-xl font-semibold ">
+        <div className="flex justify-between items-center border-b-[1px] border-slate-400 h-10 py-1 px-6 text-indigo-400 m-4 text-xl font-semibold ">
           <p className="hidden md:block">Order ID</p>
           <p>Date</p>
           <p className="hidden md:block">Price</p>

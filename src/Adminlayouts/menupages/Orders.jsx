@@ -13,7 +13,7 @@ import { Status } from '../../Pages/Orders/Orderlisting/OrderList.jsx';
 // Main List Component
 export const OrderLists = ({ rowlimit }) => {
   const [loading, setLoading] = React.useState(false);
-  const{adminOrders, totalorder} = useContext(Dashcontext);
+  const{adminOrders} = useContext(Dashcontext);
 
 
   const handleRowClick = () => {
@@ -53,7 +53,7 @@ export const OrderLists = ({ rowlimit }) => {
                 key={item.id}
                 id={item.orderId}
                 name={item.name}
-                price={item.price}
+                price={item.price+item.shipping}
                 date={formatDate(item.date)}
                 status={item.payment === 'PAID' && item.status==='Approved' ? item.payment : item.status}
                 handleFunc={handleRowClick}

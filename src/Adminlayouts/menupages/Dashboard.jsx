@@ -1,8 +1,6 @@
 
 import { OrderLists } from './Orders';
-import { totalUsers } from './Users';
-import { totalrevenue } from './Transaction';
-import { totalTransactions } from './Transaction';
+
 import { useContext } from 'react';
 import { Dashcontext } from '../contex/DashContext';
 
@@ -20,9 +18,9 @@ function Dashboardcard({title, value}) {
 } 
 
 function Dashboard() {
-  const{totalorder,totaluser} = useContext(Dashcontext);
+  const{totalorder,totaluser,totalpays, totalrevenue} = useContext(Dashcontext);
 
-  const dashdtl = [{title: "Total Revenue", value: '₹'+totalrevenue}, {title: "Total Orders", value: totalorder, open:"Orders"}, {title: "Total Users", value: totaluser, open:"Users" },{title: "Total Transaction", value: totalTransactions, open:"Transactions"}]
+  const dashdtl = [{title: "Total Revenue", value: '₹'+totalrevenue}, {title: "Total Orders", value: totalorder, open:"Orders"}, {title: "Total Users", value: totaluser, open:"Users" },{title: "Total Transaction", value: totalpays, open:"Transactions"}]
 
 
   return (

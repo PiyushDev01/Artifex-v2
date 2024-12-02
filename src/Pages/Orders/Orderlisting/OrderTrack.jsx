@@ -3,7 +3,8 @@ import "./orderlist.css";
 import { useContext, useState } from "react";
 import Detailcontext from "../OrderformSection/DetailContext/Detailcontext";
 import UserContext from "../../../Context/UserContex";
-import CloseIcon from '@mui/icons-material/Close';import { useNavigate } from "react-router";
+import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router";
 import paymenthandler from "../../../RazorpayPG/paymenthandler";
 import { paymentUpdate } from "../../../Firebase/CURDfunc/create.js";
 import paymentanimation from "../../../assets/paymentgreen.json";
@@ -26,7 +27,6 @@ function OrderTrack() {
   };
 
   const handlePayment = (e) => {
-   
     paymenthandler(
       e,
       setPaymentpopup,
@@ -36,8 +36,6 @@ function OrderTrack() {
       user.uid,
       setCurrentOrder
     );
-    
-
   };
 
   return (
@@ -110,15 +108,15 @@ function OrderTrack() {
           <Status status="Finished" />
           <div className="flex flex-col gap-3 md:w-1/3">
             <PersonalDetail />
-            <Payment handlePayment={handlePayment}  />
+            <Payment handlePayment={handlePayment} />
           </div>
         </div>
         <button
-            onClick={handleback}
-            className=" hover:bg-slate-300 md:hidden transition-all bg-[#c5b7ff] text-slate-600 py-2 px-4 rounded-full my-4"
-          >
-            <CloseIcon />
-          </button>
+          onClick={handleback}
+          className=" hover:bg-slate-300 md:hidden transition-all bg-[#c5b7ff] text-slate-600 py-2 px-4 rounded-full my-4"
+        >
+          <CloseIcon />
+        </button>
       </div>
     </>
   );
