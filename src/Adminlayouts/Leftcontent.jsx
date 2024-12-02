@@ -22,7 +22,7 @@ function MenuOpt(icon, title) {
          onClick={()=>{
             setSidebar({...sidebar, curoption: title})}
         }
-         className={`flex items-center transition-all ${sidebar.curoption===title?"bg-[#8B5DFF] shadow-md text-white ":"text-slate-700"}  hover:text-white hover:bg-[#565558b1] rounded-full p-2 px-6 gap-4`}>
+         className={`flex items-center duration-300 transition-all ${sidebar.curoption===title?"bg-[#8B5DFF] shadow-md text-white ":"text-slate-700"}  hover:text-white hover:bg-zinc-400 rounded-full p-2 px-6 gap-4`}>
                 {icon}
                 
                 <h4 className=' font-semibold' >{title}</h4>

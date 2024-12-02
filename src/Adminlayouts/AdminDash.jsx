@@ -4,6 +4,8 @@ import Rightcontect from './Rightcontect';
 import {getAllOrders, getAllUsers} from './Firebase_admin/read.js';
 import { Dashcontext } from './contex/DashContext.jsx';
 import { useContext, useEffect } from 'react';
+import loader from "../assets/loader.json";
+import Lottie from "lottie-react";
 
 function AdminDash() {
   const {  settotalorder, setAdminOrders, setAdminUsers,setAdminPayments, setTotaluser, setTotalpays, setTotalrevnue} = useContext(Dashcontext);
@@ -51,7 +53,12 @@ function AdminDash() {
     <h1 className=' md:hidden'>OPEN ON DESKTOP MODE</h1>
     <div className="rightaside h-[100%] pt-[6rem] hidden px-4 w-full md:flex items-center justify-center ">
       {
-        loading ? <h1 className='' >Loading...</h1> : <Rightcontect />
+        loading ?
+        <Lottie
+        animationData={loader}
+        style={{ width: "45px", height: "30px" }}
+        className=" scale-[500%] "
+      /> : <Rightcontect />
       }
       
     </div>

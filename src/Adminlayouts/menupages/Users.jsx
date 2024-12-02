@@ -5,19 +5,6 @@ import { Dashcontext } from '../contex/DashContext.jsx';
 import {formatDate} from '../../Pages/Orders/Orderlisting/OrderList.jsx';
 
 
-// Dummy data for Users
-const dummyUserData = [
-
-  { uid: "b2RMfaNJHmUZHOf2X46wcexbl6X3", name: 'Jane Smith', email: 'jane.smith@example.com', createdOn: 'FEB 14, 2024' },
-  { uid: "c3RMfaNJHmUZHOf2X46wcexbl6X4", name: 'Mike Johnson', email: 'mike.johnson@example.com', createdOn: 'MAR 3, 2024' },
-  { uid: "d4RMfaNJHmUZHOf2X46wcexbl6X5", name: 'Anna Williams', email: 'anna.williams@example.com', createdOn: 'APR 22, 2024' },
-  { uid: "e5RMfaNJHmUZHOf2X46wcexbl6X6", name: 'Sarah Connor', email: 'sarah.connor@example.com', createdOn: 'MAY 30, 2024' },
-  { uid: "f6RMfaNfJHmUZHOf2X46wcexbl6X7", name: 'Robert Brown', email: 'robert.brown@example.com', createdOn: 'JUN 18, 2024' },
-  { uid: "f6RMfaNJHmUfZHOf2X46wcexbl6X7", name: 'Robert Brown', email: 'robert.brown@example.com', createdOn: 'JUN 18, 2024' },
-  { uid: "f6RMfaNJsHmUZHOf2X46wcexbl6X7", name: 'Robert Brown', email: 'robert.brown@example.com', createdOn: 'JUN 18, 2024' },
-];
-
-export const totalUsers = 12;
 
 // Row Component for Users
 const UserRow = (props) => {
@@ -39,11 +26,10 @@ const UserRow = (props) => {
         <div className="flex gap-4 items-center">
           <img src={props.Profile} className="w-10 h-10 rounded-full" />
           <p className="text-sm md:text-lg text-left min-w-[12rem] md:font-bold">
-        {/* {
-          props.name.length > 15 ? props.name.substring(0, 15) + '...' : props.name
-        } */}
+        {
+          props.name.length > 18 ? props.name.substring(0, 15) + '...' : props.name
+        }
 
-        {props.name}
         </p>
 
         </div>
@@ -54,8 +40,9 @@ const UserRow = (props) => {
       </div>
       <div className="flex items-center">
         <p className="hidden md:block min-w-[20rem] text-lg">
-        {/* {props.email.substring(0, 18)}... */}
-        {props.email}
+        {props.email.substring(0, 18)}...
+        {/* {props.email} */}
+        <button onClick={() => copyToClipboard(props.email)} className="ml-2 text-sm text-blue-500">Copy</button>
         </p>
       </div>
       <div className=" flex items-center">
@@ -87,22 +74,23 @@ export const UserLists = ({ rowlimit }) => {
   // Slice data if rowlimit is provided
   const rowsToShow = rowlimit ? adminUsers.slice(0, rowlimit) : adminUsers;
 
+  // Sort users by createdOn date
+  const sortedUsers = [...rowsToShow].sort((a, b) => new Date(b.createdOn) - new Date(a.createdOn));
+
   return (
     <div className="maincontainer w-full flex flex-col items-center">
       <div
         id="container1"
         className="z-10 shadow-md w-[100%] h-[80%] bg-slate-50 py-4 rounded-2xl md:rounded-[2rem] flex overflow-hidden flex-col"
       >
-       
-
         {/* Rows or Loading Message */}
         <div className="flex flex-col overflow-y-auto h-fit max-h-[24rem]">
           {loading ? (
             <div className="flex items-center justify-center h-1/2">
               <p className="text-xl text-slate-500">Loading...</p>
             </div>
-          ) : adminUsers.length > 0 ? (
-            adminUsers.map((user) => (
+          ) : sortedUsers.length > 0 ? (
+            sortedUsers.map((user) => (
               <UserRow
                 key={user.userId}
                 uid={user.userId}
@@ -111,7 +99,6 @@ export const UserLists = ({ rowlimit }) => {
                 Profile={user.photoURL}
                 createdOn={formatDate(user.createdOn)}
                 handleFunc={handleRowClick}
-                
               />
             ))
           ) : (
