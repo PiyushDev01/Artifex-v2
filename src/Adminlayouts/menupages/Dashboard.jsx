@@ -41,7 +41,7 @@ function Dashboard() {
         </div>
         </div>
         <div className=' w-full'> <h1  className=" text-2xl my-2 font-semibold text-slate-500">Recent Orders</h1>
-      <OrderLists rowlimit={5} /> 
+      <OrderLists rowlimit={4} /> 
 
         </div>
        
