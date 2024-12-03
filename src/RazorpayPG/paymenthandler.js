@@ -31,6 +31,7 @@ const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, payment
   
       // Razorpay options
       const options = {
+        //live api is not working yet so using test api
         key: import.meta.env.VITE_RAZORPAY_API, // Replace with your Razorpay API key
         amount: totalAmt * 100,
         currency: "INR",
