@@ -31,7 +31,8 @@ const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, payment
   
       // Razorpay options
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_API, // Replace with your Razorpay API key
+        // key: import.meta.env.VITE_RAZORPAY_API, // Replace with your Razorpay API key
+        key: "rzp_live_lUqNIkjb6MKy90", // Replace with your Razorpay API key
         amount: totalAmt * 100,
         currency: "INR",
         name: "Artifex",
