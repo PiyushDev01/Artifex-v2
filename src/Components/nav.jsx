@@ -12,7 +12,7 @@ import LoginGoogle from "../Firebase/googleAuth";
 
 import { signOut, getAuth } from "firebase/auth";
 import app from "../Firebase/firbase";
-
+import { HiOutlineLogout } from "react-icons/hi";
 import { pending } from "./Login";
 import { Link } from "react-router-dom";
 import UserContext from "../Context/UserContex";
@@ -27,6 +27,10 @@ export default function Nav() {
   const [textbox, settextbox] = useState({ display: "none" });
   const [fadebg, setfadebg] = useState({ display: "none" });
   const [hide, sethide] = useState(false);
+  const [droplogout, setdroplogout] = useState(false);
+
+  const handleMouseOver = () => setdroplogout(true);
+    const handleMouseOut = () => setdroplogout(false);
 
   const { user } = useContext(UserContext);
 
@@ -79,18 +83,21 @@ export default function Nav() {
   return (
     <>
       <nav className=" flex fles-row h-fit w-screen p-3 md:px-40 md:p-0 justify-between md:bg-none bg-white/25 backdrop-blur-sm  items-center fixed md:shadow-lg shadow-md rounded-b-3xl md:rounded-none z-20">
-          <div className=" flex items-center gap-2">
-        <a href="/">
+        <div className=" flex items-center gap-2">
+          <a href="/">
             <img src={logo} className=" md:w-28  w-24" alt="" />
-            </a>
-            {checkadmin && (
-              <p 
+          </a>
+          {checkadmin && (
+            <p
               onClick={() => navigate("/admin")}
-              className=" cursor-pointer hover:text-indigo-500 border-l-[1px] px-2 border-slate-500 ">Admin</p>
-            )}
-          </div>
+              className=" cursor-pointer hover:text-indigo-500 border-l-[1px] px-2 border-slate-500 "
+            >
+              Admin
+            </p>
+          )}
+        </div>
         <div
-          className=" p-3 px-10 rounded-full hidden md:block bg-white/30 backdrop-blur-lg"
+          className=" p-3 px-10 shadow-sm rounded-full hidden md:block bg-white/30 backdrop-blur-lg"
           id="blurnav"
         >
           <ul className="flex flex-row gap-10 font-sans transition-all text-xl">
@@ -98,10 +105,7 @@ export default function Nav() {
               {" "}
               <li id="li">Home</li>
             </Link>
-            <Link to="/order">
-              {" "}
-              <li id="li">Order</li>
-            </Link>
+           
             <Link to="/aboutus">
               {" "}
               <li id="li">About</li>
@@ -112,19 +116,21 @@ export default function Nav() {
             </a>
           </ul>
         </div>
+        
+    <div className=" flex items-center gap-4" >
+    <Link to="/order">
+              {" "}
+              <button id="exbtn" className=" md:block  hidden hover:text-slate-100 px-4 py-2 rounded-full text-white ">Order Now</button>
+            </Link>
         <div
-          className=" flex flex-row items-center gap-5 py-3 "
-          onClick={!isUserlogged && togglelgn}
+          className=" flex flex-row relative items-center  gap-5 py-3 "
+          onClick={() => {
+            !isUserlogged && togglelgn();
+          }}
+          onMouseEnter={handleMouseOver}
+          onMouseLeave={handleMouseOut}
         >
-          {isUserlogged && (
-            <h1
-              className=" cursor-pointer hover:text-indigo-700 transition-all text-md hidden md:block"
-              id="lgh1"
-              onClick={SignOut}
-            >
-              Logout
-            </h1>
-          )}
+         
 
           {uDetails.image != null ? (
             <div className="profile relative ">
@@ -138,7 +144,28 @@ export default function Nav() {
           ) : (
             <Button name="Login" display="none"></Button>
           )}
+
+
+
+          <div
+            className={`absolute md:flex hidden items-center justify-center -left-[50%] top-[100%] w-fit ${
+              !droplogout ? "max-h-0" : "max-h-40"
+            } transition-all duration-200 px-4 overflow-hidden min-w-[6rem] rounded-b-2xl drop-shadow-lg bg-slate-200`}
+          >
+            {isUserlogged && (
+              <h1
+                className=" m-4 cursor-pointer hover:text-indigo-600 text-slate-700 transition-all text-md hidden md:flex items-center gap-2"
+                id="lgh1"
+                onClick={SignOut}
+              >
+                <HiOutlineLogout /> Logout
+              </h1>
+            )}
+          </div>
         </div>
+    </div>
+
+        
         <div
           style={fadebg}
           onClick={handleTog}

@@ -16,11 +16,11 @@ const AboutUs = () => {
         <div className=" bg-gradient-to-r from-pink-800 via-purple-800 to-blue-800 max-w-full  w-[30rem] h-[20rem]  rounded-full blur-3xl -z-[5] -translate-x-[50%] left-[50%] absolute"></div>
       </div>
       <div className="max-w-7xl z-40 mx-auto px-4 text-center">
-        {/* Section Header */}
-        <h1 className="text-4xl font-semibold text-slate-50 mb-6">
-          About{" "}
-          <span className="text-5xl text-purple-400 font-bold ">Artifex</span>{" "}
-        </h1>
+       
+
+<h2 className="md:text-6xl text-4xl mb-6 font-semibold tracking-tighter md:tracking-[-5px] text-slate-50 md:mb-12">
+            About Artifex
+          </h2>
         <p className="text-slate-100 text-lg md:text-2xl md:font-base max-w-5xl mx-auto mb-12">
           Welcome to Artifex! We bring your memories to life with custom,
           hand-crafted sketches to capture every emotion and detail. Whether
