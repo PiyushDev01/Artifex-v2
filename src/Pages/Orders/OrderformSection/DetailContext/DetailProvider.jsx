@@ -6,9 +6,10 @@ import { useState , useContext } from "react";
 
 
 
+
 const DetailProvider = ({ children }) => {
     
-    
+   
     const [details, setDetails] = useState({
         size: null,
         orientation: null,
@@ -25,7 +26,7 @@ const DetailProvider = ({ children }) => {
         state: null,
         price: null,
         person: null,
-       
+        email:null,
         // userID: null,
     });
 

@@ -107,7 +107,7 @@ function OrderPrice() {
   const {user} = useContext(UserContext);
   const [orders, setOrders] = useState([]);
   // const [currentOrder, setCurrentOrder] = useState(null);
-  const {setCurrentOrder, currentOrder } = useContext(Detailcontext);
+  const {setCurrentOrder } = useContext(Detailcontext);
 
   const handlecurrentOrder = (idx) => {
     navigate("/Your-Orders/Details");

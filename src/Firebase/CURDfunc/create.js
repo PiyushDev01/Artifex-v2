@@ -56,6 +56,7 @@ const submitOrder = async (userid, details, setDetails , image, user) => {
     notes,
     name,
     phone,
+    email: user.email,
     saveas,
     flat,
     street,

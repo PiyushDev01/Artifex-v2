@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../Framer/fadein";
 import Login from "./Login";
 import LoginGoogle from "../Firebase/googleAuth";
-
+import { IoMdCart } from "react-icons/io";
 import { signOut, getAuth } from "firebase/auth";
 import app from "../Firebase/firbase";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -120,7 +120,8 @@ export default function Nav() {
     <div className=" flex items-center gap-4" >
     <Link to="/order">
               {" "}
-              <button id="exbtn" className=" md:block  hidden hover:text-slate-100 px-4 py-2 rounded-full text-white ">Order Now</button>
+              <button id="exbtn" className=" md:flex items-center gap-1 hidden hover:text-slate-100 px-4 py-2 rounded-full text-white "><IoMdCart />
+              Order</button>
             </Link>
         <div
           className=" flex flex-row relative items-center  gap-5 py-3 "
