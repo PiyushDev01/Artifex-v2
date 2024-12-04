@@ -57,6 +57,7 @@ export const OrderLists = ({ rowlimit }) => {
                 date={formatDate(item.date)}
                 status={item.payment === 'PAID' && item.status==='Approved' ? item.payment : item.status}
                 handleFunc={handleRowClick}
+                ispaid={item.payment === 'PAID'}
               />
             ))
           ) : (
@@ -82,6 +83,7 @@ const OrderList = () => {
 // Row Component
 const RowItem = (props) => {
 
+  const ispaid = props.ispaid ? 'bg-green-200' : 'bg-red-200';
  
   return (
     <div
@@ -94,7 +96,7 @@ const RowItem = (props) => {
       <p className="text-sm md:text-lg min-w-32 md:font-bold">
         {props.name.length > 12 ? `${props.name.substring(0, 12)}...` : props.name}
       </p>
-      <p className=" font-extrabold min-w-12  md:block">₹{props.price}</p>
+      <p className= {`font-bold text-base text-center p-1 rounded-xl min-w-12 ${ispaid}  md:block`}>₹{props.price}</p>
       <p className="text-sm  md:text-lg">{props.date}</p>
      <div className=' min-w-32' >
      <Status status={props.status} />
