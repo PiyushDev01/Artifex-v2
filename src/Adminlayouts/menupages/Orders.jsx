@@ -97,7 +97,7 @@ const RowItem = (props) => {
         {props.name.length > 12 ? `${props.name.substring(0, 12)}...` : props.name}
       </p>
       <p className= {`font-bold text-base text-center p-1 rounded-xl min-w-12 ${ispaid}  md:block`}>₹{props.price}</p>
-      <p className="text-sm  md:text-lg">{props.date}</p>
+      <p className="text-sm md:text-lg">{props.date}</p>
      <div className=' min-w-32' >
      <Status status={props.status} />
      </div>

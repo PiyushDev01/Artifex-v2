@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { Dashcontext } from '../contex/DashContext.jsx';
 import {formatDate} from '../../Pages/Orders/Orderlisting/OrderList.jsx';
-
+import { FaCrown } from "react-icons/fa6";
 
 
 // Row Component for Users
@@ -25,11 +25,12 @@ const UserRow = (props) => {
       
         <div className="flex gap-4 items-center">
           <img src={props.Profile} className="w-10 h-10 rounded-full" />
-          <p className="text-sm md:text-lg text-left min-w-[12rem] md:font-bold">
+          <p className="text-sm flex items-center gap-2 md:text-lg text-left min-w-[12rem] md:font-bold">
         {
           props.name.length > 18 ? props.name.substring(0, 15) + '...' : props.name
         }
 
+        {props.isadmin && <FaCrown className=' animate text-yellow-500' />}
         </p>
 
         </div>
@@ -98,6 +99,7 @@ export const UserLists = ({ rowlimit }) => {
                 email={user.email}
                 Profile={user.photoURL}
                 createdOn={formatDate(user.createdOn)}
+                isadmin={user.admin}
                 handleFunc={handleRowClick}
               />
             ))
