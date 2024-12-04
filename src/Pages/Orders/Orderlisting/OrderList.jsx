@@ -81,17 +81,20 @@ const statusClass =
   );
 };
 
- export const formatDate = (isoString) => {
+export const formatDate = (isoString) => {
   const date = new Date(isoString);
 
-  // Options for the date format
+  // Options for the date and time format
   const options = { 
     month: 'short', // Get the short month (e.g., NOV)
     day: 'numeric', // Get the numeric day (e.g., 23)
-    year: 'numeric' // Get the full year (e.g., 2024)
+    year: 'numeric', // Get the full year (e.g., 2024)
+    hour: 'numeric', // Get the hour (e.g., 1 PM)
+    minute: 'numeric', // Get the minutes (e.g., 30)
+    hour12: false // Use 12-hour clock
   };
 
-  // Use the built-in `toLocaleDateString` method to format the date
+  // Use the built-in `toLocaleDateString` method to format the date and time
   return date.toLocaleDateString('en-US', options).toUpperCase(); // Convert to uppercase for month
 };
 

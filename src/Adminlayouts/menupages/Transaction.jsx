@@ -37,7 +37,7 @@ const TransactionRow = (props) => {
         {props.paidBy.substring(0, 12)}...
         </p>
       </div>
-      <p className="text-sm md:text-lg">₹{props.amount}</p>
+      <p className="text-sm min-w-12 md:text-lg">₹{props.amount}</p>
       <p className="text-sm md:text-lg min-w-32 text-right">{props.date}</p>
     </div>
   );
