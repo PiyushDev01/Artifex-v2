@@ -97,7 +97,7 @@ export const TransactionLists = ({ rowlimit }) => {
                 orderId={transaction.orderId}
                 paidBy={transaction.name}
                 amount={transaction.price + transaction.shipping}
-                date={formatDate(transaction.date)}
+                date={formatDate(transaction.paymentDate)}
                 handleFunc={handleRowClick}
               />
             ))

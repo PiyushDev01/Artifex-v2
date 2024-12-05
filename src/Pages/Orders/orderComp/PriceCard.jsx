@@ -19,7 +19,7 @@ function PriceCard(props) {
       // setDetails({...details, person: 'Single Person', price: price});
       navigate('/Order-Details');
     }else{
-      alert('Please Login to continue');
+      props.errormsg();
     }
   }
 

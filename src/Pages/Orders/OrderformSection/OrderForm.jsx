@@ -8,7 +8,8 @@ import Detailcontext from "./DetailContext/Detailcontext";
 import { useNavigate } from "react-router-dom";
 import {submitOrder}  from "../../../Firebase/CURDfunc/create.js";
 import  UserContext  from "../../../Context/UserContex.js";
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 import '../order.css';
 
@@ -157,8 +158,9 @@ function OrderForm() {
                   } else {
                     toast.error("Please accept Terms and Conditions", {
                       position: "bottom-center",
-                      theme: "colored",
+                      duration: 3000,
                       draggable: true,
+                      
                     });
                   }
                 }
@@ -168,7 +170,7 @@ function OrderForm() {
             >
               {currentStep === steps.length ? "Submit" : "Next"}
             </button>
-            <ToastContainer />
+            <Toaster />
           </div>
         </div>
       </div>

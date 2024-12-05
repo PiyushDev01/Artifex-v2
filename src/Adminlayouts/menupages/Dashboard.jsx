@@ -1,8 +1,8 @@
 
-import { OrderLists } from './Orders';
 
 import { useContext } from 'react';
 import { Dashcontext } from '../contex/DashContext';
+import {OrderLists} from './orders/Orders.jsx';
 
 
 
@@ -40,9 +40,9 @@ function Dashboard() {
         }
         </div>
         </div>
-        <div className=' w-full'> <h1  className=" text-2xl my-2 font-semibold text-slate-500">Recent Orders</h1>
-      <OrderLists rowlimit={4} /> 
-
+        <div className=' w-full'> 
+          <h1  className=" text-2xl my-2 font-semibold text-slate-500">Recent Orders</h1>
+        <OrderLists rowlimit={true} />
         </div>
        
     </div>

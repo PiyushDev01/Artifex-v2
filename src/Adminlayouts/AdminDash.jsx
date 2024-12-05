@@ -8,7 +8,7 @@ import loader from "../assets/loader.json";
 import Lottie from "lottie-react";
 
 function AdminDash() {
-  const {  settotalorder, setAdminOrders, setAdminUsers,setAdminPayments, setTotaluser, setTotalpays, setTotalrevnue} = useContext(Dashcontext);
+  const { refresh, settotalorder, setAdminOrders, setAdminUsers,setAdminPayments, setTotaluser, setTotalpays, setTotalrevnue} = useContext(Dashcontext);
   const [loading, setLoading] = useState(false);
 
 
@@ -19,6 +19,7 @@ function AdminDash() {
       const orders = await getAllOrders();
       const users = await getAllUsers();
       setAdminOrders(orders);
+      // console.log(orders)
       settotalorder(orders.length);
       setAdminUsers(users);
       setTotaluser(users.length);
@@ -41,17 +42,17 @@ function AdminDash() {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [refresh]);
 
 
 
   return (
-   <div className="containerz  h-[100vh] flex items-center justify-center bg-slate-50">
+   <div className="containerz  min-h-[100vh] h-fit  flex items-center justify-center bg-slate-50">
     <div className="leftaside   h-[100%] pt-[6rem] px-4 w-[20%] hidden md:flex justify-center">
         <Leftcontent />
     </div>
     <h1 className=' md:hidden'>OPEN ON DESKTOP MODE</h1>
-    <div className="rightaside h-[100%] pt-[6rem] hidden px-4 w-full md:flex items-center justify-center ">
+    <div className="rightaside  pt-[6rem] hidden px-4 w-full md:flex items-center justify-center ">
       {
         loading ?
         <Lottie

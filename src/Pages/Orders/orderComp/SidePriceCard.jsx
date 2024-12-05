@@ -20,7 +20,7 @@ function SidePriceCard(props) {
       setprice({...props.price, person: props.person, price: props.price});
       navigate('/Order-Details');
     }else{
-      alert('Please Login to continue');
+      props.errormsg();
     }
   }
 

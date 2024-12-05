@@ -14,14 +14,15 @@ const menu= [[<MdDashboard />, "Dashboard"], [<FaCartShopping />, "Orders"], [<F
 
 function MenuOpt(icon, title) {
 
-    const { sidebar, setSidebar } = useContext(Dashcontext);
+    const { sidebar, setSidebar, setRefresh, refresh } = useContext(Dashcontext);
     return(
        <>
       
          <div
          onClick={()=>{
-            setSidebar({...sidebar, curoption: title})}
-        }
+            setSidebar({...sidebar, curoption: title});
+            setRefresh(!refresh);
+        }}
          className={`flex items-center duration-300 transition-all ${sidebar.curoption===title?"bg-[#8B5DFF] shadow-md text-white ":"text-slate-700"}  hover:text-white hover:bg-zinc-400 rounded-full p-2 px-6 gap-4`}>
                 {icon}
                 

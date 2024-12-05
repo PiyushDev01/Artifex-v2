@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
-import { Dashcontext } from '../contex/DashContext.jsx';
-import {formatDate} from '../../Pages/Orders/Orderlisting/OrderList.jsx';
-import { Status } from '../../Pages/Orders/Orderlisting/OrderList.jsx';
+import { Dashcontext } from '../../contex/DashContext.jsx';
+import {formatDate} from '../../../Pages/Orders/Orderlisting/OrderList.jsx';
+import { Status } from '../../../Pages/Orders/Orderlisting/OrderList.jsx';
 
 
 
@@ -13,24 +13,25 @@ import { Status } from '../../Pages/Orders/Orderlisting/OrderList.jsx';
 // Main List Component
 export const OrderLists = ({ rowlimit }) => {
   const [loading, setLoading] = React.useState(false);
-  const{adminOrders} = useContext(Dashcontext);
-
-
-  const handleRowClick = () => {
-    console.log('Row clicked!');
+  const{adminOrders, setSidebar, setCurAdminOrder} = useContext(Dashcontext);
+  const handleRowClick = (index) => {
+    
+    setSidebar({ curoption: "Orderdetail", open: true });
+    console.log(index);
+    setCurAdminOrder(adminOrders[index]);
   };
-
   // Slice data if rowlimit is provided
-  const rowsToShow = rowlimit ? adminOrders.slice(0, rowlimit) : adminOrders;
-
+  
   // Sort rows by their id
-  const sortedRows = rowsToShow.sort((a, b) => a.orderId.localeCompare(b.orderId));
+  const sortedRows = adminOrders.sort((a, b) => a.orderId.localeCompare(b.orderId));
+  
+  
 
   return (
     <div className="maincontainer w-full flex flex-col items-center">
       <div
       
-        className="z-10 w-[100%] shadow-md h-[80%] bg-slate-50 rounded-2xl md:rounded-[2rem] flex overflow-hidden flex-col"
+        className= {`z-10 w-[100%] shadow-md h-[80%] ${rowlimit && " max-h-[21rem]"} bg-slate-50 rounded-2xl md:rounded-[2rem] flex overflow-hidden flex-col`} 
       >
         {/* Table Header */}
         <div className="flex justify-between items-center text-indigo-400 border-b-[1px] border-slate-400 h-10 py-1 px-6 m-4 text-xl font-semibold">
@@ -42,13 +43,13 @@ export const OrderLists = ({ rowlimit }) => {
         </div>
 
         {/* Rows or Loading Message */}
-        <div className="flex flex-col overflow-y-auto pb-4 h-fit max-h-[24rem]">
+        <div className= {`flex flex-col ${rowlimit ? " overflow-hidden ": "overflow-y-auto"}   pb-4 h-fit max-h-[24rem]`}>
           {loading ? (
             <div className="flex items-center justify-center h-1/2">
               <p className="text-xl text-slate-500">Loading...</p>
             </div>
           ) : sortedRows.length > 0 ? (
-            sortedRows.reverse().map((item) => (
+            sortedRows.reverse().map((item,index) => (
               <RowItem
                 key={item.id}
                 id={item.orderId}
@@ -56,7 +57,7 @@ export const OrderLists = ({ rowlimit }) => {
                 price={item.price+item.shipping}
                 date={formatDate(item.date)}
                 status={item.payment === 'PAID' && item.status==='Approved' ? item.payment : item.status}
-                handleFunc={handleRowClick}
+                handleFunc={()=>handleRowClick(index)}
                 ispaid={item.payment === 'PAID'}
               />
             ))
@@ -73,7 +74,9 @@ export const OrderLists = ({ rowlimit }) => {
 
 const OrderList = () => {
   return <>
-  <div className=' w-full'> <h1  className=" text-2xl my-2 font-semibold text-slate-500">Orders</h1>
+  <div className=' w-full'> 
+    <h1  className=" text-2xl my-2 font-semibold text-slate-500"> Orders</h1>
+      
       <OrderLists /> 
 
         </div>

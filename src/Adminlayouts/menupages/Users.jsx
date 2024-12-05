@@ -4,14 +4,16 @@ import { useContext } from 'react';
 import { Dashcontext } from '../contex/DashContext.jsx';
 import {formatDate} from '../../Pages/Orders/Orderlisting/OrderList.jsx';
 import { FaCrown } from "react-icons/fa6";
+import toast, { Toaster } from 'react-hot-toast';
 
-
+const copyToClipboard = (text) => {
+  navigator.clipboard.writeText(text);
+  alert(text+" Copied to clipboard")
+  toast.success(text+" Copied to clipboard")
+};
 // Row Component for Users
 const UserRow = (props) => {
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    alert('Copied to clipboard');
-  };
+
 
   return (
     <div
@@ -66,10 +68,11 @@ UserRow.propTypes = {
 // Main List Component for Users
 export const UserLists = ({ rowlimit }) => {
   const [loading, setLoading] = React.useState(false);
-  const {adminUsers} = useContext(Dashcontext);
+  const {adminUsers, setSidebar} = useContext(Dashcontext);
 
   const handleRowClick = () => {
-    console.log('User row clicked!');
+    // console.log('User row clicked!');
+    setSidebar({ curoption: 'Userdetail', open: true });
   };
 
   // Slice data if rowlimit is provided
@@ -108,7 +111,9 @@ export const UserLists = ({ rowlimit }) => {
           )}
         </div>
       </div>
+   
     </div>
+    
   );
 };
 
@@ -122,7 +127,9 @@ const User = () => {
       <div className="w-full">
         <h1 className="text-2xl my-2 font-semibold text-slate-500">Users</h1>
         <UserLists/>
+        <Toaster />
       </div>
+     
     </>
   );
 };

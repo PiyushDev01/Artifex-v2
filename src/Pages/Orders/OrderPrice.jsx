@@ -8,6 +8,7 @@ import carticon from "../Orders/OrderformSection/orderform-assets/icons8-cart-30
 import { useNavigate } from "react-router";
 import { useContext } from "react";
 import UserContext from "../../Context/UserContex";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
@@ -19,8 +20,7 @@ function OrderPrice() {
 
   const toastifyerror = () => { 
     toast.error('Please Login to continue',{
-      position: "top-center",
-      draggable: true,
+      position: "bottom-center",
     });
   }
 
@@ -70,9 +70,10 @@ function OrderPrice() {
         <div id="cards" className=" z-[2rem] flex  rounded-[3rem] w-fit max-w-[95%] items-center mb-8  bg-slate-400/25 backdrop-blur-sm md:flex-row flex-col" >
 
         <div className=" md:hidden"> 
-        <PriceCard />
+        <PriceCard  errormsg={toastifyerror} />
         </div>
         <SidePriceCard
+         errormsg={toastifyerror}
           price={599}
           person="Double Person"
           title="Double Person Pencil Sketch"
@@ -83,9 +84,10 @@ function OrderPrice() {
 
         />
        <div className=" hidden md:block"> 
-        <PriceCard />
+        <PriceCard errormsg={toastifyerror}/>
         </div>
         <SidePriceCard
+         errormsg={toastifyerror}
           price={799}
           person="More than Two"
           title="Multiple People Pencil Sketch"
@@ -98,6 +100,7 @@ function OrderPrice() {
         <p className=" z-30 mb-6 mx-4 text-slate-300 ">
         Note: Your shipping charge will be determined by your pincode, ensuring you get the most accurate rate for your delivery!
         </p>
+        <Toaster />
       </div>
     </>
   );

@@ -5,16 +5,13 @@ import facebookIcon from "../assets/facebook.svg";
 import logo from "../assets/titlelogo2.webp";
 import mail from "../assets/mail.png"
 import LoginGoogle from "../Firebase/googleAuth";
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 export const pending=()=>{
-  toast.warning('This feature is under development please try another option',{
-    position: "top-center",
-    draggable: true,
-    theme: "dark",
-  });
+  toast.error(' This feature is under development')
 }
 
 function Login({handlelgn}) {
@@ -63,7 +60,7 @@ function Login({handlelgn}) {
           <h2 className="text-lg md:text-2xl text-gray-800 ">sign in with Email</h2>
         </div>
       </motion.div>
-      <ToastContainer />
+      <Toaster />
       </div>
       </>
   );

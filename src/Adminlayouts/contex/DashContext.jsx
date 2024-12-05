@@ -8,8 +8,12 @@ const Dashcontext = createContext();
 
 const DashProvider = ({ children }) => {
 
+    // Sidebar State
     const [sidebar, setSidebar] = useState({ curoption: "Dashboard", open: false });
+    const [refresh, setRefresh] = useState(false);
 
+
+    // Admin Dashboard Data
     const [adminOrders, setAdminOrders] = useState([]);
     const [adminPayments, setAdminPayments] = useState([]);
     const [adminUsers, setAdminUsers] = useState([]);
@@ -17,19 +21,34 @@ const DashProvider = ({ children }) => {
     const [totalrevenue, setTotalrevnue] = useState(0);
     const [totaluser, setTotaluser] = useState(0);
     const [totalpays, setTotalpays] = useState(0);
+
+
+    // Order Details
+
+    const [curAdminOrder, setCurAdminOrder] = useState(null);
+    const [curAdminPayment, setCurAdminPayment] = useState({});
    
 
     return <Dashcontext.Provider value={
         {
+            // Sidebar State
             sidebar,
             setSidebar,
+            refresh,
+            setRefresh,
+
+            // Admin Dashboard Data
             adminOrders, setAdminOrders,
             adminPayments, setAdminPayments,
             adminUsers, setAdminUsers,
             totalorder, settotalorder,
             totalrevenue, setTotalrevnue,
             totaluser, setTotaluser,
-            totalpays, setTotalpays
+            totalpays, setTotalpays,
+
+            // Order Details
+            curAdminOrder, setCurAdminOrder,
+            curAdminPayment, setCurAdminPayment
         }
 
     }>{children}</Dashcontext.Provider>;
