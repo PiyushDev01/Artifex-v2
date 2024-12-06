@@ -13,7 +13,7 @@ import OrderDetails from "./OrderDetails";
 import PersonalDetail from "./PersonalDetail";
 import Payment from "./Payment";
 import Status from "./Statuscomp.jsx";
-import sendStatusEmail from "../../../mailer/EmailSender.js";
+import {sendStatusEmail} from "../../../mailer/EmailSender.js";
 
 function OrderTrack() {
   const { currentOrder, setCurrentOrder } = useContext(Detailcontext);
