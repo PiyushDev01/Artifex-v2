@@ -21,7 +21,7 @@ function OrderDetails(props) {
    initial="hidden"
    whileInView={"show"}
    viewport={{ once: false, amount: 0.2 }} 
-    className="   bg-white rounded-xl shadow-md flex md:w-1/3  ">
+    className="   bg-white rounded-xl shadow-md flex h-fit  ">
               <div className="refimg min-w-[12rem] my-4  w-full flex-col flex items-center justify-center ">
                 <h1 className="  flex items-center gap-2 font-bold text-xl  from-indigo-500 bg-gradient-to-tr to-purple-500 bg-clip-text text-transparent mb-1  ">
                   {props.id}<TbCopy onClick={()=>{

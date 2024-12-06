@@ -72,7 +72,7 @@ const submitOrder = async (userid, details, setDetails , image, user) => {
     paymentDate: null,
     total: null,
     shipping: null,
-    statusMessage: "Your order has been successfully submitted. Thank you for your interest!. you'll receive a confirmation email shortly with the details of your order.",
+    statusMessage: "Your order has been successfully submitted. Thank you for your interest!.",
   };
 
   try {

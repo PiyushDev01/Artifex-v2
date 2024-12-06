@@ -21,7 +21,7 @@ function PersonalDetail(props) {
     initial="hidden"
     whileInView={"show"}
     viewport={{ once: true, amount: 0.1 }}
-    className=" p-4 min-w-[24rem] shadow-md rounded-xl bg-white w-fit h-fit ">
+    className=" p-4 min-w-[24rem] shadow-md rounded-xl bg-white w-fit ">
           <h1 className=" flex gap-4 items-center font-semibold text-lg md:text-2xl from-indigo-500 bg-gradient-to-tr to-purple-500 bg-clip-text text-transparent w-fit mb-1  ">
           {props.name} <TbCopy onClick={()=>{
             copyToClipboard(props.name)
@@ -67,13 +67,19 @@ function PersonalDetail(props) {
            {props.state}
           </h1>
           <h1 className=" w-[80%] font-semibold text-lg gap-2 my-2 text-slate-700 md:mb-1 flex items-center ">
-          Pincode: {props.pin}
+          Pincode: {props.pin} 
           <TbCopy onClick={()=>{
             copyToClipboard(props.pin)
           }}  className=" cursor-pointer text-lg  text-slate-500" />
+          <a href="https://one.delhivery.com/information-center/rate-calculator"  target="_blank" className=" text-mypurple" >
+            Check
+          </a>
           </h1>
           <h1 className=" w-[80%] font-semibold text-lg gap-2 my-2 text-slate-700 md:mb-1 flex items-center ">
           Date: {props.date}
+          </h1>
+          <h1 className=" w-[80%] font-semibold text-lg gap-2 my-2 text-slate-700 md:mb-1 flex items-center ">
+          Note: {props.note?props.note:"No Note"}
           </h1>
       </motion.div>
       <Toaster />

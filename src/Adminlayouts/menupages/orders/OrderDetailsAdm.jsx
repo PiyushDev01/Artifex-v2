@@ -4,6 +4,8 @@ import OrderDetails from "./comp/OrderDetails.jsx";
 import PersonalDetail from "./comp/PersonalDetail";
 import { formatDate } from "../../../Pages/Orders/Orderlisting/OrderList.jsx";
 import Payment from "./comp/Payment";
+import StatusUpdate from "./comp/StatusUpdate";
+import StatusDesc from './comp/StatusDesc';
 
 function OrderDetailsAdm() {
   const { curAdminOrder } = useContext(Dashcontext);
@@ -27,6 +29,7 @@ function OrderDetailsAdm() {
     district,
     state,
     pin,
+    notes,
     paymentDate,
     paymentId,
   } = curAdminOrder;
@@ -34,34 +37,44 @@ function OrderDetailsAdm() {
   return (
     <>
       <div className=" w-full flex flex-wrap gap-2 h-full">
-        <div className=" w-full flex gap-2">
-          <OrderDetails
-            id={orderId}
-            downloadURL={downloadURL}
-            size={size}
-            person={person}
-            orientation={orientation}
-          />
-          <PersonalDetail
-            email={email}
-            name={name}
-            phone={phone}
-            flat={flat}
-            street={street}
-            pin={pin}
-            district={district}
-            state={state}
-            date={formatDate(date)}
-          />
-          <Payment
-            price={price}
-            paymentDate={paymentDate}
-            paymentId={paymentId}
-            shipping={shipping}
-            status={status}
-            payment={payment}
-            orderId={orderId}
-          />
+        <div className=" w-full flex gap-2 ">
+          <div className=" flex flex-col gap-2 w-1/3">
+            <OrderDetails
+              id={orderId}
+              downloadURL={downloadURL}
+              size={size}
+              person={person}
+              orientation={orientation}
+            />
+            <StatusUpdate />
+          </div>
+            <div className=" flex flex-col gap-2">
+
+            <div className=" flex h-fit w-auto gap-2">
+            <PersonalDetail
+              email={email}
+              name={name}
+              phone={phone}
+              flat={flat}
+              street={street}
+              pin={pin}
+              district={district}
+              state={state}
+              date={formatDate(date)}
+              note={notes}
+            />
+            <Payment
+              price={price}
+              paymentDate={paymentDate}
+              paymentId={paymentId}
+              shipping={shipping}
+              status={status}
+              payment={payment}
+              orderId={orderId}
+            />
+          </div>
+             <StatusDesc />
+            </div>
         </div>
       </div>
     </>

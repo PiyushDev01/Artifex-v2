@@ -47,13 +47,14 @@ function Payment(props) {
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: false, amount: 0.2 }}
-        className="payment h-fit w-1/3 min-h-[8rem] p-2 bg-white  rounded-xl shadow-md "
+        className="payment  min-h-[8rem] p-2 bg-white  rounded-xl shadow-md "
       >
-        <div className=" flex gap-2 items-center">
-          <h1 className=" text-base md:text-xl font-bold m-2 md:font-semibold text-slate-700">
+        <div className=" w-full justify-between flex  items-center">
+          <h1 className=" text-base md:text-lg font-bold m-2 md:font-semibold text-slate-700">
             Payment Details 
           </h1>
-          <Status status={curstatus} />
+          <Status status={!props.payment ? "UNPAID" : "PAID" } />
+          <Status status={props.status} />
         </div>
 
         <div className="pricing  h-fit  ">

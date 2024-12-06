@@ -14,7 +14,7 @@ function Dashboardcard({title, value, opentab}) {
    onClick={()=>{
     setSidebar({...sidebar, curoption: opentab})
    }}
-    className="flex flex-col items-center hover:bg-zinc-100 transition-all rounded-xl justify-center w-full p-4 bg-white shadow-md">
+    className="flex cursor-pointer flex-col items-center hover:bg-zinc-100 transition-all rounded-xl justify-center w-full p-4 bg-white shadow-md">
       <h1 className="text-2xl font-semibold text-slate-800 ">{value}</h1>
       <p className="text-sm text-slate-500">{title}</p>
     </div>
