@@ -1884,7 +1884,7 @@ export const sendconfiramtionEmail = async (user,details, orderId, curtime) => {
   };
 
 
-export const sendStatusEmail = async (curEmail,details, curstatus) => {
+export const sendStatusEmail = async (curEmail,details, curstatus, orderId) => {
 
     const formatDate = (isoString) => {
         const date = new Date(isoString);
@@ -1900,17 +1900,20 @@ export const sendStatusEmail = async (curEmail,details, curstatus) => {
         return date.toLocaleDateString('en-US', options).toUpperCase(); // Convert to uppercase for month
       };
 
-    const orderid = details.orderId;
+    const orderid = orderId;
     const curtime = new Date();
     const orderdate = formatDate(curtime);
 
     const emailmsg = {
       Approved: "We’re excited to let you know that your order has been approved by the artist! To proceed with the next steps, please complete the payment at your earliest convenience. If you have any questions, feel free to reach out.",
-      PAID: "Thank you for completing the payment! We’ve received your transaction and will begin processing your order shortly. Feel free to contact us if you have any questions.",
-      Sketching: "Great news! Your order is now in the sketching phase. Our artist is working on creating your custom piece. We’ll notify you once it’s ready for review.",
-      Finished: "Your artwork is complete! We’re thrilled to inform you that the sketching process is finished. Please review the final piece and let us know if you have any feedback or approval for delivery.",
-      Delivered: "Your order has been shipped and is on its way to you! You can track the shipment using the tracking number provided. Thank you for choosing us!"
-    };
+    PAID: "Thank you for completing the payment! We’ve received your transaction and will begin processing your order shortly. Feel free to contact us if you have any questions.",
+    Sketching: "Great news! Your order is now in the sketching phase. Our artist is working on creating your custom piece. We’ll notify you once it’s ready for review.",
+    Finished: "Your artwork is complete! We’re thrilled to inform you that the sketching process is finished. Please review the final piece and let us know if you have any feedback or approval for delivery.",
+    Delivered: "Your order has been shipped and is on its way to you! You can track the shipment using the tracking number provided. Thank you for choosing us!",
+    Rejected: "We regret to inform you that your order could not be approved by the artist. Please contact us if you need further clarification or wish to explore alternative options.",
+    Done: "Thank you for confirming! Your order has been successfully completed. We hope you’re delighted with your custom piece. Feel free to reach out if you need assistance in the future.",
+    Pending: "Your order is currently under review. We’ll notify you once the status is updated. Thank you for your patience!"
+};
 
     const status = curstatus;
     const emailtitle= `Status: ${status}`;

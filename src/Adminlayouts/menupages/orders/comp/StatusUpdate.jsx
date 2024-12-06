@@ -1,10 +1,23 @@
 import  { useState } from "react";
 import { useContext } from "react";
 import { Dashcontext } from "../../../contex/DashContext";
-import { updateStatus } from '../../../Firebase_admin/update.js';
+import { updateStatus, updateStatusDesc } from '../../../Firebase_admin/update.js';
 import { FiLoader } from "react-icons/fi";
 import { FaLock } from "react-icons/fa";
 import {sendStatusEmail} from '../../../../mailer/EmailSender.js';
+
+
+const msg = {
+    Approved: "We’re excited to let you know that your order has been approved by the artist! To proceed with the next steps, please complete the payment at your earliest convenience. If you have any questions, feel free to reach out.",
+    PAID: "Thank you for completing the payment! We’ve received your transaction and will begin processing your order shortly. Feel free to contact us if you have any questions.",
+    Sketching: "Great news! Your order is now in the sketching phase. Our artist is working on creating your custom piece. We’ll notify you once it’s ready for review.",
+    Finished: "Your artwork is complete! Please review the final piece and let us know if you have any feedback or approval for delivery.",
+    Delivered: "Your order has been shipped and is on its way to you! You can track the shipment using the tracking number provided. Thank you for choosing us!",
+    Rejected: "We regret to inform you that your order could not be approved by the artist. Please contact us if you need further clarification or wish to explore alternative options.",
+    Done: "Thank you for confirming! Your order has been successfully completed. We hope you’re delighted with your custom piece. Feel free to reach out if you need assistance in the future.",
+    Pending: "Your order is currently under review. We’ll notify you once the status is updated. Thank you for your patience!"
+};
+
 
 function StatusUpdate() {
 
@@ -28,8 +41,10 @@ function StatusUpdate() {
     const handleStatus = async(orderId, status ) => {
         setUpdatingStatus(<FiLoader />);
          await updateStatus(orderId, status)
-         if(status==='Approved' || status==='Sketching' || status==='Finished' || status==='Delivered' || status==='Rejected' || status==='Done'){
-            await sendStatusEmail(curAdminOrder.email, curAdminOrder, status)
+         if(status==='Approved' || status==='Sketching' || status==='Finished' || status==='Delivered' || status==='Rejected' || status==='Done' || status==='Pending'){
+            await sendStatusEmail(curAdminOrder.email, curAdminOrder, status, curAdminOrder.orderId)
+            await updateStatusDesc(curAdminOrder.orderId ,msg[status]) 
+            
          }
          setUpdatingStatus();
       }

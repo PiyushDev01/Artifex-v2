@@ -94,8 +94,15 @@ export default function Orderform1() {
   };
 
   const handleOrientationClick = (item, index) => {
-    setDetails((prevDetails) => ({ ...prevDetails, orientation: item }));
-    setFormOneValid((prevForm) => ({ ...prevForm, orientation: false }));
+    if(image){
+      setUrl("");
+      setImage(null);
+      setDetails((prevDetails) => ({ ...prevDetails, cropped: null }));
+      setDetails((prevDetails) => ({ ...prevDetails, orientation: item }));
+    }else{
+      setDetails((prevDetails) => ({ ...prevDetails, orientation: item }));
+      setFormOneValid((prevForm) => ({ ...prevForm, orientation: false }));
+    }
   };
 
   return (
@@ -150,7 +157,10 @@ export default function Orderform1() {
               setDetails((prevDetails) => ({ ...prevDetails, cropped: null }));
             }}
           >
-            <RotateLeftRoundedIcon className="scale-125 bg-mypurple rounded-full m-4 md:m-8 shadow-lg text-white" />
+           <div className=" flex flex-col items-center justify-center m-4 " >
+           <RotateLeftRoundedIcon className="scale-125 bg-mypurple rounded-full  shadow-lg text-white" />
+            <h1 className="text-mypurple text-lg font-semibold">Reset</h1>
+           </div>
           </button>
         </div>
       ) : (
@@ -165,6 +175,7 @@ export default function Orderform1() {
           />
           <div
             id="upload"
+            onClick={() => !image && inputRef.current.click()}
             className={`cursor-pointer flex flex-col items-center justify-center min-h-44 h-fit w-full pt-4 my-4 md:w-[80%] border-[2px] ${
               is_F1_Invalide.file ? "border-[#ff5050]" : "border-gray-400"
             } border-dashed bg-slate-50 rounded-lg`}
@@ -186,12 +197,12 @@ export default function Orderform1() {
                   className="bg-mypurple text-white py-2 px-4 rounded-full shadow-lg my-2"
                   onClick={handleCrop}
                 >
-                  Crop
+                  Done
                 </button>
               </>
             ) : (
               <>
-                <div onClick={() => inputRef.current.click()} className="flex items-center justify-center shadow-lg w-[4rem] h-[4rem] rounded-full bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0]">
+                <div className="flex items-center justify-center shadow-lg w-[4rem] h-[4rem] rounded-full bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0]">
                   <DriveFolderUploadIcon className="scale-150 text-white" />
                 </div>
                 <h1 className="text-slate-700 m-2 text-xs max-w-56">
