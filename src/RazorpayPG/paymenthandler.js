@@ -53,9 +53,8 @@ const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, payment
             console.log("Payment verification response:", jsonResponse);
             if (jsonResponse.msg === "success") {
               console.log("Payment captured successfully!");
-              // alert("Payment successful!");
-              // Update the current order
-              setCurrentOrder({ ...currentOrder, payment: "PAID", paymentId: jsonResponse.paymentId, paymentDate: formatDate(new Date().toISOString()) , total: totalAmt });
+              const curtime = new Date().toISOString();
+              setCurrentOrder({ ...currentOrder, payment: "PAID", paymentId: jsonResponse.paymentId, paymentDate: formatDate(curtime) , total: totalAmt });
               setPaymentpopup(true);
               // TODO: Send email of payment confirmation to both admin and user 
                  
