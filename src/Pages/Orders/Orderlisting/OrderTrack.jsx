@@ -28,7 +28,7 @@ function OrderTrack() {
   };
 
   const handlePayment = async(e) => {
-    paymenthandler(
+    await paymenthandler(
       e,
       setPaymentpopup,
       currentOrder,
