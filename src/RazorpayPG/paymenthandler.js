@@ -1,5 +1,5 @@
 import {formatDate} from "../Pages/Orders/Orderlisting/OrderList";
-
+import {sendStatusEmail} from "../mailer/EmailSender.js";
 
 const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, paymentUpdate, userID, setCurrentOrder) => {
   
@@ -62,6 +62,7 @@ const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, payment
               try {
                 const curtime = new Date().toISOString();
                 await paymentUpdate(userID, currentOrder.id, "PAID", jsonResponse.paymentId, formatDate(curtime), totalAmt);
+                await sendStatusEmail(currentOrder.email, currentOrder, "PAID");
               } catch (error) {
                 console.error("Error updating payment status:", error);
               }      
