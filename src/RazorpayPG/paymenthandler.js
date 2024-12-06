@@ -62,10 +62,12 @@ const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, payment
               try {
                 const curtime = new Date().toISOString();
                 await paymentUpdate(userID, currentOrder.id, "PAID", jsonResponse.paymentId, formatDate(curtime), totalAmt);
-                await sendStatusEmail(currentOrder.email, currentOrder, "PAID");
+                
               } catch (error) {
                 console.error("Error updating payment status:", error);
-              }      
+              } finally {
+                await sendStatusEmail(currentOrder.email, currentOrder, "PAID");
+              }     
             } else {
               console.error("Payment not captured:", jsonResponse.error);
             }
