@@ -13,6 +13,7 @@ import OrderDetails from "./OrderDetails";
 import PersonalDetail from "./PersonalDetail";
 import Payment from "./Payment";
 import Status from "./Statuscomp.jsx";
+import sendStatusEmail from "../../../mailer/EmailSender";
 
 function OrderTrack() {
   const { currentOrder, setCurrentOrder } = useContext(Detailcontext);
@@ -26,7 +27,7 @@ function OrderTrack() {
     setCurrentOrder(null);
   };
 
-  const handlePayment = (e) => {
+  const handlePayment = async(e) => {
     paymenthandler(
       e,
       setPaymentpopup,
@@ -36,6 +37,8 @@ function OrderTrack() {
       user.uid,
       setCurrentOrder
     );
+    await sendStatusEmail(currentOrder.email, currentOrder, "PAID");
+
   };
 
   return (

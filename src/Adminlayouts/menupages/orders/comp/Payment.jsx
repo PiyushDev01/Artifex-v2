@@ -9,6 +9,7 @@ import { updateShippingCharge, updateStatus } from '../../../Firebase_admin/upda
 import { useContext } from 'react';
 import { Dashcontext } from '../../../contex/DashContext.jsx';
 import { useState } from 'react';
+import {sendStatusEmail} from '../../../../mailer/EmailSender.js';
 
 function Payment(props) {
 
@@ -29,12 +30,14 @@ function Payment(props) {
   const handleShipping = async(orderId, shippingCharge ) => {
     setUpdatingShipping(<FiLoader />);
      await updateShippingCharge(orderId, shippingCharge)
+     
     setUpdatingShipping("Update");
   }
 
   const handleStatus = async(orderId, status ) => {
     setUpdatingStatus(<FiLoader />);
      await updateStatus(orderId, status)
+     await sendStatusEmail(curAdminOrder.email, curAdminOrder, "Approved")
      setUpdatingStatus("Accepted");
   }
     

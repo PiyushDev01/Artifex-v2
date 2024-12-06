@@ -17,7 +17,7 @@ export const OrderLists = ({ rowlimit }) => {
   const handleRowClick = (index) => {
     
     setSidebar({ curoption: "Orderdetail", open: true });
-    console.log(index);
+    // console.log(index);
     setCurAdminOrder(adminOrders[index]);
   };
   // Slice data if rowlimit is provided

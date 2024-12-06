@@ -4,7 +4,7 @@ import { Dashcontext } from "../../../contex/DashContext";
 import { updateStatus } from '../../../Firebase_admin/update.js';
 import { FiLoader } from "react-icons/fi";
 import { FaLock } from "react-icons/fa";
-
+import {sendStatusEmail} from '../../../../mailer/EmailSender.js';
 
 function StatusUpdate() {
 
@@ -28,6 +28,9 @@ function StatusUpdate() {
     const handleStatus = async(orderId, status ) => {
         setUpdatingStatus(<FiLoader />);
          await updateStatus(orderId, status)
+         if(status==='Approved' || status==='Sketching' || status==='Finished' || status==='Delivered' || status==='Rejected' || status==='Done'){
+            await sendStatusEmail(curAdminOrder.email, curAdminOrder, status)
+         }
          setUpdatingStatus();
       }
 
