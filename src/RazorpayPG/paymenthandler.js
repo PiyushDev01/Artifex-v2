@@ -29,8 +29,6 @@ const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, payment
         return;
       }
   
-      // Razorpay options
-      //razorpay api changed to live mode on vercel deployment
       const options = {
         //live api is not working yet so using test api
         key: import.meta.env.VITE_RAZORPAY_API, // Replace with your Razorpay API key
