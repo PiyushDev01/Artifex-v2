@@ -50,7 +50,7 @@ function AdminDash() {
       let totalamt = 0;
 
       orders.map((transaction) => {
-        if (transaction.payment) {
+        if (transaction.payment==='PAID') {
           allpays.push(transaction);
         }
       });

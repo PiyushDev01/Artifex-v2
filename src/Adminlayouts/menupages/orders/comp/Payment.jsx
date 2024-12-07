@@ -56,7 +56,7 @@ function Payment(props) {
           <h1 className=" text-base md:text-lg font-bold m-2 md:font-semibold text-slate-700">
             Payment Details 
           </h1>
-          <Status status={!props.payment ? "UNPAID" : "PAID" } />
+          <Status status={!props.payment ? "UNPAID" : props.payment } />
           <Status status={props.status} />
         </div>
 

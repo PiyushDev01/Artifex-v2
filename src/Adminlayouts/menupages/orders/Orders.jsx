@@ -56,7 +56,7 @@ export const OrderLists = ({ rowlimit }) => {
                 name={item.name}
                 price={item.price+item.shipping}
                 date={formatDate(item.date)}
-                status={item.payment === 'PAID' && item.status==='Approved' ? item.payment : item.status}
+                status={(item.payment === 'PAID' || item.payment === "Cancelled" ) && item.status==='Approved' ? item.payment : item.status}
                 handleFunc={()=>handleRowClick(index)}
                 ispaid={item.payment === 'PAID'}
               />

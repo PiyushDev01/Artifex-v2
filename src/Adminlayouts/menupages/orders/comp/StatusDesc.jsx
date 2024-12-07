@@ -38,7 +38,7 @@ const handleStatusdesc = async(orderId, statusDesc ) => {
             {updatingStatus}
         </button>
         {
-            !curAdminOrder.payment ? <div className=" flex gap-2 top-0 left-0 text-slate-800 font-bold items-center bg-indigo-500/25 justify-center lock w-full h-full backdrop-blur-sm absolute ">
+            curAdminOrder.payment !== "PAID" ? <div className=" flex gap-2 top-0 left-0 text-slate-800 font-bold items-center bg-indigo-500/25 justify-center lock w-full h-full backdrop-blur-sm absolute ">
              Locked <FaLock className=" text-mypurple" />
             </div> : null
         }

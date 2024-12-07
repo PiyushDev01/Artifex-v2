@@ -165,7 +165,7 @@ function OrderForm() {
                   }
                 }
               }}
-              className="bg-[#6200EA] text-white px-4 py-2 text-lg md:rounded-full w-full md:w-fit  rounded-lg"
+              className="bg-[#6200EA] mb-4 md:mb-0 text-white px-4 py-2 text-lg md:rounded-full w-full md:w-fit  rounded-lg"
               // disabled={currentStep === steps.length}
             >
               {currentStep === steps.length ? "Submit" : "Next"}

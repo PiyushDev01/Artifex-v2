@@ -25,10 +25,8 @@ const TransactionRow = (props) => {
     >
       <div className="flex items-center">
         <p className="hidden md:block w-20">{
-        
-        props.paymentId.substring(0, 6)
 
-        
+        props.paymentId.substring(0, 6)
         }</p>
         <button onClick={() => copyToClipboard(props.paymentId)} className="ml-2 text-sm text-blue-500">Copy</button>
       </div>

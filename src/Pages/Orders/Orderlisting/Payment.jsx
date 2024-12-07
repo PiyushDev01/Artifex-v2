@@ -3,19 +3,30 @@ import Detailcontext from "../OrderformSection/DetailContext/Detailcontext";
 import { Status } from './OrderList';
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../Framer/fadein.js";
+import {updatPaymentStatus} from "../../../Firebase/CURDfunc/create";
+import UserContext from "../../../Context/UserContex.js";
 
 function Payment(props) {
 
-  const { currentOrder } = useContext(Detailcontext);
+  const { currentOrder, setCurrentOrder } = useContext(Detailcontext);
+  const {user} = useContext(UserContext);
   const shipping = currentOrder.shipping;
-  const curstatus = currentOrder.payment || currentOrder.status;
-  const [paymentprocessing, setPaymentprocessing] = useState("Pay Now");  
+  const curstatus =  currentOrder.payment || currentOrder.status;
+  const [paymentprocessing, setPaymentprocessing] = useState("Pay Now"); 
+  const [cancel, setCancel] = useState("Cancel");
 
   const handlePayment = (e) => {
     e.preventDefault();
     setPaymentprocessing("Processing...");
     props.handlePayment();
   }
+
+  const handleCancel = async() => {
+    await updatPaymentStatus(user.uid, currentOrder.id, "Cancelled", "Payment Cancelled by User");
+       setCurrentOrder({...currentOrder, payment:"Cancelled"});
+    setCancel("Cancelled");
+  }
+    
 
 
   return (
@@ -85,9 +96,11 @@ function Payment(props) {
                   alt=""
                 />
               </div>
-              <div className=" flex md:flex-row flex-col-reverse w-full justify-center items-center gap-4 md:gap-8 mt-4 ">
+              <div 
+              onClick={handleCancel}
+              className=" flex md:flex-row flex-col-reverse w-full justify-center items-center gap-4 md:gap-8 mt-4 ">
                 <button className=" bg-slate-200 text-zinc-900 w-full  py-2 px-4 rounded-full hover:border-slate-500 border-slate-100 border-[1px] transition-all text-sm font-semibold ">
-                  Cancel
+                  {cancel}
                 </button>
 
                 <button

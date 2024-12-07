@@ -191,7 +191,7 @@ function OrderPrice() {
                 id={order.id}
                 date={formatDate(order.date)}
                 price={"₹"+order.price}
-                status={order.status}
+                status={(order.payment === 'PAID' || order.payment === "Cancelled" ) && order.status==='Approved' ? order.payment : order.status}
                 handlefunc={() => handlecurrentOrder(index)}
 
               />
