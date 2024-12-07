@@ -21,8 +21,10 @@ import { checkAdmin } from "../Firebase/CURDfunc/read";
 import toast, { Toaster } from 'react-hot-toast';
 import { getOrders } from "../Firebase/CURDfunc/read";
 import Detailcontext from "../Pages/Orders/OrderformSection/DetailContext/Detailcontext";
-import { or } from "firebase/firestore";
-
+import { FiHome } from "react-icons/fi";
+import { FaBagShopping } from "react-icons/fa6";
+import { SiAircall } from "react-icons/si";
+import { IoMailOpen } from "react-icons/io5";
 
 
 const auth = getAuth(app);
@@ -97,7 +99,7 @@ export default function Nav() {
   const handleTog = () => {
     if (!toggle) {
       settoggle(true);
-      setbox({ width: "60%" });
+      setbox({ width: "70%" });
       settextbox({ display: "flex" });
       setfadebg({ display: "flex" });
       document.getElementById("checkbox").checked = true;
@@ -222,7 +224,7 @@ export default function Nav() {
         <div
           style={fadebg}
           onClick={handleTog}
-          className=" gap-5 pb-28 flex flex-col justify-end items-center w-full h-screen  absolute top-0 left-0 md:none "
+          className=" gap-5 pb-28 flex flex-col justify-end items-center w-full h-[120vh]  absolute top-0 left-0 md:none "
           id="fadebg"
         >
           
@@ -266,37 +268,39 @@ export default function Nav() {
 
         <div
           style={box}
-          className=" h-fit absolute right-0 top-20 md:hidden justify-center py-8 rounded-l-xl flex flex-col items-center gap-3 overflow-hidden z-20"
+          className=" min-h-fit h-[30rem] absolute backdrop-blur-sm bg-gradient-to-b from-[#1f1f1f] from-60%  to-purple-800/75 
+           shadow-2xl border-[#4c4c4c]  -right-1 top-20 md:hidden justify-between py-8 rounded-l-[1rem] flex flex-col items-center gap-3 overflow-hidden z-20"
           id="mobblurnav"
         >
           <ul
             style={{ textbox }}
-            className="flex flex-col gap-6  transition-all text-slate-200 text-lg overflow-hidden"
+            className="flex flex-col gap-6 mt-8 transition-all text-left text-slate-100 text-lg overflow-hidden"
             onClick={handleTog}
           >
             <Link to="/">
               {" "}
-              <li id="li">Home</li>
+              <li id="li"><FiHome className=" text-purple-500 " />Home</li>
             </Link>
             <Link to="/order">
               {" "}
-              <li id="li">Order</li>
+              <li id="li"><FaBagShopping className=" text-purple-500 " />Order</li>
             </Link>
             <Link to="/aboutus">
               {" "}
-              <li id="li">About</li>
+              <li id="li"><SiAircall className=" text-purple-500 " />About</li>
             </Link>
             <a href="https://wa.me/+916392802689">
               {" "}
-              <li id="li">Contact</li>
+              <li id="li"><IoMailOpen className=" text-purple-500 " />Contact</li>
             </a>
           </ul>
-          <motion.h1
+         <div className=" flex items-center justify-center flex-col" >
+         <motion.h1
             variants={fadeIn("no", 0.05)}
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.7 }}
-            className=" text-zinc-300 text-center mt-16 "
+            className=" text-zinc-300 w-full text-md text-center mb-4 mt-16 "
           >
             {isUserlogged ? "Sign out" : "Login or Sign Up"} <br />{" "}
             {isUserlogged ? "" : "with"}
@@ -345,6 +349,7 @@ export default function Nav() {
              
             </div>
           )}
+         </div>
         </div>
 
         {hide && <Login handlelgn={togglelgn} />}
