@@ -1,5 +1,4 @@
 import "./orderlist.css";
-// import { Status, formatDate } from "./OrderList";
 import { useContext, useState } from "react";
 import Detailcontext from "../OrderformSection/DetailContext/Detailcontext";
 import UserContext from "../../../Context/UserContex";
@@ -15,8 +14,11 @@ import Payment from "./Payment";
 import Status from "./Statuscomp.jsx";
 
 
+
+
+
 function OrderTrack() {
-  const { currentOrder, setCurrentOrder } = useContext(Detailcontext);
+  const {  setCurrentOrder, currentOrder } = useContext(Detailcontext);
   const { user } = useContext(UserContext);
   const [paymentpopup, setPaymentpopup] = useState(false);
 
@@ -26,6 +28,10 @@ function OrderTrack() {
     navigate("/Your-Orders");
     setCurrentOrder(null);
   };
+
+
+
+
 
   const handlePayment = async(e) => {
     await paymenthandler(
@@ -37,8 +43,6 @@ function OrderTrack() {
       user.uid,
       setCurrentOrder
     );
-    
-
   };
 
   return (

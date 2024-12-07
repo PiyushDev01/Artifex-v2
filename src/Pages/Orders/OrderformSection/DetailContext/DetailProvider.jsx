@@ -29,8 +29,14 @@ const DetailProvider = ({ children }) => {
         email:null,
         // userID: null,
     });
+    
+    const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    const savedidx = localStorage.getItem("currentOrderindex");
 
-    const [currentOrder, setCurrentOrder] = useState(null);
+    const [currentOrder, setCurrentOrder] = useState(savedOrders[savedidx]);
+
+
+    const [orderArray, setOrderArray] = useState([savedOrders]);
 
     
     
@@ -42,7 +48,8 @@ const DetailProvider = ({ children }) => {
             details,
             setDetails,
             currentOrder,
-            setCurrentOrder
+            setCurrentOrder,
+            orderArray, setOrderArray
         }}>
             {children}
         </Detailcontext.Provider>

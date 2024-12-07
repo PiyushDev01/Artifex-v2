@@ -100,20 +100,23 @@ export const formatDate = (isoString) => {
 
 
 
+
+
+
+
 function OrderPrice() {
  
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const {user} = useContext(UserContext);
-  const [orders, setOrders] = useState([]);
-  // const [currentOrder, setCurrentOrder] = useState(null);
-  const {setCurrentOrder } = useContext(Detailcontext);
+  const {setCurrentOrder, setOrderArray, orderArray } = useContext(Detailcontext);
 
   const handlecurrentOrder = (idx) => {
+    localStorage.setItem("currentOrderindex", idx); // Save the data locally
     navigate("/Your-Orders/Details");
-    // console.log("Current Order: ", currentOrder);
-    setCurrentOrder(orders[idx]);
+    setCurrentOrder(orderArray[idx]);
   };
+  
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -123,8 +126,8 @@ function OrderPrice() {
         // Sort orders by date in descending order
         const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
         
-        setOrders(sortedData);
-        // console.log("Orders: ", sortedData);
+        setOrderArray(sortedData);
+        console.log("Orders: ", sortedData);
         setLoading(false);
       } catch (e) {
         console.log("This error occurred while fetching order details: " + e);
@@ -133,7 +136,7 @@ function OrderPrice() {
     };
   
     fetchOrders();
-  }, [user.uid]);
+  }, []);
 
   
 
@@ -182,7 +185,7 @@ function OrderPrice() {
                <Lottie animationData={loader} style={{width: '45px', height: '30px'}} className=" scale-[300%]" />
             </div>
           ) : (
-            orders.length > 0 ? orders.map((order, index) => (
+            orderArray.length > 0 ? orderArray.map((order, index) => (
               <OrderList
                 key={order.id}
                 id={order.id}

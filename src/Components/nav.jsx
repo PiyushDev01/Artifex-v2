@@ -18,6 +18,12 @@ import { Link } from "react-router-dom";
 import UserContext from "../Context/UserContex";
 import { useNavigate } from "react-router-dom";
 import { checkAdmin } from "../Firebase/CURDfunc/read";
+import toast, { Toaster } from 'react-hot-toast';
+import { getOrders } from "../Firebase/CURDfunc/read";
+import Detailcontext from "../Pages/Orders/OrderformSection/DetailContext/Detailcontext";
+import { or } from "firebase/firestore";
+
+
 
 const auth = getAuth(app);
 
@@ -28,6 +34,9 @@ export default function Nav() {
   const [fadebg, setfadebg] = useState({ display: "none" });
   const [hide, sethide] = useState(false);
   const [droplogout, setdroplogout] = useState(false);
+
+  const [loading, setLoading] = useState(true);
+  const {setOrderArray, orderArray } = useContext(Detailcontext);
 
   const handleMouseOver = () => setdroplogout(true);
     const handleMouseOut = () => setdroplogout(false);
@@ -49,6 +58,41 @@ export default function Nav() {
     }
     check();
   }, [user]);
+
+
+
+
+
+
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const data = await getOrders(user.uid);
+        const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setOrderArray(sortedData);
+        localStorage.setItem('orders', JSON.stringify(sortedData)); // Save orders
+        setLoading(false);
+      } catch (e) {
+        console.log("Error: " + e);
+        setLoading(false);
+      }
+    };
+  
+    const savedOrders = localStorage.getItem('orders');
+    if (savedOrders) {
+      setOrderArray(JSON.parse(savedOrders)); // Load orders from storage
+      // console.log(orderArray);
+    } else {
+      fetchOrders();
+    }
+  }, [user]);
+  
+
+
+
+
+
 
   const handleTog = () => {
     if (!toggle) {
@@ -76,6 +120,12 @@ export default function Nav() {
     navigate("/");
     window.location.reload();
   };
+
+  const notavail=()=>{
+    toast.error(' This feature is under development', {
+      position: 'bottom-center',
+    } )
+  }
 
   const { isUserlogged, uDetails } = useContext(UserContext);
   const [checkadmin, setcheckadmin] = useState(false);
@@ -166,13 +216,17 @@ export default function Nav() {
         </div>
     </div>
 
+
+  {/* mobile view */}
         
         <div
           style={fadebg}
           onClick={handleTog}
           className=" gap-5 pb-28 flex flex-col justify-end items-center w-full h-screen  absolute top-0 left-0 md:none "
           id="fadebg"
-        ></div>
+        >
+          
+        </div>
 
         <div className="block md:hidden" onClick={handleTog}>
           {isUserlogged ? (
@@ -277,7 +331,7 @@ export default function Nav() {
                 </motion.div>
               </a>
 
-              <a onClick={pending}>
+              <a onClick={notavail}>
                 <motion.div
                   variants={fadeIn("up", 0.2)}
                   initial="hidden"
@@ -288,12 +342,14 @@ export default function Nav() {
                   <img src={facebookIcon} alt="" />
                 </motion.div>
               </a>
+             
             </div>
           )}
         </div>
 
         {hide && <Login handlelgn={togglelgn} />}
       </nav>
+      <Toaster />
     </>
   );
 }
