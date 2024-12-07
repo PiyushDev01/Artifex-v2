@@ -97,9 +97,11 @@ function Payment(props) {
                 />
               </div>
               <div 
-              onClick={handleCancel}
+              
               className=" flex md:flex-row flex-col-reverse w-full justify-center items-center gap-4 md:gap-8 mt-4 ">
-                <button className=" bg-slate-200 text-zinc-900 w-full  py-2 px-4 rounded-full hover:border-slate-500 border-slate-100 border-[1px] transition-all text-sm font-semibold ">
+                <button
+                onClick={handleCancel}
+                className=" bg-slate-200 text-zinc-900 w-full  py-2 px-4 rounded-full hover:border-slate-500 border-slate-100 border-[1px] transition-all text-sm font-semibold ">
                   {cancel}
                 </button>
 
