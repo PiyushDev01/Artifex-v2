@@ -26,6 +26,9 @@ function AdminDash() {
         if (!check) {
           navigate("/");
         }
+      }else
+      {
+        navigate("/");
       }
     }
     check();
