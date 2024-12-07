@@ -6,10 +6,31 @@ import { Dashcontext } from './contex/DashContext.jsx';
 import { useContext, useEffect } from 'react';
 import loader from "../assets/loader.json";
 import Lottie from "lottie-react";
+import {checkAdmin} from '../Firebase/CURDfunc/read.js';
+import UserContext from '../Context/UserContex.js';
+import { useNavigate } from 'react-router';
 
 function AdminDash() {
   const { refresh, settotalorder, setAdminOrders, setAdminUsers,setAdminPayments, setTotaluser, setTotalpays, setTotalrevnue} = useContext(Dashcontext);
   const [loading, setLoading] = useState(false);
+  const {user} = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    
+    // console.log(user);
+    async function check() {
+      if (user) {
+        const check = await checkAdmin(user.uid);
+        if (!check) {
+          navigate("/");
+        }
+      }
+    }
+    check();
+  }, [user]);
+  
 
 
   useEffect(() => {

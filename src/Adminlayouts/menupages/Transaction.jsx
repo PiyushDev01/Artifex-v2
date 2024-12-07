@@ -21,10 +21,15 @@ const TransactionRow = (props) => {
       onClick={() => {
         props.handleFunc(); // Handle click action
       }}
-      className="flex cursor-pointer justify-between items-center rounded-lg border-b-[1px] hover:bg-slate-200 border-slate-200 py-4 mx-4 md:pl-6 px-2 text-slate-500 text-xl font-semibold"
+      className="flex cursor-pointer justify-between items-center rounded-lg border-b-[1px] hover:bg-slate-200 border-slate-200 py-4 mx-4 md:pl-6  text-slate-500 text-xl font-semibold"
     >
       <div className="flex items-center">
-        <p className="hidden md:block w-20">{props.paymentId.substring(0, 6)}...</p>
+        <p className="hidden md:block w-20">{
+        
+        props.paymentId.substring(0, 6)
+
+        
+        }</p>
         <button onClick={() => copyToClipboard(props.paymentId)} className="ml-2 text-sm text-blue-500">Copy</button>
       </div>
       <div className="flex items-center">
@@ -34,11 +39,11 @@ const TransactionRow = (props) => {
       </div>
       <div className="flex items-center">
         <p className="hidden md:block min-w-40 text-lg">
-        {props.paidBy.substring(0, 12)}...
+        {props.paidBy.length > 15 ? props.paidBy.substring(0, 15) + '...' : props.paidBy}
         </p>
       </div>
-      <p className="text-sm min-w-12 md:text-lg">₹{props.amount}</p>
-      <p className="text-sm md:text-lg min-w-32 text-right">{props.date}</p>
+      <p className="text-sm min-w-12 text-center md:text-lg">₹{props.amount}</p>
+      <p className="text-sm md:text-lg min-w-40 text-right">{props.date}</p>
     </div>
   );
 };
@@ -66,7 +71,7 @@ export const TransactionLists = ({ rowlimit }) => {
   
 
   // Sort transactions by date
-  const sortedTransactions = adminPayments.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sortedTransactions = adminPayments.sort((a, b) => new Date(b.paymentDate) - new Date(a.paymentDate));
 
   return (
     <div className="maincontainer w-full flex flex-col items-center">
