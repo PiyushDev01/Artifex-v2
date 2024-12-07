@@ -57,6 +57,7 @@ export default function Leftcontent() {
         >
           Preserve Your Memories in Sketches
         </motion.p>
+        <a href="https://www.instagram.com/im_artifex/?igsh=dW0yZGN3NHNzNTM3" target="_blank">
         <motion.button
           variants={fadeIn("nothing", 0.3)}
           initial="hidden"
@@ -67,7 +68,7 @@ export default function Leftcontent() {
           id="exbtn"
         >
           <h1>Explore</h1>
-        </motion.button>
+        </motion.button></a>
       </div>
     </>
   );
