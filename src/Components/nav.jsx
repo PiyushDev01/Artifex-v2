@@ -242,10 +242,10 @@ export default function Nav() {
           id="fadebg"
         ></div>
 
-        <div className=" flex items-center justify-center gap-2">
+        <div className=" md:hidden block flex items-center justify-center gap-2">
           <Link to="/order">
             <svg 
-             className="md:hidden block"
+             
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
