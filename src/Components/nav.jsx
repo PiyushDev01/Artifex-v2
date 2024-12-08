@@ -244,7 +244,8 @@ export default function Nav() {
 
         <div className=" flex items-center justify-center gap-2">
           <Link to="/order">
-            <svg
+            <svg 
+             className="md:hidden block"
               xmlns="http://www.w3.org/2000/svg"
               width="32"
               height="32"
