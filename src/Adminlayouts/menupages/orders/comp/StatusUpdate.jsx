@@ -34,7 +34,8 @@ function StatusUpdate() {
         {name: 'Finished'},
         {name: 'Delivered'},
         {name: 'Rejected'},
-        {name: 'Done'}
+        {name: 'Done'},
+        {name: 'Refunded'},
 
     ];  
 
