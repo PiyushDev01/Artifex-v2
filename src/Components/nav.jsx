@@ -305,10 +305,14 @@ export default function Nav() {
             className="flex flex-col  gap-6 transition-all text-left text-slate-100 text-lg overflow-hidden"
             onClick={handleTog}
           >
-            <img
+            {
+              uDetails.image && (
+                <img
               src={uDetails.image}
               className="md:w-16 translate-x-[20%] border-2 border-purple-500 rounded-full m-2 w-16 h-16 md:h-16 md:hidden block"
             />
+              )
+            }
             {/* <h1 className="text-[10px] text-center">{user.email}</h1> */}
             <Link to="/">
               {" "}
