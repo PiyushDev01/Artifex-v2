@@ -103,69 +103,84 @@ function OrderForm() {
                   <div className="checkmark"></div>
                 </label>
 
-                <h1 className="text-slate-700 font-semibold text-lg">
+                <h1 className="text-slate-700 font-semibold md:text-lg">
                  I accept the <span onClick={()=> navigate('/policies')} className=" text-indigo-700 cursor-pointer">terms and conditions</span> 
                 </h1>
               </div>
             )}
 
             <button
-              onClick={() => {
-                if (currentStep === 1) {
-                  if (
-                    details.size == null ||
-                    details.orientation == null ||
-                    details.cropped == null
-                  ) {
-                    setFormOneValid({
-                      ...is_F1_Invalide,
-                      size: details.size == null ? true : false,
-                      orientation: details.orientation == null ? true : false,
-                      file: details.cropped == null ? true : false,
-                    });
-                    //alert("Please select size and orientation");
-                  } else {
-                    move(1);
-                  }
-                } else if (currentStep === 2) {
-                  if (
-                    details.name == null ||
-                    details.phone == null ||
-                    details.saveas == null ||
-                    details.flat == null ||
-                    details.street == null ||
-                    details.district == null ||
-                    details.state == null ||
-                    details.pin == null
-                  ) {
-                    setFormTWOValid({
-                      ...is_F2_Invalide,
-                      name: details.name == null ? true : false,
-                      phone: details.phone == null ? true : false,
-                      saveas: details.saveas == null ? true : false,
-                      flat: details.flat == null ? true : false,
-                      street: details.street == null ? true : false,
-                      district: details.district == null ? true : false,
-                      state: details.state == null ? true : false,
-                      pin: details.pin == null ? true : false,
-                    });
-                  } else {
-                    move(1);
+             onClick={() => {
+              if (currentStep === 1) {
+                if (
+                  details.size == null ||
+                  details.orientation == null ||
+                  details.cropped == null
+                ) {
+                  setFormOneValid({
+                    ...is_F1_Invalide,
+                    size: details.size == null ? true : false,
+                    orientation: details.orientation == null ? true : false,
+                    file: details.cropped == null ? true : false,
+                  });
+            
+                  // Trigger vibration
+                  if (navigator.vibrate) {
+                    navigator.vibrate(200); // Vibrates for 200ms
                   }
                 } else {
-                  if (checked) {
-                    handleSubmit();
-                  } else {
-                    toast.error("Please accept Terms and Conditions", {
-                      position: "bottom-center",
-                      duration: 3000,
-                      draggable: true,
-                      
-                    });
+                  move(1);
+                }
+              } else if (currentStep === 2) {
+                if (
+                  details.name == null ||
+                  details.phone == null ||
+                  details.saveas == null ||
+                  details.flat == null ||
+                  details.street == null ||
+                  details.district == null ||
+                  details.state == null ||
+                  details.pin == null
+                ) {
+                  setFormTWOValid({
+                    ...is_F2_Invalide,
+                    name: details.name == null ? true : false,
+                    phone: details.phone == null ? true : false,
+                    saveas: details.saveas == null ? true : false,
+                    flat: details.flat == null ? true : false,
+                    street: details.street == null ? true : false,
+                    district: details.district == null ? true : false,
+                    state: details.state == null ? true : false,
+                    pin: details.pin == null ? true : false,
+                  });
+            
+                  // Trigger vibration
+                  if (navigator.vibrate) {
+                    navigator.vibrate(200);
+                  }
+                } else {
+                  move(1);
+                }
+              } else {
+                if (checked) {
+                  handleSubmit();
+                } else {
+                  // Show toast error
+                  toast.error("Please accept Terms and Conditions", {
+                    position: "bottom-center",
+                    duration: 3000,
+                    draggable: true,
+                  });
+            
+                  // Trigger vibration
+                  if (navigator.vibrate) {
+                    navigator.vibrate(200);
                   }
                 }
-              }}
-              className="bg-[#6200EA] mb-4 md:mb-0 text-white px-4 py-2 text-lg md:rounded-full w-full md:w-fit  rounded-lg"
+              }
+            }}
+            
+              className="bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0] mb-4 md:mb-0 text-white px-4 py-2 text-lg md:rounded-full w-full md:w-fit  rounded-lg"
               // disabled={currentStep === steps.length}
             >
               {currentStep === steps.length ? "Submit" : "Next"}

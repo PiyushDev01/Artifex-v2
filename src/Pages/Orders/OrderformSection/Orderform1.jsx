@@ -114,9 +114,11 @@ export default function Orderform1() {
     viewport={{ once: false, amount: 0.2 }}
     
     id="formcontainer" className="flex flex-col md:flex-row w-full h-full rounded-md">
-      <div id="leftform" className="flex flex-col p-2 md:w-1/2 w-full h-full gap-2">
-        <div className="flex items-center">
-          <img src={pagesize} className="w-6 h-6 mr-2" alt="Page Size" />
+      <div id="leftform" className="flex flex-col p-2 md:w-1/2 w-full h-full gap-3 md:gap-2">
+        <div className="flex gap-2 items-center">
+          {/* <img src={pagesize} className="w-6 h-6 mr-2" alt="Page Size" /> */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"><path opacity=".4" d="m21.66 10.438-.98 4.18c-.84 3.61-2.5 5.07-5.62 4.77-.5-.04-1.04-.13-1.62-.27l-1.68-.4c-4.17-.99-5.46-3.05-4.48-7.23l.98-4.19c.2-.85.44-1.59.74-2.2 1.17-2.42 3.16-3.07 6.5-2.28l1.67.39c4.19.98 5.47 3.05 4.49 7.23Z" fill="#ba68c8"></path><path d="M15.06 19.392c-.62.42-1.4.77-2.35 1.08l-1.58.52c-3.97 1.28-6.06.21-7.35-3.76l-1.28-3.95c-1.28-3.97-.22-6.07 3.75-7.35l1.58-.52c.41-.13.8-.24 1.17-.31-.3.61-.54 1.35-.74 2.2l-.98 4.19c-.98 4.18.31 6.24 4.48 7.23l1.68.4c.58.14 1.12.23 1.62.27Z" fill="#ba68c8"></path></svg>
+
           <h1 className="text-zinc-700 text-left text-xl font-semibold py-2">Size</h1>
         </div>
         <OptionSelector 
@@ -125,8 +127,10 @@ export default function Orderform1() {
           handleClick={handleSizeClick} 
         />
         
-        <div className="flex items-center md:mt-6">
-          <img src={orient} className="w-6 h-6 mr-2" alt="Orientation" />
+        <div className="flex gap-2 items-center md:mt-6">
+          {/* <img src={orient} className="w-6 h-6 mr-2" alt="Orientation" /> */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"><path opacity=".4" d="M16.75 22h-4.5C8.5 22 7 20.5 7 16.75v-4.5C7 8.5 8.5 7 12.25 7h4.5C20.5 7 22 8.5 22 12.25v4.5C22 20.5 20.5 22 16.75 22Z" fill="#ba68c8"></path><path d="M2.75 10.5c.41 0 .75-.34.75-.75 0-2.96 2.06-5.44 4.83-6.09l-.27.45c-.21.36-.1.82.26 1.03.36.21.82.1 1.03-.26l1.05-1.75c.14-.23.14-.52.01-.75A.781.781 0 0 0 9.75 2C5.48 2 2 5.48 2 9.75c0 .41.34.75.75.75Z" fill="#ba68c8"></path></svg>
+
           <h1 className="text-zinc-700 text-left text-xl font-semibold py-2">Orientation</h1>
         </div>
         <OptionSelector 
@@ -135,8 +139,10 @@ export default function Orderform1() {
           handleClick={handleOrientationClick} 
         />
 
-        <label htmlFor="additionalNotes" className="text-zinc-700 text-left md:block hidden text-xl font-semibold pt-4 py-1">
-          Additional Notes
+        <label htmlFor="additionalNotes" className="text-zinc-700 md:flex text-left items-center gap-2 hidden text-xl font-semibold pt-4 py-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"><path opacity=".4" d="M20 8.25V18c0 3-1.79 4-4 4H8c-2.21 0-4-1-4-4V8.25c0-3.25 1.79-4 4-4 0 .62.25 1.18.66 1.59.41.41.97.66 1.59.66h3.5C14.99 6.5 16 5.49 16 4.25c2.21 0 4 .75 4 4Z" fill="#ba68c8"></path><path d="M16 4.25c0 1.24-1.01 2.25-2.25 2.25h-3.5c-.62 0-1.18-.25-1.59-.66C8.25 5.43 8 4.87 8 4.25 8 3.01 9.01 2 10.25 2h3.5c.62 0 1.18.25 1.59.66.41.41.66.97.66 1.59ZM12 13.75H8c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h4c.41 0 .75.34.75.75s-.34.75-.75.75ZM16 17.75H8c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h8c.41 0 .75.34.75.75s-.34.75-.75.75Z" fill="#ba68c8"></path></svg>
+          
+          <h1>Additional Notes</h1> 
         </label>
         <textarea
           id="additionalNotes"
@@ -159,7 +165,7 @@ export default function Orderform1() {
           >
            <div className=" flex flex-col items-center justify-center m-4 " >
            <RotateLeftRoundedIcon className="scale-125 bg-mypurple rounded-full  shadow-lg text-white" />
-            <h1 className="text-mypurple text-lg font-semibold">Reset</h1>
+            <h1 className="text-slate-500 m-1 text-sm font-semibold">Reset</h1>
            </div>
           </button>
         </div>
@@ -205,7 +211,7 @@ export default function Orderform1() {
                 <div className="flex items-center justify-center shadow-lg w-[4rem] h-[4rem] rounded-full bg-gradient-to-r from-[#8E2DE2] to-[#4A00E0]">
                   <DriveFolderUploadIcon className="scale-150 text-white" />
                 </div>
-                <h1 className="text-slate-700 m-2 text-xs max-w-56">
+                <h1 className="text-slate-700 text-center m-2 text-xs max-w-56">
                   Drag and drop your image here or <span className="text-[#4A00E0] font-semibold">browse</span> to choose a file
                 </h1>
               </>
