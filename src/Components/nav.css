@@ -57,6 +57,9 @@ li {
   width: 50px;
   transform: 0.2s;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .hamburger .checkbox {
   position: absolute;
