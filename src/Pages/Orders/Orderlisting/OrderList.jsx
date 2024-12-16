@@ -10,7 +10,7 @@ import loader from '../../../assets/loader.json'
 import UserContext from "../../../Context/UserContex.js";
 import Detailcontext from "../OrderformSection/DetailContext/Detailcontext.js";
 
-
+// TODO ADD MORE DETAILS IN ORDER LISTING PAGE OF MOBILE VIEW 
 
 
 const OrderList = (props) => {

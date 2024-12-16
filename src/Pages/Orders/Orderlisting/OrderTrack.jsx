@@ -13,7 +13,8 @@ import PersonalDetail from "./PersonalDetail";
 import Payment from "./Payment";
 import Status from "./Statuscomp.jsx";
 
-
+// TODO: add flip image for refrence pic and sketched pic
+// TODO ADD STATUS DATES IN ORDER TRACKING PAGE
 
 
 

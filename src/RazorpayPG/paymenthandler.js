@@ -54,7 +54,6 @@ const paymenthandler = async (e,setPaymentpopup, currentOrder, totalAmt, payment
               const curtime = new Date().toISOString();
               setCurrentOrder({ ...currentOrder, payment: "PAID", paymentId: jsonResponse.paymentId, paymentDate: formatDate(curtime) , total: totalAmt });
               setPaymentpopup(true);
-              // TODO: Send email of payment confirmation to both admin and user 
                  
               try {
                 const curtime = new Date().toISOString();

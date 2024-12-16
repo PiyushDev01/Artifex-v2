@@ -34,6 +34,11 @@ function AdminDash() {
     check();
   }, [user]);
   
+  // FIXME: on updating status to refunded, it should be removed from the transaction list
+  // FIXME: quick status description should be added
+  // TODO: add search bar for users and orders
+  // TODO: add filter for orders
+  // TODO: ADD USER DETAILS SECTION
 
 
   useEffect(() => {

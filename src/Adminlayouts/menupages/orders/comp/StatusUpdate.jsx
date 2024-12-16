@@ -2,9 +2,10 @@ import  { useState } from "react";
 import { useContext } from "react";
 import { Dashcontext } from "../../../contex/DashContext";
 import { updateStatus, updateStatusDesc } from '../../../Firebase_admin/update.js';
-import { FiLoader } from "react-icons/fi";
+// import { FiLoader } from "react-icons/fi";
 import { FaLock } from "react-icons/fa";
 import {sendStatusEmail} from '../../../../mailer/EmailSender.js';
+import { toast } from 'react-hot-toast';
 
 
 const msg = {
@@ -24,7 +25,7 @@ function StatusUpdate() {
 
     const {setCurAdminOrder, curAdminOrder} = useContext(Dashcontext)
     const [selectedStatus, setSelectedStatus] = useState(curAdminOrder.status);
-    const [updatingStatus, setUpdatingStatus] = useState();
+    // const [updatingStatus, setUpdatingStatus] = useState();
 
     const status = [
         {name: 'Pending'},
@@ -39,22 +40,38 @@ function StatusUpdate() {
 
     ];  
 
-    const handleStatus = async(orderId, status ) => {
-        setUpdatingStatus(<FiLoader />);
-         await updateStatus(orderId, status)
-         if(status==='Approved' || status==='Sketching' || status==='Finished' || status==='Delivered' || status==='Rejected' || status==='Done' || status==='Pending'){
-            await sendStatusEmail(curAdminOrder.email, curAdminOrder, status, curAdminOrder.orderId)
-            await updateStatusDesc(curAdminOrder.orderId ,msg[status]) 
-            
-         }
-         setUpdatingStatus();
-      }
+    const handleStatus = async (orderId, status) => {
+        // setUpdatingStatus(<FiLoader />);
+      
+        // Use toast.promise for better UX
+        await toast.promise(
+          (async () => {
+            // Update the status
+            await updateStatus(orderId, status);
+      
+            // If the status is one of the valid options, send the email and update the description
+            if (
+              ['Approved', 'Sketching', 'Finished', 'Delivered', 'Rejected', 'Done', 'Pending'].includes(status)
+            ) {
+              await sendStatusEmail(curAdminOrder.email, curAdminOrder, status, curAdminOrder.orderId);
+              await updateStatusDesc(curAdminOrder.orderId, msg[status]);
+            }
+          })(),
+          {
+            loading: 'Updating status...',
+            success: 'Status updated successfully!',
+            error: 'Failed to update status. Please try again.',
+          }
+        );
+      
+        // setUpdatingStatus();
+      };
 
   return (
     <>
 
     <div className=" relative overflow-hidden w-full shadow-md gap-4 items-center justify-center text-xl flex rounded-xl bg-white p-4 h-full ">
-       Current Status {updatingStatus}
+       Current Status 
         <select
             value={selectedStatus}
             onChange={(e) => {

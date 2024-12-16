@@ -8,6 +8,10 @@ import { fadeIn } from "../../../Framer/fadein.js";
 import loader from "../../../assets/loader.json";
 import Lottie from "lottie-react";
 
+
+// TODO: add shipping charge api and show the estimated time of delivery and price
+
+
 const saveas = ["Home", "Office", "Others"];
 
 function Orderform2() {
