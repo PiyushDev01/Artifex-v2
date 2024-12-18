@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../../Framer/fadein";
 import { useContext } from "react";
 import UserContext from "../../../Context/UserContex";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 export default function Leftcontent() {
   const {uDetails} = useContext(UserContext);
@@ -67,7 +68,7 @@ export default function Leftcontent() {
           className="p-3 h-fit w-fit text-white rounded-full px-6 my-4 transition-all md:block"
           id="exbtn"
         >
-          <h1>Explore</h1>
+          <h1 className=" flex items-center justify-center gap-4 " >Explore <FaArrowCircleRight className=" scale-150" /> </h1>
         </motion.button></a>
       </div>
     </>

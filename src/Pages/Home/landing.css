@@ -1,3 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Playwrite+TZ+Guides&display=swap');
+
+
 #leftcnt {
   font-family: "manrope";
 }
@@ -46,4 +50,11 @@ h1 {
 background: -webkit-linear-gradient(to right, #8E2DE2, #4A00E0);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #8E2DE2, #4A00E0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+
+#spn{
+  font-family: "Dancing Script", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
 }
