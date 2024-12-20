@@ -57,6 +57,10 @@ export default function Orderform1() {
     }));
   }, [setDetails, setFormOneValid]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Update aspect ratio based on orientation
   useEffect(() => {
     if (details.orientation === "Landscape") {

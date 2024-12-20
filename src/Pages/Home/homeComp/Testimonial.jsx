@@ -20,7 +20,7 @@ feedback: "How can you play so beautifully with just a single pencil...hats off.
 function Testimonial() {
   return (
     <>
-    <section className="maincontainer relative w-full h-fit flex justify-center p-4  " >
+    <section className=" relative w-full h-fit flex justify-center p-4" >
         <div className="bgcircle w-96 rounded-full -z-10 top-32 blur-[8rem] h-52 bg-pink-400 absolute "></div>
             <div className=" flex flex-col items-center gap-4 md:p-8 md:w-[80%] ">
                 <p id="leftp" className=" text-slate-700" >Testimonials</p>

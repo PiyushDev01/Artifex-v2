@@ -1,8 +1,11 @@
 import sideimg from "../../assets/sideimage.webp";
 import { motion } from "framer-motion";
 import "./landing.css";
+import { useNavigate } from "react-router";
 
 function Hero() {
+
+  const navigate = useNavigate();
   return (
     <>
       <section className="maincontainer w-full h-[100vh] flex justify-center items-center  ">
@@ -64,7 +67,9 @@ function Hero() {
               unforgettable with a personal touch.
             </p>
 
-            <button className=" bg-gradient-to-tr text-lg font-semibold hover:shadow-xl shadow-black from-indigo-500 via-purple-500 to-pink-500 text-white p-2 w-fit m-5 rounded-full px-4 my-4 transition-all md:block">
+            <button 
+            onClick={() => navigate("/order")}
+            className=" bg-gradient-to-tr text-lg font-semibold hover:shadow-xl shadow-black from-indigo-500 via-purple-500 to-pink-500 text-white p-2 w-fit m-5 rounded-full px-4 my-4 transition-all md:block">
               <span className="">Order Today!</span>
             </button>
           </section>

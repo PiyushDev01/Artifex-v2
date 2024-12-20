@@ -299,7 +299,7 @@ export default function Nav() {
         <div
           style={box}
           className=" min-h-fit h-[30rem] absolute backdrop-blur-sm bg-[#1f1f1f] from-60%  to-purple-800/75 
-           shadow-2xl border-[#4c4c4c]  -right-1 top-20 md:hidden justify-between py-8 rounded-l-[1rem] flex flex-col items-center gap-3 overflow-hidden z-20"
+           shadow-2xl border-[#4c4c4c]  -right-1 top-20 md:hidden justify-between py-8 rounded-l-[1rem] flex flex-col items-center gap-3 overflow-hidden z-50"
           id="mobblurnav"
         >
           <ul

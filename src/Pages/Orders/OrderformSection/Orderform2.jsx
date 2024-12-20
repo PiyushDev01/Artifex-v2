@@ -25,6 +25,10 @@ function Orderform2() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     setDetails((prevDetails) => ({
       ...prevDetails,
       saveas: saveas[0],

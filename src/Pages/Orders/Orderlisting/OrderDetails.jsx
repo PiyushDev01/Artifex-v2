@@ -50,7 +50,7 @@ function OrderDetails() {
                 </h1>
                 </div>
                 
-                <h1 className=" font-semibold text-xl text-zinc-800  ">
+                <h1 className=" font-semibold text-xl mt-3 text-zinc-800  ">
                   {currentOrder.person}
                 </h1>
                 <h1 className=" font-semibold text-lg text-zinc-500  ">

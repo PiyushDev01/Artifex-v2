@@ -1,5 +1,5 @@
 import "./orderlist.css";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Detailcontext from "../OrderformSection/DetailContext/Detailcontext";
 import UserContext from "../../../Context/UserContex";
 import CloseIcon from "@mui/icons-material/Close";
@@ -29,6 +29,10 @@ function OrderTrack() {
     navigate("/Your-Orders");
     setCurrentOrder(null);
   };
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
 
 

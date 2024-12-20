@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../../Framer/fadein";
 import { useContext } from "react";
 import UserContext from "../../../Context/UserContex";
-import { FaArrowCircleRight } from "react-icons/fa";
 
 export default function Leftcontent() {
   const {uDetails} = useContext(UserContext);

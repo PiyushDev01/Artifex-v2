@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 import { useContext } from "react";
 import UserContext from "../../Context/UserContex";
 import toast, { Toaster } from 'react-hot-toast';
+import { useEffect } from "react";
 
 
 
@@ -25,6 +26,10 @@ function OrderPrice() {
   }
 
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   return (
     <>
@@ -34,7 +39,7 @@ function OrderPrice() {
       >
         <nav className=" top-0 md:h-[5.5rem] h-[4.6rem] w-screen  left-0 md:bg-none bg-slate-50  fixed md:shadow-none shadow-md rounded-b-3xl md:rounded-none " > </nav>
 
-        <div id="backimg" className=" md:absolute fixed top-[20vh]  md:scale-100 w-[95%]  md:-top-[10rem]  overflow-hidden h-[100vh] " >
+        <div id="backimg" className=" md:absolute fixed top-[20vh]  md:scale-100 w-[95%]  md:-top-[10rem]  overflow-hidden " >
         <img src={backimg} alt="" className=" brightness-150 saturate-150 scale-125  " />
 
         </div>
@@ -97,7 +102,7 @@ function OrderPrice() {
           d3="Skillfully designed to capture every unique detail."
           
         /></div>
-        <p className=" z-30 mb-6 mx-4 text-slate-300 ">
+        <p className=" z-10 mb-6 mx-4 text-slate-300 ">
         Note: Your shipping charge will be determined by your pincode, ensuring you get the most accurate rate for your delivery!
         </p>
         <Toaster />

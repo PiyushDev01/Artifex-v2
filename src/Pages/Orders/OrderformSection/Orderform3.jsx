@@ -30,6 +30,10 @@ function Orderform3() {
     }, [submitted])
 
     useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
+    useEffect(() => {
       setDetails({...details, price: price.price, person: price.person});
     }, [price])
 

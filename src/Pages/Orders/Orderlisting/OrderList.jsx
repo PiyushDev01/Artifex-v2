@@ -117,6 +117,10 @@ function OrderPrice() {
     setCurrentOrder(orderArray[idx]);
   };
   
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   useEffect(() => {
     const fetchOrders = async () => {

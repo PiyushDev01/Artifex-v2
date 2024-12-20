@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="flex flex-col md:flex-row gap-4 cursor-pointer z-[2rem] mt-4 text-gray-400">
+          <div className="flex flex-col md:flex-row gap-4 cursor-pointer z-[20rem] mt-4 text-gray-400">
             <a id="tnc" onClick={()=>navigate('/policies')} className="hover:text-white">
               Terms and Conditions
             </a>
