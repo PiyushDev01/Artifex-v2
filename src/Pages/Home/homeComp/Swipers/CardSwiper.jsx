@@ -16,7 +16,10 @@ import { img1, img10, img2, img3, img5, img6, img7, img8, img9  } from './images
 export default function CardSwiper() {
   return (
     <>
-    
+    <div className=' relative w-fit h-fit' >
+      <div className=' absolute w-[90%] -bottom-2 rounded-full blur-3xl md:-bottom-[30%] left-[50%] -translate-x-[50%]  h-32 bg-purple-400  ' >
+
+      </div>
       <Swiper
           effect={'cards'}
           grabCursor={true}
@@ -40,7 +43,7 @@ export default function CardSwiper() {
           <SwiperSlide><Cards img={img10} /></SwiperSlide>
           
         </Swiper>
-      
+        </div>
     </>
   );
 }

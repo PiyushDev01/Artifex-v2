@@ -68,7 +68,7 @@ export default function Leftcontent() {
           className="p-3 h-fit w-fit text-white rounded-full px-6 my-4 transition-all md:block"
           id="exbtn"
         >
-          <h1 className=" flex items-center justify-center gap-4 " >Explore <FaArrowCircleRight className=" scale-150" /> </h1>
+          <h1 className=" flex items-center justify-center gap-4 " >Explore</h1>
         </motion.button></a>
       </div>
     </>
