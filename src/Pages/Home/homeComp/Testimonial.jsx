@@ -21,7 +21,7 @@ function Testimonial() {
   return (
     <>
     <section className=" relative w-full h-fit flex justify-center p-4" >
-        <div className="bgcircle w-96 rounded-full -z-10 top-32 blur-[8rem] h-52 bg-pink-400 absolute "></div>
+        <div className="bgcircle md:w-96 w-full rounded-full -z-10 top-32 blur-[8rem] h-52 bg-pink-400 absolute "></div>
             <div className=" flex flex-col items-center gap-4 md:p-8 md:w-[80%] ">
                 <p id="leftp" className=" text-slate-700" >Testimonials</p>
                 <h2 className="md:text-6xl text-3xl mb-6 font-semibold tracking-tighter md:tracking-[-5px] text-slate-700 md:mb-12">

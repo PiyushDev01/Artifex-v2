@@ -1,13 +1,30 @@
 import './swiper.css';
+import { FaRegComment } from "react-icons/fa";
+import { LuSend } from "react-icons/lu";
+import { FaRegBookmark } from "react-icons/fa6";
 
 
 function Cards(props) {
   return (
-    <div className=" h-full w-[20rem] shadow-xl rounded-xl flex items-center justify-center bg-fuchsia-500">
-        <img src={props.img} alt="" />
-        <div className="absolute bottom-0 w-8 flex justify-center right-3 items-center">
+    <div className="  h-fit w-[20rem] shadow-xl rounded-xl flex flex-col items-center justify-center bg-slate-50 ">
+        
+
+        <header className=' flex items-center gap-2 text-black p-2 h-[3rem] bg-slate-50  w-full ' >
+          <img src="https://www.imartifex.live/assets/profile-0a_fBtU6.jpg" className=' w-6 rounded-full ' alt="" />
+          <h4 className=' text-xs font-sans font-normal   '> im_artifex</h4>
+           </header>
+        <img src={props.img} alt="" className=' px-[2px] aspect-square object-cover ' />
+
+        <header className=' flex items-center gap-3 justify-between text-black p-2 px-4 h-[3rem] bg-slate-50  w-full ' >
+        <div className=' flex items-center gap-3'>
+        <div className="w-5 flex justify-center  items-center">
           <LikeButton />
         </div>
+          <FaRegComment className=' w-4 text-slate-800 scale-x-[-1]  ' />
+          <LuSend className=' w-4 text-slate-800  '/>
+        </div>
+          <FaRegBookmark className=' w-3 text-slate-800  ' />
+           </header>
     </div>
   )
 }
@@ -19,8 +36,7 @@ function LikeButton() {
   return (
     /* From Uiverse.io by catraco */ 
 <div className="heart-container" title="Like">
-            <input type="checkbox" className="checkbox" id="Give-It-An-Id"/>
-            <div className="svg-container">
+            <input type="checkbox" className="checkbox" id="Give-It-An-Id"/> <div className="svg-container">
                 <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
                     </path>

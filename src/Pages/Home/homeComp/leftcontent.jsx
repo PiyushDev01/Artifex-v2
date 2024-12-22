@@ -18,7 +18,7 @@ export default function Leftcontent() {
 
       <div
         id="leftcnt"
-        className=" md:w-1/2 text-center md:translate-y-8 md:text-left md:h-full h-4/5 flex flex-col justify-center items-center md:items-start"
+        className=" md:w-1/2 text-center md:translate-y-8 md:text-left md:h-full h-4/5 mb-4 flex flex-col justify-center items-center md:items-start"
       >
 
         <motion.h2

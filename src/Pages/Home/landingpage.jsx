@@ -11,7 +11,7 @@ export default function Landingpg() {
   return (
     <>
       
-      <div className=" h-[50rem] md:h-[100vh] w-full ">
+      <div className=" h-[55rem] overflow-hidden md:h-[105vh] w-full ">
         <img
           className=" w-[100%] md:h-full absolute overflow-hidden -z-20 top-0"
           src={blur1}

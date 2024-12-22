@@ -8,7 +8,7 @@ function Hero() {
   const navigate = useNavigate();
   return (
     <>
-      <section className="maincontainer w-full h-[100vh] flex justify-center items-center  ">
+      <section className="maincontainer w-full h-[100vh] flex justify-center items-center   ">
         <div className=" flex gap-10 md:flex-row flex-col-reverse md:w-[80%] h-full ">
           <section className=" left flex items-center justify-center  md:w-1/2 h-full ">
             <div className="md:w-1/2 text-center md:scale-125  md:px-0 md:py-0 py-12 px-8 flex justify-center items-center  md:translate-x-0 md:translate-y-8 -translate-x-6 ">
@@ -41,7 +41,7 @@ function Hero() {
               </div>
             </div>
           </section>
-          <section className=" relative right md:w-1/2 md:h-full md:mt-0 mt-32 flex flex-col justify-center">
+          <section className=" relative right md:w-1/2 md:h-full md:mt-0 mt-32  flex flex-col justify-center">
             <div className="bgcircle  md:w-96 h-52 -bottom-10 right-0 md:h-96 w-52 bg-slate-200 absolute rounded-full blur-3xl -z-10  md:left-20 md:top-60  "></div>
             <div className="bgcircle  md:w-40 top-0 md:h-40 w-24 h-24 bg-violet-300 absolute rounded-full blur-3xl -z-10  md:top-40  "></div>
 
