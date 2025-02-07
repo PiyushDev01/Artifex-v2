@@ -37,7 +37,7 @@ export const OrderLists = ({ rowlimit }) => {
         <div className="flex justify-between items-center text-indigo-400 border-b-[1px] border-slate-400 h-10 py-1 px-6 m-4 text-xl font-semibold">
           <p className="hidden md:block">Order ID</p>
           <p>Name</p>
-          <p className="hidden md:block">Price</p>
+          <p className="hidden pr-10 md:block">Price</p>
           <p className="mr-6">Date</p>
           <p className="mr-6">Status</p>
         </div>
@@ -100,7 +100,9 @@ const RowItem = (props) => {
         {props.name.length > 12 ? `${props.name.substring(0, 12)}...` : props.name}
       </p>
       <p className= {`font-bold text-base text-center p-1 rounded-xl min-w-12 ${ispaid}  md:block`}>₹{props.price}</p>
-      <p className="text-sm md:text-lg">{props.date}</p>
+      <div className=' min-w-40 '>
+        <p className="text-sm md:text-lg ">{props.date}</p>
+      </div>
      <div className=' min-w-32' >
      <Status status={props.status} />
      </div>

@@ -8,7 +8,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text);
-  alert(text+" Copied to clipboard")
+  // alert(text+" Copied to clipboard")
   toast.success(text+" Copied to clipboard")
 };
 // Row Component for Users
@@ -72,7 +72,7 @@ export const UserLists = ({ rowlimit }) => {
 
   const handleRowClick = () => {
     // console.log('User row clicked!');
-    setSidebar({ curoption: 'Userdetail', open: true });
+    // setSidebar({ curoption: 'Userdetail', open: true });
   };
 
   // Slice data if rowlimit is provided

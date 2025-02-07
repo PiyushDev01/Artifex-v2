@@ -10,7 +10,8 @@ import { BiSolidBookContent } from "react-icons/bi";
 
 
 
-const menu= [[<MdDashboard />, "Dashboard"], [<FaCartShopping />, "Orders"], [<FaUsers />, "Users"], [<MdOutlinePayments />, "Transactions"], [<BiSolidBookContent />, "Content"]]
+const menu= [[<MdDashboard />, "Dashboard"], [<FaCartShopping />, "Orders"], [<FaUsers />, "Users"], [<MdOutlinePayments />, "Transactions"],]
+// const menu= [[<MdDashboard />, "Dashboard"], [<FaCartShopping />, "Orders"], [<FaUsers />, "Users"], [<MdOutlinePayments />, "Transactions"], [<BiSolidBookContent />, "Content"]]
 
 function MenuOpt(icon, title) {
 
