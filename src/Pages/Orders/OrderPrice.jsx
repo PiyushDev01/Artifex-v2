@@ -93,7 +93,7 @@ function OrderPrice() {
         </div>
         <SidePriceCard
          errormsg={toastifyerror}
-          price={799}
+          price={899}
           person="More than Two"
           title="Multiple People Pencil Sketch"
           desc='Celebrate togetherness with a stunning pencil sketch featuring multiple individuals in the frame.'
