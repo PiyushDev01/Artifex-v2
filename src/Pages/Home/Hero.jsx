@@ -2,6 +2,7 @@ import sideimg from "../../assets/sideimage.webp";
 import { motion } from "framer-motion";
 import "./landing.css";
 import { useNavigate } from "react-router";
+import video from "./video.mp4";
 
 function Hero() {
 
@@ -73,8 +74,20 @@ function Hero() {
               <span className="">Order Today!</span>
             </button>
           </section>
+
+        
+
         </div>
       </section>
+          <section className="w-full flex flex-col justify-center items-center">
+            <h1 className=" font-semibold -mb-5 text-lg text-slate-800" >
+              Watch Our Video
+            </h1>
+           <video className=" rounded-3xl shadow-2xl w-[90%] my-10 md:w-[60%] "  controls>
+           <source src={video} type="video/mp4"></source>
+
+           </video>
+          </section>
     </>
   );
 }
