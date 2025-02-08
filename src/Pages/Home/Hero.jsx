@@ -81,7 +81,7 @@ function Hero() {
       </section>
           <section className="w-full flex flex-col justify-center items-center">
             <h1 className=" font-semibold -mb-5 text-lg text-slate-800" >
-              Watch Our Video
+             How to Place Order
             </h1>
            <video className=" rounded-3xl shadow-2xl w-[90%] my-10 md:w-[60%] "  controls>
            <source src={video} type="video/mp4"></source>
