@@ -39,6 +39,19 @@ function SidePriceCard(props) {
                     <div id="pricetag" className=' mx-3 items-center gap-1 h-fit flex flex-row  '>
                         <h2 className=' text-3xl text-zinc-900 '>₹</h2>
                         <h5 id='whitePrice' className=' text-5xl font-extrabold' >{props.price}</h5>
+                      {
+                        props.tandc && <h2 
+                        onClick={() => {
+                          navigate('/Policies', { replace: true });
+                          setTimeout(() => {
+                              const element = document.getElementById('productprice');
+                              if (element) {
+                                  element.scrollIntoView({ behavior: 'smooth' });
+                              }
+                          }, 100); // Small delay to ensure navigation completes
+                      }}
+                        className=' text-3xl text-red-500 cursor-pointer font-semibold' >*</h2>
+                      }
                         <h2 className='text-zinc-900 text-xs'>+ Shipping Charge</h2>
 
                     </div>

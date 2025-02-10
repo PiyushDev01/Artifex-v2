@@ -89,14 +89,14 @@ useEffect(() => {
 
       {/* Products/Services */}
       <section>
-        <h2 className="text-2xl font-semibold mb-4">Products and Services</h2>
+        <h2 id="productprice" className="text-2xl font-semibold mb-4">Products and Services</h2>
         <p className="text-gray-700">
           Artifex specializes in creating custom portraits. Choose from the following options:
         </p>
         <ul className="list-disc list-inside text-gray-700">
           <li>Single-person portraits</li>
           <li>Double-person portraits</li>
-          <li>Multiple-person portraits</li>
+          <li>Multiple-person portraits (Rs.300 each)</li>
         </ul>
         <p className="text-gray-700">
           Each portrait is crafted with care to meet your requirements. Please review the product details before placing your order.
