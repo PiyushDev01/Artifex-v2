@@ -1,4 +1,5 @@
-import React from 'react';
+
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { Dashcontext } from '../../contex/DashContext.jsx';
@@ -12,8 +13,11 @@ import { Status } from '../../../Pages/Orders/Orderlisting/OrderList.jsx';
 
 // Main List Component
 export const OrderLists = ({ rowlimit }) => {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] =useState(false);
   const{adminOrders, setSidebar, setCurAdminOrder} = useContext(Dashcontext);
+
+  const[search, setSearch] = useState('');
+
   const handleRowClick = (index) => {
     
     setSidebar({ curoption: "Orderdetail", open: true });
@@ -29,10 +33,24 @@ export const OrderLists = ({ rowlimit }) => {
 
   return (
     <div className="maincontainer w-full flex flex-col items-center">
+
+
+    <div className="flex justify-between items-center  px-4 py-2">
+     {
+      !rowlimit &&
+      <input className='min-w-[40rem] p-3 rounded-full px-4 w-full outline-none focus:border-b-4 focus:shadow-lg   border-purple-500 focus:rounded-lg transition-all ' type="text"
+      onChange={(e)=>setSearch(e.target.value)} value={search}
+      placeholder='Search Orders' />
+     }
+    </div>
+
       <div
       
         className= {`z-10 w-[100%] shadow-md h-[80%] ${rowlimit && " max-h-[21rem]"} bg-slate-50 rounded-2xl md:rounded-[2rem] flex overflow-hidden flex-col`} 
       >
+
+  
+
         {/* Table Header */}
         <div className="flex justify-between items-center text-indigo-400 border-b-[1px] border-slate-400 h-10 py-1 px-6 m-4 text-xl font-semibold">
           <p className="hidden md:block">Order ID</p>
@@ -49,7 +67,15 @@ export const OrderLists = ({ rowlimit }) => {
               <p className="text-xl text-slate-500">Loading...</p>
             </div>
           ) : sortedRows.length > 0 ? (
-            sortedRows.reverse().map((item,index) => (
+            sortedRows.filter((item)=>{
+              item.date.toLowerCase()
+            return ( search === "" ? item : item.name.toLowerCase().includes(search.toLowerCase()) ||
+                    item.orderId.toLowerCase().includes(search.toLowerCase()) ||
+                    item.status.toLowerCase().includes(search.toLowerCase()) ||
+                    (item.payment && item.payment.toLowerCase().includes(search.toLowerCase()))||
+                    item.date.toLowerCase().includes(search.toLowerCase())
+                  )
+            }).reverse().map((item,index) => (
               <RowItem
                 key={item.id}
                 id={item.orderId}
@@ -60,6 +86,7 @@ export const OrderLists = ({ rowlimit }) => {
                 handleFunc={()=>handleRowClick(index)}
                 ispaid={item.payment === 'PAID'}
               />
+              
             ))
           ) : (
             <p className="text-center text-xl text-slate-400">No Orders Found</p>

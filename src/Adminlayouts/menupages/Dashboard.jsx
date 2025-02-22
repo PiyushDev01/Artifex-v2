@@ -9,12 +9,12 @@ function Dashboardcard({ title, value, opentab, isNew, onClick }) {
     <div
       onClick={() => {
         setSidebar({ ...sidebar, curoption: opentab });
-        onClick(title, value); // Reset "new" status for this card
+        onClick(title, value); // Reset "new" sta-tus for this card
       }}
-      className="flex relative cursor-pointer flex-col items-center hover:bg-zinc-100 transition-all rounded-xl justify-center w-full p-4 bg-white shadow-md"
+      className="flex relative cursor-pointer flex-col items-center hover:bg-purple-800 transition-all rounded-xl justify-center w-full p-4 bg-[#8E2DE2] shadow-md"
     >
-      <h1 className="text-2xl font-semibold text-slate-800">{value}</h1>
-      <p className="text-sm text-slate-500">{title}</p>
+      <h1 className="text-2xl font-semibold text-slate-200">{value}</h1>
+      <p className="text-sm text-slate-300">{title}</p>
       <div
         className={`${
           isNew ? "block" : "hidden"

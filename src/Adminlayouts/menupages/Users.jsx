@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import { useContext } from 'react';
 import { Dashcontext } from '../contex/DashContext.jsx';
 import {formatDate} from '../../Pages/Orders/Orderlisting/OrderList.jsx';
@@ -69,6 +69,7 @@ UserRow.propTypes = {
 export const UserLists = ({ rowlimit }) => {
   const [loading, setLoading] = React.useState(false);
   const {adminUsers, setSidebar} = useContext(Dashcontext);
+  const [search, setSearch] = React.useState('');
 
   const handleRowClick = () => {
     // console.log('User row clicked!');
@@ -83,6 +84,14 @@ export const UserLists = ({ rowlimit }) => {
 
   return (
     <div className="maincontainer w-full flex flex-col items-center">
+      <div className="flex justify-between items-center  px-4 py-2">
+
+<input className='min-w-[40rem] p-3 rounded-full px-4 w-full outline-none focus:border-b-4 focus:shadow-lg   border-purple-500 focus:rounded-lg transition-all ' type="text"
+      onChange={(e)=>setSearch(e.target.value)} value={search}
+      placeholder='Search Orders' />
+      </div>
+
+
       <div
         id="container1"
         className="z-10 shadow-md w-[100%] h-[80%] bg-slate-50 py-4 rounded-2xl md:rounded-[2rem] flex overflow-hidden flex-col"
@@ -94,7 +103,14 @@ export const UserLists = ({ rowlimit }) => {
               <p className="text-xl text-slate-500">Loading...</p>
             </div>
           ) : sortedUsers.length > 0 ? (
-            sortedUsers.map((user) => (
+            sortedUsers.filter((item)=>{
+              return ( search === "" ? item : item.name.toLowerCase().includes(search.toLowerCase()) ||
+              item.email.toLowerCase().includes(search.toLowerCase()) ||
+              item.createdOn.toLowerCase().includes(search.toLowerCase()) ||
+              item.userId.toLowerCase().includes(search.toLowerCase())||
+              (search.toLowerCase() === "admin" && item.admin === true)
+              )
+            }).map((user) => (
               <UserRow
                 key={user.userId}
                 uid={user.userId}
