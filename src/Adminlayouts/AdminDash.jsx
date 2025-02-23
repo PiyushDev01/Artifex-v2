@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Leftcontent from './Leftcontent';
 import Rightcontect from './Rightcontect';
 import {getAllOrders, getAllUsers} from './Firebase_admin/read.js';
-import { Dashcontext } from './contex/DashContext.jsx';
+import { Dashcontext } from './contex/DashContext.jsx'; 
 import { useContext, useEffect } from 'react';
 import loader from "../assets/loader.json";
 import Lottie from "lottie-react";
