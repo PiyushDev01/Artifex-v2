@@ -6,10 +6,12 @@ import { formatDate } from "../../../Pages/Orders/Orderlisting/OrderList.jsx";
 import Payment from "./comp/Payment";
 import StatusUpdate from "./comp/StatusUpdate";
 import StatusDesc from './comp/StatusDesc';
+import { useEffect, useState } from "react";
 
 function OrderDetailsAdm() {
   const { curAdminOrder } = useContext(Dashcontext);
-  // console.log(curAdminOrder)
+ 
+
   const {
     orderId,
     name,

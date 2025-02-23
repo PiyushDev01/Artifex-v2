@@ -88,7 +88,7 @@ export const UserLists = ({ rowlimit }) => {
 
 <input className='min-w-[40rem] p-3 rounded-full px-4 w-full outline-none focus:border-b-4 focus:shadow-lg   border-purple-500 focus:rounded-lg transition-all ' type="text"
       onChange={(e)=>setSearch(e.target.value)} value={search}
-      placeholder='Search Orders' />
+      placeholder='Search Users' />
       </div>
 
 

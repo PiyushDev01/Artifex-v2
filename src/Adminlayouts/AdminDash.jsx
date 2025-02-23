@@ -9,6 +9,7 @@ import Lottie from "lottie-react";
 import {checkAdmin} from '../Firebase/CURDfunc/read.js';
 import UserContext from '../Context/UserContex.js';
 import { useNavigate } from 'react-router';
+import './style.css';
 
 function AdminDash() {
   const { refresh, settotalorder, setAdminOrders, setAdminUsers,setAdminPayments, setTotaluser, setTotalpays, setTotalrevnue} = useContext(Dashcontext);
@@ -34,10 +35,10 @@ function AdminDash() {
     check();
   }, [user]);
   
-  // FIXME: on updating status to refunded, it should be removed from the transaction list
+
   // FIXME: quick status description should be added
-  // TODO: add search bar for users and orders
-  // TODO: add filter for orders
+
+ 
   // TODO: ADD USER DETAILS SECTION
 
 
@@ -76,25 +77,30 @@ function AdminDash() {
 
 
   return (
-   <div className="containerz  min-h-[100vh] h-fit  flex items-center justify-center bg-slate-50">
-    <div className="leftaside   h-[100%] pt-[6rem] px-4 w-[20%] hidden md:flex justify-center">
+    <div className="containerz  min-h-[100vh] h-fit  flex items-center justify-center bg-slate-50">
+      <div className="leftaside   h-[100%] pt-[6rem] px-4 w-[20%] hidden md:flex justify-center">
         <Leftcontent />
+      </div>
+      <h1 className=" md:hidden">OPEN ON DESKTOP MODE</h1>
+      <div className="rightaside  pt-[6rem] hidden px-4 w-full md:flex items-center justify-center ">
+        {loading ? (
+          //   <Lottie
+          //   animationData={loader}
+          //   style={{ width: "45px", height: "30px" }}
+          //   className=" scale-[500%] "
+          // />
+
+          <div className="three-body">
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+            <div className="three-body__dot"></div>
+          </div>
+        ) : (
+          <Rightcontect />
+        )}
+      </div>
     </div>
-    <h1 className=' md:hidden'>OPEN ON DESKTOP MODE</h1>
-    <div className="rightaside  pt-[6rem] hidden px-4 w-full md:flex items-center justify-center ">
-      {
-        loading ?
-        <Lottie
-        animationData={loader}
-        style={{ width: "45px", height: "30px" }}
-        className=" scale-[500%] "
-      /> : <Rightcontect />
-      }
-      
-    </div>
-    
-   </div>
-  )
+  );
 }
 
 export default AdminDash

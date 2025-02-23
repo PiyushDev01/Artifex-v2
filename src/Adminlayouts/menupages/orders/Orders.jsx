@@ -18,11 +18,12 @@ export const OrderLists = ({ rowlimit }) => {
 
   const[search, setSearch] = useState('');
 
-  const handleRowClick = (index) => {
+  const handleRowClick = (index, item) => {
     
     setSidebar({ curoption: "Orderdetail", open: true });
-    // console.log(index);
-    setCurAdminOrder(adminOrders[index]);
+    
+    setCurAdminOrder(adminOrders.find((order) => order.orderId === item.orderId));
+   
   };
   // Slice data if rowlimit is provided
   
@@ -35,10 +36,10 @@ export const OrderLists = ({ rowlimit }) => {
     <div className="maincontainer w-full flex flex-col items-center">
 
 
-    <div className="flex justify-between items-center  px-4 py-2">
+    <div className="flex w-full justify-end items-center  px-4 py-2">
      {
       !rowlimit &&
-      <input className='min-w-[40rem] p-3 rounded-full px-4 w-full outline-none focus:border-b-4 focus:shadow-lg   border-purple-500 focus:rounded-lg transition-all ' type="text"
+      <input className='min-w-[30rem] p-3 rounded-full px-4  outline-none focus:border-b-4 focus:shadow-lg   border-purple-500 focus:rounded-lg transition-all ' type="text"
       onChange={(e)=>setSearch(e.target.value)} value={search}
       placeholder='Search Orders' />
      }
@@ -83,7 +84,7 @@ export const OrderLists = ({ rowlimit }) => {
                 price={item.price+item.shipping}
                 date={formatDate(item.date)}
                 status={(item.payment === 'PAID' || item.payment === "Cancelled" ) && item.status==='Approved' ? item.payment : item.status}
-                handleFunc={()=>handleRowClick(index)}
+                handleFunc={()=>handleRowClick(index,item)}
                 ispaid={item.payment === 'PAID'}
               />
               

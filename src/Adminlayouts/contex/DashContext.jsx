@@ -24,8 +24,9 @@ const DashProvider = ({ children }) => {
 
 
     // Order Details
-
     const [curAdminOrder, setCurAdminOrder] = useState(null);
+   
+
     const [curAdminPayment, setCurAdminPayment] = useState({});
    
 
@@ -48,7 +49,8 @@ const DashProvider = ({ children }) => {
 
             // Order Details
             curAdminOrder, setCurAdminOrder,
-            curAdminPayment, setCurAdminPayment
+            curAdminPayment, setCurAdminPayment,
+            
         }
 
     }>{children}</Dashcontext.Provider>;
