@@ -14,7 +14,14 @@ function Cards(props) {
           <img src="https://www.imartifex.live/assets/profile-0a_fBtU6.jpg" className=' w-6 rounded-full ' alt="" />
           <h4 className=' text-xs font-sans font-normal   '> im_artifex</h4>
            </header>  
-        <LazyLoadImage src={props.img} alt="" className=' px-[2px] aspect-square object-cover ' />
+        <LazyLoadImage 
+         effect="blur"
+          loading="lazy"
+            
+        src={props.img} 
+        visibleByDefault={true} 
+        alt="" 
+        className=' px-[2px] aspect-square object-cover ' />
 
         <header className=' flex items-center gap-3 justify-between text-black p-2 px-4 h-[3rem] bg-slate-50  w-full ' >
         <div className=' flex items-center gap-3'>
