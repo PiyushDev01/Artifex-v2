@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 
 
-const price=349;
+const price=459;
 
 function PriceCard(props) {
 
